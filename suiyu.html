@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/impress-demo.css" />
+		<style type="text/css">
+
+		</style>
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.wj').dblclick(function() {
+					$('.cover').css('display', 'none')
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="head">
+			<div class="head-t">
+				<p><i>惟正己可以化人，</p>
+				<p><i>惟尽己可以服人。</i></p>
+				<p><span>---By:&nbsp;<span style="color: red;" class="wj">wj</span></span>
+				</p>
+			</div>
+			<div class="head-n">
+				<a href="index.html">首页</a>
+				<a href="aboutme.html">关于ME</a>
+				<a href="study.html">学无止境</a>
+				<a href="book.html">好书推荐</a>
+				<a href="suiyu.html" class="active">时言碎语</a>
+				<a href="lianxi.html">联系</a>
+			</div>
+		</div>
+		<div class="yu">
+			<p>
+				<a href="index.html">首页</a><span> >>> 时言碎语</span><em>我喜欢自言自语，因为这样节约时间，而且不会有人跟我争论。</em></p>
+		</div>
+
+		<div id="shuo" class="wrap">
+			<div class="cover" style="position: absolute;width: 1000px;height: 160px;background: white;z-index: 10;">
+				<img src="img/cover_bg.jpeg" style="width: 1000px;height: 160px;" />
+			</div>
+			<div class="cover1" style="width: 100px;height: 40px;background: rgb(239,239,239);position: absolute;top: 410px;z-index: 10;">
+
+			</div>
+			<!-- 多说评论框 start -->
+			<div class="ds-thread" data-thread-key="shuo" data-title="碎语" data-url="https://wangjian88.github.io/suiyu.html"></div>
+			<!-- 多说评论框 end -->
+			<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+			<script type="text/javascript">
+				var duoshuoQuery = {
+					short_name: "wj200819"
+				};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';
+					ds.async = true;
+					ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] ||
+						document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+
+			<!-- 多说公共JS代码 end -->
+		</div>
+		<div id="foot" style="width:1000px;margin: 0px auto;height: 100px;margin-top: 40px;">
+			<p>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</p>
+			<p>design by king jian</p>
+		</div>
+
+	</body>
+
+</html>

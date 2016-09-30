@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/impress-demo.css" />
+		<style type="text/css">
+			.aboutme {
+				width: 670px;
+				padding: 10px;
+				padding-bottom: 60px;
+				background: white url(img/wj.png) no-repeat 550px 98%;
+			}
+			
+			.aboutme img {
+				width: 300px;
+				height: 400px;
+				margin-bottom: 10px;
+			}
+			
+			.tip {
+				width: 345px;
+				float: right;
+				color: rgb(115, 112, 109);
+				padding-left: 20px;
+			}
+			
+			.tip h2 {
+				font-size: 16px;
+				font-family: "arial black";
+				color: rgba(0, 0, 0, .7);
+				font-weight: bold;
+				line-height: 40px;
+			}
+			
+			.tip p {
+				text-indent: 2em;
+				line-height: 20px;
+				font-size: 14px;
+			}
+			
+			.aboutme>p {
+				font-family: "arial black";
+				text-indent: 2em;
+				font-size: 14px;
+				color: dimgray;
+				line-height: 20px;
+			}
+			
+			.self {
+				background: white url(img/huaxian.png) repeat-x;
+				padding-left: 20px;
+				padding-bottom: 10px;
+				border-radius: 4px;
+			}
+			
+			.self h1 {
+				line-height: 60px;
+				font-size: 16px;
+				font-family: "arial black";
+				color: rgba(0, 0, 0, .7);
+				font-weight: bold;
+			}
+			
+			.self li {
+				line-height: 30px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+		</style>
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				$('.self').mouseenter(function() {
+					$(this).stop()
+					$(this).animate({
+						backgroundPositionX: "-300px"
+					}, 800)
+				})
+				$('.self').mouseleave(function() {
+					$(this).stop()
+					$('.self').animate({
+						backgroundPositionX: "0px"
+					}, 800)
+				})
+			}
+		</script>
+	</head>
+
+	<body style="">
+		<div id="head">
+			<div class="head-t">
+				<p><i>惟正己可以化人，</p>
+				<p><i>惟尽己可以服人。</i></p>
+				<p><span>---By:&nbsp;<span style="color: red;">wj</span></span>
+				</p>
+			</div>
+			<div class="head-n">
+				<a href="index.html">首页</a>
+				<a href="aboutme.html" class="active">关于ME</a>
+				<a href="study.html">学无止境</a>
+				<a href="book.html">好书推荐</a>
+				<a href="suiyu.html">时言碎语</a>
+				<a href="lianxi.html">联系</a>
+			</div>
+		</div>
+		<div class="yu">
+			<p>
+				<a href="index.html">首页</a><span> >>> About Me</span><em>出发吧，永不停息，为了不输给时代的浪潮。</em></p>
+		</div>
+		<div class="wrap">
+			<div class="main aboutme">
+				<img src="img/aboume_bg.jpg" />
+				<div class="tip">
+					<h2><strong>一、关于我</strong></h2>
+					<p>1.一位立志于前端工程师的90后，一位即使到了60岁，还是坚信“男人到死都是少年”的中二少年！zz</p>
+					<h2><strong>二、关于前端</strong></h2>
+					<p>嗯，想啊想，怎么也没想到自己有朝一日会成为一名程序员。但关于职业，自己也没有坚定的执着，谈上喜好吧，从小到大都被人说喜欢数学这样的理工类，高中还和同学参加了安徽省科技大赛，略遗憾的获得了二等奖。大学直接奔着数学选了应用统计这个专业，结果不出意料沦为学渣，整天浑浑噩噩的 到了大四，面临就业的压力，义无反顾的加入码农的大军。从起初的懵懂，一无所知，到html,css,js,jq,php,mvc一个一个阶段不停地补充，真的被充实了太多。但忍不住还是要吐槽一句（'还要学多少啊'）。路，在脚下，也在远方，或许对我来说，四年前没有选择计算机是错过了一个最好的时机，但比之更好的，难道不是现在？
+					</p>
+				</div>
+				<p>这个世界太不安定，躁动不已。</p>
+			
+				<p>自己的思想和内心，不可能是千篇一律的没有波澜，谁都做不到。</p>
+			
+				<p>唯独能做到的就是，保留着一份所谓美好的希望。</p>
+			
+				<p>这也是要对未来的自己慢递的初衷和本意。</p>
+			
+				<p>未来有多远？这是个无法解答的问题，我想，对于此刻的深夜来说，明早的清晨即是未来。</p>
+			
+				<p>每个人都有对自己期许的底限，关于未来，也许是一年、二年...五年...十年，二十年，三十年，甚至某个更长的节点，也或许就是一天、一刻，甚至几秒钟过后...</p>
+				<p>想对自己的下一个五年说：别太累，也别太闲，多陪陪家人多陪陪父母。 </p>
+				<p>相对自己的第二个五年说：不惑了，嗨少年，做点儿靠谱的事儿吧，让家人放心，让自己成熟。</p>
+				<p>第三个...第四个...第五个...这些未来现在看上去貌似黑洞一样的神秘，</p>
+				<p>但也有话要说：愿一切安静，安好。</p>
+			</div>
+			<div class="side">
+				<div class="seach">
+					<input type="text" name="" id="" value="" placeholder="请输入搜索内容" />
+					<a href="#"></a>
+				</div>
+				<div class="self">
+					<h1>个人信息</h1>
+					<ul>
+						<li>姓名：王健</li>
+						<li>QQ号：2929674714</li>
+						<li>职业：前端工程师</li>
+						<li>现居：上海</li>
+						<li>公司：蓝欧科技</li>
+						<li>籍贯：安徽省蚌埠市</li>
+						<li>学历：蚌埠师范附小、蚌埠第九中学、安徽理工大学。</li>
+						<li>喜好：日剧、美剧、英雄联盟、看电影、美食、听音乐。</li>
+						<li>喜欢的明星：arata、akb48...</li>
+						<li>人生格言：每个人都有仰望星空的权利。</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="foot" style="width:1000px;margin: 0px auto;height: 100px;margin-top: 40px;">
+			<p>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</p>
+			<p>design by king jian</p>
+		</div>
+	</body>
+
+</html>
