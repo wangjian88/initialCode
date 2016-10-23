@@ -1,0 +1,50 @@
+#main .banner {
+  height: 538px;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative; }
+  #main .banner ul {
+    position: absolute;
+    top: 0; }
+    #main .banner ul li {
+      float: left; }
+  #main .banner img {
+    width: 100%; }
+  #main .banner p {
+    position: absolute;
+    bottom: 16px; }
+    #main .banner p a {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      margin-right: 30px; }
+
+#main .goodsList {
+  padding-top: 54px; }
+  #main .goodsList .section {
+    padding-top: 80px; }
+    #main .goodsList .section h2 {
+      padding-bottom: 40px;
+      text-align: center;
+      font-size: 26px;
+      font-style: normal;
+      color: #989898;
+      font-family: serif; }
+    #main .goodsList .section ul {
+      padding: 23px; }
+      #main .goodsList .section ul li {
+        float: left;
+        margin-right: 4px;
+        height: 462px; }
+        #main .goodsList .section ul li img {
+          width: 412px;
+          height: 400px; }
+        #main .goodsList .section ul li .title {
+          text-align: center; }
+          #main .goodsList .section ul li .title span {
+            line-height: 60px;
+            font-size: 20px;
+            color: #666666;
+            margin: 0 14px; }

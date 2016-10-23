@@ -1,0 +1,158 @@
+#main .top ul li {
+  float: left;
+  margin-left: 205px;
+  text-align: center; }
+  #main .top ul li span {
+    display: inline-block;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    background: gray;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 12px;
+    color: white; }
+  #main .top ul li p {
+    font-size: 20px;
+    color: #666666; }
+
+#main .top ul li.pass span {
+  background: #c29bb1; }
+
+#main .top ul li.pass p {
+  color: gray; }
+
+#main .top ul li.going span {
+  background: #9d6f89; }
+
+#main .top ul li.going p {
+  color: #000000; }
+
+#main .content {
+  font-size: 20px; }
+  #main .content .hide {
+    display: none; }
+  #main .content h2 {
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    line-height: 198px;
+    font-size: 38px;
+    color: #3d3d3d;
+    font-family: serif;
+    letter-spacing: 5px;
+    margin-bottom: 52px; }
+  #main .content h2.hide {
+    line-height: 44px;
+    margin: 65px 0 98px;
+    border: none; }
+    #main .content h2.hide p {
+      font-size: 38px; }
+  #main .content .address {
+    padding-left: 108px;
+    padding-bottom: 73px;
+    color: #666666; }
+    #main .content .address form {
+      width: 570px; }
+      #main .content .address form div {
+        margin-bottom: 10px;
+        margin-right: 20px; }
+        #main .content .address form div p {
+          line-height: 30px; }
+        #main .content .address form div input {
+          width: 506px;
+          height: 50px;
+          font-size: 20px;
+          padding-left: 20px;
+          border: 1px solid #ccc; }
+      #main .content .address form div.clear input {
+        width: 232px; }
+      #main .content .address form div.submit {
+        line-height: 55px;
+        padding-top: 30px;
+        margin: 0px; }
+        #main .content .address form div.submit button {
+          width: 180px;
+          height: 55px;
+          background: #9d6f89;
+          color: white;
+          font-size: 20px;
+          text-align: center;
+          border: none;
+          margin-right: 22px;
+          cursor: pointer; }
+    #main .content .address .account .top {
+      padding: 25px 0; }
+      #main .content .address .account .top p {
+        line-height: 60px; }
+      #main .content .address .account .top p.first {
+        color: black; }
+    #main .content .address .account ul li {
+      width: 734px;
+      height: 105px;
+      border-top: 1px solid #ccc;
+      padding: 45px 0;
+      position: relative; }
+      #main .content .address .account ul li .del a {
+        position: absolute;
+        font-size: 30px;
+        color: #ccc;
+        top: 39px;
+        right: 22px;
+        font-family: "agency fb"; }
+      #main .content .address .account ul li .del a:hover {
+        color: red; }
+      #main .content .address .account ul li .fl img {
+        width: 148px; }
+      #main .content .address .account ul li table {
+        line-height: 40px;
+        margin-left: 20px; }
+        #main .content .address .account ul li table td {
+          padding: 0 5px; }
+        #main .content .address .account ul li table td.last {
+          padding-left: 60px; }
+        #main .content .address .account ul li table input {
+          width: 34px;
+          height: 37px;
+          text-align: center;
+          line-height: 37px; }
+    #main .content .address .account ul li.first {
+      border: none; }
+    #main .content .address .addressed {
+      padding-bottom: 175px; }
+      #main .content .address .addressed dl dt {
+        padding-bottom: 38px; }
+      #main .content .address .addressed dl dd {
+        line-height: 45px; }
+        #main .content .address .addressed dl dd a {
+          color: #a47a91;
+          font-size: 22px; }
+  #main .content .accountAll dl {
+    width: 222px;
+    height: 413px;
+    border: 1px solid #ccc;
+    margin-right: 100px;
+    padding: 0 22px;
+    color: #636363; }
+    #main .content .accountAll dl dt {
+      text-align: center;
+      line-height: 78px;
+      font-size: 21px; }
+    #main .content .accountAll dl dd {
+      line-height: 82px;
+      border-top: 1px solid #ccc;
+      padding: 0 13px;
+      font-size: 17px; }
+  #main .content .accountAll .hide {
+    padding-top: 10px; }
+    #main .content .accountAll .hide p {
+      margin-top: 20px;
+      line-height: 35px; }
+      #main .content .accountAll .hide p button {
+        width: 260px;
+        height: 35px;
+        background: #9d6f89;
+        color: #ded1d8;
+        font-size: 20px;
+        text-align: center;
+        border: none;
+        cursor: pointer; }

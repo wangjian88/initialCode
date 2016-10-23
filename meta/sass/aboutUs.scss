@@ -1,0 +1,115 @@
+#main{
+     text-align: center;
+     color: #666666;
+     letter-spacing: 2px;
+    dd{
+        color: #6e6e6e;
+        font-size: 21px;
+        font-family:  serif;
+        font-style: oblique;
+        line-height: 32px;
+    }
+    dt{
+        color: gray;
+        font-size: 42px;
+        line-height: 50px;
+        font-family:  serif;
+        font-style: oblique;
+      }
+      h2{
+          padding: 65px 0px 40px 0px; 
+      }
+    .aboutMeta{
+        .tips{
+             width: 100%;
+             margin: 0px auto;
+             line-height: 76px;
+             p{
+                 a{
+                     margin: 0px 26px;
+                     color: #666666;
+                 }
+             }
+        }
+        .top{
+            padding-top: 100px;
+            padding-bottom: 120px;
+            .p2{
+                font-size: 75px;
+                color: black;
+                font-family:  serif;
+                line-height: 121px;
+                letter-spacing: 15px;
+            }
+            .p3{
+                font-size: 33px;
+                font-family:  serif;
+                 line-height: 40px;
+                 letter-spacing: 8px;
+                 font-style: oblique;
+            }
+        }
+        .mid{
+            width: 1589px;
+            margin: 0px auto;
+            dl{
+                float: left;
+                margin: 0px 78px;
+                padding-top: 72px;
+                background: url(../img/icon/aboutUs_icon_1.jpg) no-repeat center top;
+                dt{
+                    font-size: 25px;
+                    line-height: 87px;
+                }
+                dd{
+                    font-size: 16px;
+                    line-height: 26px;
+                    font-style: normal;
+                    letter-spacing: 0px;
+                }
+            }
+        }
+        .bot{
+            padding-top: 154px;
+            dt{
+                padding-bottom: 88px;
+                
+            }
+        }
+    }
+    #team{
+        dl{
+            margin-top: 62px;
+        }
+     }
+     #designIdea{
+         dl{
+            dt{
+                line-height: 162px;
+            }
+        }
+     }
+     #containsUs{
+         padding-top: 50px;
+         padding-bottom: 107px;
+         dl{
+             dt{
+                 p{
+                     color: #6e6e6e;
+                    font-size: 41px;
+                    line-height: 50px;
+                    font-family: serif;
+                 }
+                 div{
+                     a{
+                         display: inline-block;
+                         width: 66px;
+                         height: 63px;
+                         background: url(../img/icon/weixin.jpg);
+                         margin: 47px 0px 40px 10px;
+                     }
+                 }
+             }
+         }
+     }
+}

@@ -1,0 +1,331 @@
+@charset "UTF-8";
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+dl,
+dd,
+ul,
+ol,
+form,
+input,
+textarea,
+th,
+td,
+select {
+  margin: 0;
+  padding: 0;
+  font-size: 16px; }
+
+em {
+  font-style: normal; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px; }
+
+img {
+  border: none;
+  vertical-align: top; }
+
+table {
+  border-collapse: collapse; }
+
+input,
+textarea {
+  outline: none; }
+
+textarea {
+  resize: none;
+  overflow: auto; }
+
+.clear {
+  zoom: 1; }
+
+.clear:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+body {
+  font-size: 16px;
+  font-family: "微软雅黑"; }
+
+.wrap {
+  width: 1300px;
+  margin: 0 auto; }
+
+.hide {
+  display: none; }
+
+#mask {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #666666; }
+  #mask input,
+  #mask button {
+    width: 524px;
+    height: 46px;
+    background: white;
+    border: none;
+    margin-bottom: 20px; }
+  #mask input {
+    width: 504px;
+    border: 1px solid #ccc;
+    padding-left: 20px; }
+  #mask button {
+    cursor: pointer;
+    font-size: 20px;
+    color: whitesmoke; }
+  #mask .weibo {
+    font-size: 18px;
+    color: #666666;
+    background: #f1ead8 url("../img/icon/weibo_yellow.jpg") no-repeat 20px center; }
+  #mask .qq {
+    font-size: 18px;
+    color: #666666;
+    border: 1px solid #ccc;
+    background: url("../img/icon/qq.png") no-repeat 20px center; }
+  #mask .toLogin,
+  #mask .toReg {
+    background: black;
+    line-height: 55px;
+    text-align: center;
+    margin-top: 14px; }
+    #mask .toLogin a,
+    #mask .toReg a {
+      color: white;
+      text-decoration: underline;
+      color: #d5d5d5; }
+  #mask .login {
+    margin: 0 auto;
+    width: 602px;
+    margin-top: 120px;
+    text-align: center; }
+    #mask .login .content {
+      background: white; }
+      #mask .login .content .top {
+        line-height: 110px;
+        padding-bottom: 71px;
+        background: url("../img/icon/meta.png") no-repeat center bottom;
+        background-size: 178px 58px; }
+        #mask .login .content .top h2 {
+          font-size: 25px;
+          font-family: serif; }
+      #mask .login .content .mid {
+        padding-top: 50px; }
+      #mask .login .content .bot {
+        padding-bottom: 10px; }
+        #mask .login .content .bot dl dt {
+          font-size: 25px;
+          padding-top: 14px;
+          padding-bottom: 14px; }
+        #mask .login .content .bot dl dd p {
+          text-align: left;
+          padding: 20px 0 8px 38px; }
+        #mask .login .content .bot dl dd input {
+          margin-bottom: 0; }
+        #mask .login .content .bot dl dd a {
+          color: #666666; }
+        #mask .login .content .bot dl dd.submit input {
+          width: 524px;
+          background: #c4a9b8;
+          font-size: 22px;
+          color: whitesmoke;
+          letter-spacing: 3px;
+          margin: 18px 0 24px;
+          cursor: pointer; }
+  #mask .reg {
+    margin: 0 auto;
+    width: 602px;
+    margin-top: 120px;
+    text-align: center; }
+    #mask .reg dl,
+    #mask .reg form {
+      background: white; }
+    #mask .reg dl dt {
+      font-size: 38px;
+      font-family: serif;
+      padding: 120px 0 50px; }
+    #mask .reg dl dd {
+      line-height: 28px; }
+    #mask .reg form p {
+      text-align: left;
+      padding: 20px 0 8px 38px; }
+    #mask .reg form .create {
+      background: #c4a9b8; }
+  #mask .reged {
+    margin-top: 214px; }
+    #mask .reged dl dt {
+      padding-top: 34px;
+      padding-bottom: 80px; }
+    #mask .reged dl dd p {
+      text-align: left;
+      padding: 20px 0 8px 38px; }
+    #mask .reged dl dd input {
+      margin-bottom: 0; }
+    #mask .reged .clear {
+      background: white;
+      padding: 45px 0 45px 38px; }
+      #mask .reged .clear .bar {
+        text-align: center;
+        width: 524px;
+        height: 60px;
+        background: #c4a9b8;
+        font-size: 25px;
+        color: whitesmoke;
+        line-height: 60px;
+        cursor: pointer;
+        position: relative; }
+        #mask .reged .clear .bar span {
+          left: 45%;
+          position: absolute; }
+        #mask .reged .clear .bar div {
+          width: 70%;
+          height: 60px;
+          background: #85737d;
+          position: absolute; }
+
+#header {
+  width: 1300px;
+  margin: 0 auto; }
+  #header .top p,
+  #header .top a {
+    font-size: 20px;
+    color: #666666;
+    line-height: 36px; }
+  #header .top a {
+    font-size: 16px; }
+  #header .top span {
+    font-size: 16px;
+    color: #666666; }
+  #header .top .remeber {
+    margin-right: 130px;
+    width: 105px;
+    text-align: center;
+    position: relative;
+    border: 1px solid white; }
+    #header .top .remeber dl {
+      border-top: none;
+      padding-bottom: 20px;
+      position: absolute;
+      z-index: 102;
+      background: white;
+      width: 100%; }
+      #header .top .remeber dl dt,
+      #header .top .remeber dl dd {
+        font-size: 14px;
+        line-height: 34px; }
+        #header .top .remeber dl dt a,
+        #header .top .remeber dl dd a {
+          font-size: 14px; }
+      #header .top .remeber dl dd {
+        display: none; }
+      #header .top .remeber dl dt {
+        background: url("../img/icon/arrow_top.png") no-repeat 0 10px;
+        cursor: pointer; }
+  #header .top .shopBag {
+    position: relative; }
+    #header .top .shopBag .shopcar {
+      position: absolute;
+      z-index: 101;
+      width: 498px;
+      top: 82px;
+      right: -37px;
+      background: white;
+      padding-bottom: 26px; }
+      #header .top .shopBag .shopcar .noGoods {
+        text-align: center; }
+        #header .top .shopBag .shopcar .noGoods p {
+          padding-bottom: 6px;
+          letter-spacing: 2px; }
+      #header .top .shopBag .shopcar .hasGoods {
+        padding: 0 31px 0 23px; }
+        #header .top .shopBag .shopcar .hasGoods ul li {
+          height: 108px;
+          padding: 30px 0 20px;
+          border-bottom: 1px solid #ccc;
+          position: relative; }
+          #header .top .shopBag .shopcar .hasGoods ul li .del {
+            position: absolute;
+            right: 0;
+            top: 15px; }
+            #header .top .shopBag .shopcar .hasGoods ul li .del a {
+              font-size: 20px;
+              color: dimgray; }
+            #header .top .shopBag .shopcar .hasGoods ul li .del a:hover {
+              color: red; }
+          #header .top .shopBag .shopcar .hasGoods ul li table {
+            line-height: 35px;
+            margin-left: 10px; }
+            #header .top .shopBag .shopcar .hasGoods ul li table td {
+              padding: 0px 2px; }
+            #header .top .shopBag .shopcar .hasGoods ul li table td.last {
+              padding-left: 40px; }
+            #header .top .shopBag .shopcar .hasGoods ul li table input {
+              width: 30px;
+              height: 30px;
+              text-align: center;
+              line-height: 30px; }
+          #header .top .shopBag .shopcar .hasGoods ul li img {
+            width: 108px;
+            height: 106px; }
+        #header .top .shopBag .shopcar .hasGoods p {
+          font-size: 21px;
+          line-height: 60px;
+          text-align: center; }
+        #header .top .shopBag .shopcar .hasGoods .statement {
+          display: block;
+          text-align: center;
+          line-height: 44px;
+          font-size: 21px;
+          color: whitesmoke;
+          background: #9d6f89; }
+    #header .top .shopBag .shopbag {
+      width: 40px;
+      height: 40px;
+      margin-left: 34px;
+      display: inline-block;
+      vertical-align: top;
+      background: url("../img/icon/shopbag.png"); }
+  #header .mid {
+    height: 188px;
+    background: url("../img/icon/meta.png") no-repeat center 66px; }
+  #header .bot p {
+    text-align: center; }
+    #header .bot p a {
+      margin: 0 72px;
+      font-size: 20px; }
+
+#footer {
+  border-top: 2px solid #b2b1b1;
+  padding-bottom: 80px; }
+  #footer .content {
+    width: 520px;
+    margin: 0 auto;
+    padding-top: 46px; }
+    #footer .content dl {
+      margin: 0 55px;
+      font-size: 14px;
+      line-height: 28px; }
+      #footer .content dl dt {
+        color: #b0b0b0; }
+      #footer .content dl dd a {
+        color: #666666; }

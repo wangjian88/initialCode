@@ -1,0 +1,38 @@
+#main {
+  padding-top: 102px;
+  font-size: 20px;
+  color: #666; }
+  #main ul {
+    padding-top: 33px;
+    padding-left: 40px; }
+    #main ul li {
+      line-height: 38px;
+      letter-spacing: 2px; }
+  #main .msg {
+    margin-left: 112px;
+    padding-bottom: 170px; }
+    #main .msg dl dt {
+      padding-bottom: 15px; }
+    #main .msg dl dd {
+      line-height: 36px;
+      margin-bottom: 27px; }
+      #main .msg dl dd input {
+        width: 420px;
+        height: 30px;
+        padding-left: 15px; }
+      #main .msg dl dd input.user {
+        width: 204px; }
+      #main .msg dl dd input.sex {
+        width: auto;
+        vertical-align: middle;
+        margin-right: 162px;
+        margin-left: 10px; }
+      #main .msg dl dd input.submit {
+        width: 197px;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        background: #808080;
+        border: none;
+        color: #c2bfbf;
+        letter-spacing: 4px; }
