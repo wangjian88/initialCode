@@ -48,6 +48,9 @@ textarea {
 .font-color{
 	color: #029501;
 }
+.font2-color{
+	color: #ec0608;
+}
 body { 
 	font-size:16px; 
 	font-family: "Microsoft YaHei","\5FAE\8F6F\96C5\9ED1","微软雅黑"; 
@@ -81,6 +84,7 @@ body {
 	margin-left: 8px;
 	font-size: 18px;
 	font-weight: 400px;
+	line-height: 18px;
 	display: inline-block;
 	vertical-align: bottom;
 }
@@ -94,6 +98,7 @@ body {
 }
 .nav{
 	width: 100%;
+	min-width: 1200px;
 	height: 46px;
 	margin-top: 30px;
 }
@@ -139,6 +144,10 @@ body {
 .bottom{
 	margin-top: 18px;
 	width: 100%;
+}
+.btn-img{
+	width: 127px;
+	height: 110px;
 }
 .btm-d{
 	width: 1200px;
@@ -193,32 +202,50 @@ body {
 /*********  四大优势  杜涵*******/
 /*四大优势*/
 .superiority{
-
 	width: 100%;
 	height: 1941px;
 	position: relative;
 	margin: 45px auto 0;
 }
-.sup_nav{
+#nav_bg{
 	width: 100%;
-	min-width: 1600px;
+	height: 142px;
+	position: relative;
+}
+.grey_bg{
+	position: absolute;
+	bottom: 0;
+	width: 30%;
+	height: 130px;
+	background: #a6a6a6;
+	z-index: -1;
+}
+#green_bg{
+	position: absolute;
+	right: 0;
+	width: 30%;
+	height: 130px;
+	z-index: -1;
+	background: #028f01;
+}
+.sup_nav{
+	width: 1200px;
+	margin:0 auto;
 	position: relative;
 	overflow: hidden;
-	/*border: 1px solid red;*/
 }
 .sup_right{
 	float: right;
-	margin-top: -142px;
-	width: 50%;
-	margin-right:-30px;
+	width: 51.17%;
 	border-bottom: 130px #028f01 solid;
     border-left: 65px solid transparent;
-    position: relative;
+    position: absolute;
+    right: 0px;
 }
 .sup_left{
 	float: left;
 	margin-top: 12px;
-	width: 50%;
+	width: 46.41%;
 	margin-left:-30px;
 	border-top: 130px #a6a6a6 solid;
     border-right: 65px solid transparent;	
@@ -252,12 +279,12 @@ body {
 	margin-left: 305px;
 	font-size: 16px;
 	color: #e1e1e1;
-	top: 43px;
+	top: 48px;
 }.sup_right .sp3{
 	margin-left: 302px;
 	font-size: 24px;
 	color: #f9f9f9;
-	top: 66px;
+	top: 71px;
 }
 /*内容*/
 .sup_box{
@@ -327,115 +354,11 @@ body {
 .sup_photo{
 	width: 538px;
 	height: 464px;
-}.sup_photo div{
-	background: #e1e1e1;
-	overflow: hidden;
-}.sup_photo2{
+}
+.sup_photo2{
 	width: 517px;
 	height: 429px;
-	position: relative;
-	margin-left: 82px;
-}.sup_photo2 div{
-	background: #e1e1e1;
-	overflow: hidden;
-}
-/*二个图片区图片大小*/
-.sup_graph1 img{
-	width: 100%;
-	height: 100%;
-}.sup_gl img{
-	max-width: 100%;
-	height: 100%;
-	-webkit-transform:rotate(-45deg) scale(1.42) ;
-	-ms-transform:rotate(-45deg) scale(1.42) ;
-	-o-transform: rotate(-45deg) scale(1.42);
-	transform: rotate(-45deg) scale(1.42);
-}
-/*图片区各个图形的大小*/
-.sup_graph{
-	position: absolute;
-}	
-	/*二个圆形*/
-.sup_graph1{
-	width: 187px;
-	height: 187px;
-	border-radius: 50%;
-	box-shadow:2px 2px 2px 2px #fff;
-	top: 0;
-	left: 99px;
-}.sup_graph2{
-	width: 230px;
-	height: 230px;
-	border-radius: 50%;
-	box-shadow:2px 2px 2px 2px #fff;
-	top: 185px;
-	left: 0;
-}
-/*菱形：建议在这个六个菱形里面添加图片尽量使用正方形*/
-.sup_gl{
-	border-radius: 5px;
-	-webkit-transform:rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-.sup_graph3{
-	width: 264px;
-	height: 264px;
-	top: 93px;
-	left: 169px;
-}.sup_graph4{
-	width: 113px;
-	height: 113px;
-	top: 290px;
-	left: 402px;
-}.sup_graph5{
-	width: 246px;
-	height: 246px;
-	top: 91px;
-	left: 229px;
-}
-/*三个大小相等的菱形*/
-.sup_x{
-	width: 121px;
-	height: 121px;
-}.sup_graph6{
-	top: 238px;
-	left: 116px;
-}.sup_graph7{
-	top: 152px;
-	left: 31px;
-}.sup_graph8{
-	top: 68px;
-	left:116px;
-}
-/*图片下面的阴影*/
-.superiority section{
-	height: 20px;
-	position: absolute;
-	background: -webkit-radial-gradient(50% 50%,#e0e0e0 1%,white 80%);
-}.sup_b{
-	width: 85px;
-}.sup_s{
-	width: 70px;
-}
-.sup_shit1{
-	top: 440px;
-	left: 80px;
-}.sup_shit2{
-	top: 440px;
-	left: 255px;
-}.sup_shit3{
-	width: 70px;
-	top: 440px;
-	left: 420px;
-}.sup_shit4{
-	width: 100px;
-	top: 400px;
-	left: 140px;
-}.sup_shit5{
-	top: 400px;
-	left: 310px;
+	margin-left: 86px;
 }
 /*二张大图区*/
 .sup_only_img{
@@ -464,7 +387,7 @@ body {
 	position: relative;
 }
 .advantage .advantage-body{
-	width:1600px;
+	width:1200px;
 	height: 130px;
 	margin:0 auto;
 	position: relative;
@@ -481,9 +404,6 @@ body {
 .ample img{
 	width:108px;
 	height:106px;
-}
-.price{
-	margin-left:201px;
 }
 .ample .set{
 	width:156px;
@@ -510,7 +430,7 @@ body {
 	width:191px;
 }
 .service{
-	margin-left:160px;
+	margin-left:136px;
 }
 
 /*垃圾新闻*/
@@ -549,7 +469,8 @@ body {
 	position:absolute;
 	font-size: 26px;
 	font-weight: bold;
-	left:12px;	
+	left:12px;
+	top: -5px;	
 }
 .more .i-news{
 	position:absolute;
@@ -628,7 +549,7 @@ body {
 }
 
 /* 首页轮播  王健 ************/
-#tab{height: 470px;width: 100%;overflow: hidden;position: relative;}
+#tab{height: 470px;width: 100%;min-width: 1200px;overflow: hidden;position: relative;}
 #tab ul{position: absolute;}
 #tab li{float: left;}
 #tab li img{width: 100%;height: 470px;}
@@ -688,7 +609,7 @@ body {
 	height:16px;
 	margin-left:20px;
 	position:relative;
-	top:28px;
+	top:18px;
 	background:url("../images/sanjiao.png") 0 0 no-repeat;
 	transition:0.2s;
 }
@@ -722,7 +643,7 @@ body {
 }
 .product-body ul li{
 	width:240px;
-	height:43px;
+	height:44px;
 }
 /*.square{
 	width:8px;
@@ -744,13 +665,14 @@ body {
 .product-body ul li span{
 	font-size:20px;
 	position:relative;
-	top:6px;
+	top:-5px;
 	margin-left:45px;
 }
 .product-body ul li .underline{
 	width:190px;
 	height:1px;
-	margin:14px auto;
+	margin:3px auto;
+	background: #ebebeb;
 	background:-webkit-linear-gradient(right,#fbfbfb 0%,#ebebeb 20%,#ebebeb 80%,#fbfbfb 100%);
 	background:-moz-linear-gradient(right,#fbfbfb 0%,#ebebeb 20%,#ebebeb 80%,#fbfbfb 100%);
 	background:-ms-linear-gradient(right,#fbfbfb 0%,#ebebeb 20%,#ebebeb 80%,#fbfbfb 100%);
@@ -1052,6 +974,9 @@ body {
 	position:absolute;
 	top:0;
 	z-index:10;
+	background-color: white;
+	opacity: 0;
+	filter:alpha(opacity=0);
 }
 /*按钮*/
 #prev{
@@ -1707,7 +1632,7 @@ body {
 	color: #646464;
 }
 .rteb{
-	margin-top: 82px;
+	margin-top: 75px;
 	float: left;
 	margin-left: 88px;
 	font-size: 20px;
@@ -1717,7 +1642,7 @@ body {
 	width: 940px;
 	float: left;
 	border-bottom: 2px solid #029401;
-	margin-top: 100px;
+	margin-top: 54px;
 	margin-bottom:29px; 
 }
 .product_details p{  

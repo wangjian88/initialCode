@@ -87,6 +87,9 @@ var oUl = oPicList.getElementsByTagName("ul")[0];
 var aLi = oUl.getElementsByTagName("li");
 var aPrev = document.getElementById("prev");
 var aNext = document.getElementById("next");
+aPrev.style.border="1px solid red"
+aNext.style.border="1px solid red"
+
 var  html="";
 for( var i=0;i<5;i++){
 	html +='<li><a href="#"><img src="../images/banner_1.jpg"/></a></li>';
@@ -95,6 +98,7 @@ oUl.innerHTML = html;
 oUl.innerHTML=oUl.innerHTML + oUl.innerHTML;
 oUl.style.width = (aLi[0].offsetWidth+10) * aLi.length + "px";
 var speed = 1;
+
 
 //控制滚动
 function movePic(){

@@ -180,7 +180,7 @@ var underLine =span.getElementsByTagName("div");
 underLine[2*length1-1].style.background="transparent";
 for(var i=0;i<length1;i++){
 	if(2*i<length1){
-		rot[2*i].style.height="44px";
+		rot[2*i].style.height="45px";
 	}
 	
 	 rot[i].index=i;
@@ -197,6 +197,16 @@ for(var i=0;i<length1;i++){
  	color[this.index].style.color="#029501";
  	pic[this.index].style.display="block";
  	square[this.index].id="transform";
+	}
+}
+// 四大优势
+var nav_bg = document.getElementById("nav_bg");
+var green_bg = document.getElementById("green_bg");
+window.onresize = function(){
+	if(nav_bg.offsetWidth <= 1200){
+		green_bg.style.width=0;
+	}else{
+		green_bg.style.width=30+'%';
 	}
 }
 
