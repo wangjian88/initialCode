@@ -10,7 +10,7 @@ var data={
 	},
 	site:[
 		{
-			img:'./react/img/QQ20161025-0.png.png',
+			img:'./react/img/QQ20161025-0.png',
 			h2:'react native初探--一个不完整的旅游app',
 			href:'https://wangjian88.github.io/react/',
 			title:'learn once!write anywhere!',
