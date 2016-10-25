@@ -5,19 +5,7 @@ $(window).load(function() {
 
 
 	
-//------------------------------------------------------------------------
-//						COUNTER SCRIPT
-//------------------------------------------------------------------------
-// $('.timer').counterUp({
-//          delay: 20,
-//          time: 2500
-//      });
-
-
-
-//------------------------------------------------------------------------
-//						头部导航区
-//------------------------------------------------------------------------ 		
+ 		
 	$(window).scroll(function () {
         if ($(window).scrollTop() > $("nav").height()) {
             $("nav.navbar-slide").addClass("show-menu");
@@ -251,5 +239,29 @@ if($('.video-bg')[0]) {
         }
         return false; 
     });	    	  
+    
+    
+    var odate = new Date();
+    var ofirstDay= new Date(2016,7,12,0,0,0)
+    var otime = parseInt((odate.getTime() - ofirstDay.getTime())/(1000 * 60 * 60 * 24)) 
+    var oday = odate.getDay();
+    switch(oday){
+    		case 1 : oday="一" 
+    		break;
+    		case 2 : oday="二" 
+    		break;
+    		case 3 : oday="三" 
+    		break;
+    		case 4 : oday="四" 
+    		break;
+    		case 5 : oday="五" 
+    		break;
+    		case 6 : oday="六" 
+    		break;
+    		default : oday="天" 
+    		break;
+    }
+    $(".giant-title span").text((odate.getMonth()+1)+"-"+odate.getDate()+"   星期"+oday)
+    $(".giant-title b").text("来到上海的第"+otime+"天")
 
 });

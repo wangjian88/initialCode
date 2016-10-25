@@ -10,6 +10,12 @@ var data={
 	},
 	site:[
 		{
+			img:'./react/img/QQ20161025-0.png.png',
+			h2:'react native初探--一个不完整的旅游app',
+			href:'https://wangjian88.github.io/react/',
+			title:'learn once!write anywhere!',
+		},
+		{
 			img:'img/daduzi.png',
 			h2:'HDS团队项目--大肚子桶业',
 			href:'https://wangjian88.github.io/daduzi/HTML/homePage.html',
