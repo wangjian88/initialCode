@@ -8,18 +8,19 @@ var data={
 		/*首页轮播图*/
 		tab:['skt.jpg','u=4184708496,743406806&fm=21&gp=0.jpg','u=3928844826,2785819618&fm=11&gp=0.jpg','pipi.jpg','arata.jpg',]
 	},
+	
 	site:[
 		{
 			img:'./react/img/QQ20161025-0.png',
-			h2:'react native初探--一个不完整的旅游app',
+			h2:'react native初试',
 			href:'https://wangjian88.github.io/react/',
-			title:'learn once!write anywhere!',
+			title:'learn once!write anywhere!从0开始的app之路。从环境搭配，真机调试到最终的apk打包，踩过了好多坑，做出的app也和视觉稿相差盛大，所以就不把apk文件放上来了。但是，真的很强大啊，流畅的性能，开发的时间，通配性。',
 		},
 		{
 			img:'img/daduzi.png',
-			h2:'HDS团队项目--大肚子桶业',
+			h2:'适配IE8项目--大肚子桶业',
 			href:'https://wangjian88.github.io/daduzi/HTML/homePage.html',
-			title:'组员：张南南、王健、王涛、毕俊、邓海强、丁宇、杜函、李国萍、李雪冰、刘家浩、钱建波、赵兴籽、范明涛',
+			title:'比较完整的项目，实现了比较多的页面，温顾了IE8及以上下的诸多兼容性问题。算是一个比较传统的web网站需求，js这部分很简单了，切图和css是真的繁琐啊，还要考虑许多细节。',
 		},
 		{
 			img:'img/100du.png',
