@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="wrap" style="margin: 10px auto;width: 620px;">
+			<p>
+				<input type="text" id="inp" value="" />
+				<button id="btn">换个数</button>
+				<span>5000个小球无线滚动，碰撞检测</span>
+			</p>
+			<canvas id="canvas" width="600" height="600" style="margin: 0px auto;background: rgba(0,0,0,1);"></canvas>	
+		</div>
+		<div class="" style="position: absolute;left: 20px;top: 100px;">
+			<p>画画，写字板</p>
+			<canvas id="canvas1" width="400" height="400" style="background: darkgray;"></canvas>
+		</div>
+		<script type="text/javascript">
+			var oinp = document.getElementById('inp');
+			var obtn = document.getElementById('btn');
+			var text = document.getElementById('canvas1');
+			var txt = text.getContext("2d");
+			function Qiu(num) {
+				this.canvas = document.querySelector("#canvas");
+				this.ctx = this.canvas.getContext("2d");
+				this.num = num;
+				this.msg = [];
+				for(var i = 0; i < num; i++) {
+					var range =  Math.round(1 * Math.random()) + 1;
+					var spx = Math.round(7 * Math.random()) + 1;
+					var spy = Math.round(7 * Math.random()) + 1;
+					var col1 = Math.round(255 * Math.random());
+					var col2 = Math.round(255 * Math.random());
+					var col3 = Math.round(255 * Math.random());
+					var color = `rgb(${col1},${col2},${col3})`
+					this.msg[i] = {
+						a: Math.round((600-range-spx) * Math.random()) + range,
+						b: Math.round((600-range-spy) * Math.random()) + range,
+						r: range,
+						color:  color,
+						speedX: spx,
+						speedY: spy
+					}
+				}
+			}
+			Qiu.prototype.move = function() {
+				var _this = this;
+				for(var i = 0; i < this.num; i++) {
+					if(this.msg[i].a + this.msg[i].speedX + this.msg[i].r > 600 || this.msg[i].a + this.msg[i].speedX - this.msg[i].r < 0) {
+						if (this.msg[i].a + this.msg[i].speedX + this.msg[i].r > 600) {
+							this.msg[i].a = 600 - this.msg[i].r - this.msg[i].speedX
+						}
+						this.msg[i].speedX = -this.msg[i].speedX;
+					}
+					if(this.msg[i].b + this.msg[i].speedY + this.msg[i].r > 600 || this.msg[i].b + this.msg[i].speedY - this.msg[i].r < 0) {
+						if (this.msg[i].b + this.msg[i].speedY + this.msg[i].r > 600) {
+							this.msg[i].b = 600 - this.msg[i].r - this.msg[i].speedY
+						}
+						this.msg[i].speedY = -this.msg[i].speedY;
+					}
+					this.msg[i].a += this.msg[i].speedX;
+					this.msg[i].b += this.msg[i].speedY;
+				}
+				this.drawArc()
+				requestAnimationFrame(function() {
+					_this.move()
+				});
+			}
+			Qiu.prototype.drawArc = function() {
+				this.ctx.clearRect(0, 0, 600, 600)
+				for(var i = 0; i < this.num; i++) {
+					this.ctx.beginPath();
+					this.ctx.fillStyle = this.msg[i].color;
+					this.ctx.arc(this.msg[i].a, this.msg[i].b, this.msg[i].r, 0, Math.PI * 2)
+					this.ctx.fill();
+				}
+				this.ctx.closePath();
+			}
+			var objec = new Qiu(5000);
+			objec.move();
+			obtn.onclick=function  () {
+				objec.num = oinp.value
+			}
+			
+			text.onmouseover = function  () {
+				document.onmousedown = function  (ev) {
+					var disx = ev.clientX;
+					var disy = ev.clientY;
+					txt.beginPath();
+					document.onmousemove=function  (ev) {
+						var x = ev.clientX - text.offsetLeft - 20;
+						var y = ev.clientY - text.offsetTop - 100;
+						txt.lineTo(x,y);
+						txt.stroke();
+					}
+				}
+				document.onmouseup=function  () {
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</body>
+
+</html>
