@@ -242,7 +242,7 @@ if($('.video-bg')[0]) {
     
     
     var odate = new Date();
-    var ofirstDay= new Date(2016,7,12,0,0,0)
+    var ofirstDay= new Date(2016,6,10,0,0,0)
     var otime = parseInt((odate.getTime() - ofirstDay.getTime())/(1000 * 60 * 60 * 24)) 
     var oday = odate.getDay();
     switch(oday){
