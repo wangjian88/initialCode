@@ -11,6 +11,12 @@ var data={
 	
 	site:[
 		{
+			img:'./react/img/tu.png',
+			h2:'RN--仿韩寒的个人APP',
+			href:'https://pan.baidu.com/s/1nv4i7sX',
+			title:'真的是不断入坑啊，找到个开放API的数据，做了一个APP，但感觉不是太完善，待解决的问题：1.图片加载不出，2.页面切换效果有卡顿。3.音频的播放4.分享朋友圈。唉，找不到工作也没心思搞了，以后在作出完整的。',
+		},
+		{
 			img:'./react/img/QQ20161025-0.png',
 			h2:'react native初试',
 			href:'https://wangjian88.github.io/react/',
