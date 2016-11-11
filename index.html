@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>King Jian</title>
+		<link href="css/impress-demo.css" rel="stylesheet" />
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery-2.1.0.js"></script>
+		<script src="js/boke.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="head">
+			<div class="head-t">
+				<p><i>惟正己可以化人，</i></p>
+			<p><i>惟尽己可以服人。</i></p>
+				<p><span>---By:&nbsp;<span style="color: red;">wj</span></span>
+				</p>
+			</div>
+			<div class="head-n">
+				<a href="#" class="active">首页</a>
+				<a href="aboutme.html">关于ME</a>
+				<a href="study.html">学无止境</a>
+				<a href="event/index.html">响应式简历</a>
+				<a href="suiyu.html">时言碎语</a>
+				<a href="lianxi.html">联系</a>
+			</div>
+		</div>
+		<div id="main">
+			<div class="main-show">
+				<div class="main-tab">
+					<a href="#"><img class="tab-show" /></a>
+					<ul>
+						<li>
+							<a href="#"><img/></a>
+						</li>
+						<li>
+							<a href="#"><img/></a>
+						</li>
+						<li>
+							<a href="#"><img/></a>
+						</li>
+						<li>
+							<a href="#"><img/></a>
+						</li>
+						<li>
+							<a href="#"><img/></a>
+						</li>
+					</ul>
+					<div class="lun">
+					</div>
+				</div>
+				<p style="font-size:12px">他说：“就像赛跑一样，这个接力棒我已经拿了这么远,我的目标是把这个接力棒交给儿子。”</Br>希望自己尽快有能力接棒，长大成人！</p>
+			</div>
+			<div id="model">
+				<div class="site">
+					<p>个人网站制作展示 <span>Website</span></p>
+					<ul>
+					</ul>
+				</div>
+				<div class="dom">
+					<p>DOM展示<span>&nbsp;&nbsp;slide to show</span></p>
+					<div>
+						<a href="http://10.80.13.241/">一、php实例瀑布流</a>
+						<a href="demo.简易照片墙/">二、拖拽事件高级应-用照片墙</a>
+						<a href="demo.计算器-正则/">三、正则初探--计算器</a>
+						<a href="demo.angular购物车/">四、mvc-angular之购物车</a>
+						<a href="demo.创想家/index.html">五、酷炫css网页--创想家</a>
+						<a href="./canvas/can.html">六、canvas实现酷炫效果</a>
+						<a href="./boot-lara/">七、bootsrap-lara</a>
+					</div>
+				</div>
+			</div>
+			<div class="wrap" ng-app>
+				<div id="artical" class="main">
+					<p class="blue_line">文章推荐</p>
+					<ul ng-controller="articalController">
+						<li ng-repeat="item in artical">
+							<div class="img">
+								<img src={{'img/'+item.img}}>
+							</div>
+							<div class="text">
+								<h2>{{item.title}}</h2>
+								<p style="white-space: nowrap;text-overflow: ellipsis;">
+									<a href="aboutme.html" class="wj">王健</a><span>关键字:</span>
+									<a href="#">{{item.key}}</a>
+								</p>
+								<p>前言：还记得刚接触前端的时候，对于“前端构建工具”这个词一脸茫然。并不知道使用它，能为我们做些什么事情。 以及它能帮我们，解决什么样的问题？ 下面就跟大家一起来学习下：目前比较火的前端构建工具“Webpack” 一、什么是Webpack Webpak在官方的定</p>
+							</div>
+							<a href="{{'artical.html?'+item.href}}"></a>
+						</li>
+					</ul>
+				</div>
+				<div class="side">
+					<p class="blue_line">站内搜索</p>
+					<div class="seach">
+						<input type="text" name="" id="" value="" placeholder="请输入搜索内容" />
+						<a href="#"></a>
+					</div>
+					<div class="video" style="margin-bottom: 10px;">
+						<video width="100%" height="auto" controls>
+							<source src="video/V.A.mp4" type="video/mp4"></source>
+							<source src="video/V.A.mp4" type="video/mp4"></source>
+						</video>
+
+					</div>
+					<div class="new_pin">
+						<p>最新评论</p>
+						<!-- 多说最新评论 start -->
+						<div class="ds-recent-comments" data-num-items="8" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+						<script type="text/javascript">
+							var duoshuoQuery = {
+								short_name: "wj200819"
+							};
+							(function() {
+								var ds = document.createElement('script');
+								ds.type = 'text/javascript';
+								ds.async = true;
+								ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+								ds.charset = 'UTF-8';
+								(document.getElementsByTagName('head')[0] ||
+									document.getElementsByTagName('body')[0]).appendChild(ds);
+							})();
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot" style="width:1000px;margin: 0px auto;height: 100px;margin-top: 40px;">
+			<p>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</p>
+			<p>design by king jian</p>
+		</div>
+		<script src="angularjs.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var articalController = function($scope) {
+				$scope.artical = artical;
+			}
+		</script>
+	</body>
+
+</html>

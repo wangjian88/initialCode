@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/impress-demo.css" />
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/boke.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="head">
+			<div class="head-t">
+				<p><i>惟正己可以化人，</p>
+				<p><i>惟尽己可以服人。</i></p>
+				<p><span>---By:&nbsp;<span style="color: red;">wj</span></span>
+				</p>
+			</div>
+			<div class="head-n">
+				<a href="index.html">首页</a>
+				<a href="aboutme.html">关于ME</a>
+				<a href="study.html" class="active">学无止境</a>
+				<a href="./event/index.html">响应式简历</a>
+				<a href="suiyu.html">时言碎语</a>
+				<a href="lianxi.html">联系</a>
+			</div>
+		</div>
+		<div class="yu">
+			<p>
+				<a href="index.html">首页</a><span> >>> Stydy Is Never Over</span><em style="display: inline;">只有两种人最具有吸引力，一种是无所不知的人，一种是一无所知的人。</em></p>
+		</div>
+		<div class="wrap" ng-app>
+			<div id="artical" class="main">
+				<ul ng-controller="articalController1">
+					<li ng-repeat="item in artical">
+						<div class="img">
+							<img src={{'img/'+item.img}}>
+						</div>
+						<div class="text">
+							<h2>{{item.title}}</h2>
+							<p style="white-space: nowrap;text-overflow: ellipsis;">
+								<a href="aboutme.html" class="wj">王健</a><span>关键字:</span>
+								<a href="#">{{item.key}}</a>
+							</p>
+							<p>前言：还记得刚接触前端的时候，对于“前端构建工具”这个词一脸茫然。并不知道使用它，能为我们做些什么事情。 以及它能帮我们，解决什么样的问题？ 下面就跟大家一起来学习下：目前比较火的前端构建工具“Webpack” 一、什么是Webpack Webpak在官方的定</p>
+						</div>
+						<a href="{{'artical.html?'+item.href}}"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="side">
+				<p class="blue_line">站内搜索</p>
+				<div class="seach">
+					<input type="text" name="" id="" value="" placeholder="请输入搜索内容" />
+					<a href="#"></a>
+				</div>
+				<div class="new_pin">
+					<p>最新评论</p>
+					<!-- 多说最新评论 start -->
+					<div class="ds-recent-comments" data-num-items="8" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+					<script type="text/javascript">
+						var duoshuoQuery = {
+							short_name: "wj200819"
+						};
+						(function() {
+							var ds = document.createElement('script');
+							ds.type = 'text/javascript';
+							ds.async = true;
+							ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+							ds.charset = 'UTF-8';
+							(document.getElementsByTagName('head')[0] ||
+								document.getElementsByTagName('body')[0]).appendChild(ds);
+						})();
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="foot" style="width:1000px;margin: 0px auto;height: 100px;margin-top: 40px;">
+			<p>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</p>
+			<p>design by king jian</p>
+		</div>
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angularjs.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var articalController1 = function($scope) {
+				$scope.artical = artical
+			}
+		</script>
+	</body>
+
+</html>

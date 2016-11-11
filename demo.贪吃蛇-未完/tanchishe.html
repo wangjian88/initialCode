@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    .wrap{position: relative;width: 400px;height: 400px;margin: 50px auto;}
+			table{position: absolute;width: 400px;height: 400px;}
+			table td{width: 6px;height:6px;text-align: center;border-collapse: collapse;overflow: hidden;}
+			.div1{width: 8px;height: 8px;background: red;position: absolute;top: 0px;left: 0px;}
+		</style>
+		<script src="../jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function  () {
+				var otable=document.querySelector('table');
+				var con='';
+				var s=0;
+				var t=0;
+				var num=0; //				判断div1所在格子序数
+				var x=Math.round(50*Math.random())
+				var y=Math.round(50*Math.random())
+				var arr=[1]
+				var time1=null
+				var div1=document.querySelector('.div1')
+				var otd=otable.getElementsByTagName('td')
+				for (i=0;i<50;i++) {
+					con+="<tr>";
+					for (j=0;j<50;j++) {
+						con+="<td></td>";
+					}
+					con+="</tr>";
+				}
+				otable.innerHTML=con;
+				
+				setInterval(function  () {
+					var itop=Math.ceil($('.div1').position().top/8)*8;
+					var ileft=Math.ceil($('.div1').position().left/8)*8;
+					num=50*(itop/8)+(ileft/8)
+					arr.unshift(num)
+					arr.length=4;
+					for (j=0;j<otd.length;j++) {
+						otd[j].style.background=''
+					}
+					for (i=0;i<arr.length-1;i++) {
+						otd[arr[i+1]].style.background='red'
+					}
+				},200)
+				timer1=setInterval(function  () {
+					t++;
+					$('.div1').animate({left:8*t+'px'},200,'linear')
+				},200)
+				document.onkeydown=function  (event) {
+					clearInterval(timer1)
+					$('.div1').stop()
+						var itop=Math.round($('.div1').position().top/8)*8;
+						var ileft=Math.round($('.div1').position().left/8)*8;
+						$('.div1').css({left:ileft+'px',top:itop+'px'})
+						var ev=ev||event
+						if (ev.keyCode==40) {
+							var itop=$('.div1').position().top;
+							var ileft=$('.div1').position().left;
+							$('.div1').animate({top:'392px'},(400-itop)*25,'linear')
+					
+					}
+						if (ev.keyCode==37) {
+						
+							var itop=$('.div1').position().top;
+							var ileft=$('.div1').position().left;
+							$('.div1').animate({left:'0px'},(ileft*25),'linear')
+						
+					}
+						if (ev.keyCode==38) {
+						
+							var itop=$('.div1').position().top;
+						var ileft=$('.div1').position().left;
+							$('.div1').animate({top:'0px'},itop*25,'linear')
+						
+					}
+						if (ev.keyCode==39) {
+							var itop=$('.div1').position().top;
+							var ileft=$('.div1').position().left;
+							$('.div1').animate({left:'392px'},(400-ileft)*25,'linear')
+					}
+				}
+				
+			})		
+		</script>
+	</head>
+	<body>
+	<div class="wrap">		
+		<table border="1" cellspacing="0" cellpadding="0">
+			
+		</table>
+		<div class="div1">
+				
+		</div>
+		
+	</div>
+	</body>
+</html>

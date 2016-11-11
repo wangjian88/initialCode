@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=deveice-width,initial-scale=1,maxnum-scale=3,user-scalable=no,target-densitydpi=high-dpi"/>
+			<title></title>
+			<link rel="stylesheet" type="text/css" href="../bootstrap.css"/>
+			<style type="text/css">
+			        .head{position: absolute;top: 111px;right: 60%;}
+			        @media  screen and (max-width:838px ) {
+			        	      .head{left: 0px;right: 0px;}
+			        }
+					body{background: url(img/bg.png) no-repeat;background-size: 1900px auto;padding-top: 185px;}
+					#wrap{width:860px;}
+					#wrap div{margin-bottom: 2px;}
+					#wrap div img{opacity: 0.95;width: 100%;height: 100%;}
+				 @media  screen and (max-width: 625px) {
+				 	#body{background-size: 100% 100%;}
+				 	#wrap{width: 70%;}
+				 	#left,#right{width: 100%;}
+				 	#left .col-xs-8{padding-left: 0px;padding-right: 0px;width: 60%;}
+				 	#left .col-xs-4{width: 40%;padding-left: 0px;}
+				 	#right .col-xs-7{padding-left: 4px;padding-right: 4px;width: 65%;}
+				 	#right .col-xs-5{width: 35%;margin-left: 0%;}
+				 	div.a,div.b,div.c{animation: 0s;}
+				 }
+				 .c{animation: show 0.4s ease-out;}
+				 .b{animation: play 1s linear;}
+				 .a:hover{
+				 	animation: run 1s ease-in-out;	
+				 }
+				 
+				 @-webkit-keyframes play{
+				 	0%{left:0px}
+				 	10%{left:-15px}
+				 	20%{left:15px}
+				 	30%{left:-12px}
+				 	40%{left:12px}
+				 	50%{left:-9px}
+				 	60%{left:9px}
+				 	70%{left:-6px}
+				 	80%{left:6px}
+				 	90%{left: -3px;}
+				 	100%{left:3px}
+				 }
+				 @-webkit-keyframes run{
+				 	0%{top:0px}
+				 	20%{top:-25px}
+				 	40%{top:0px}
+				 	60%{top:-15px}
+				 	80%{top:0px}
+				 	90%{top: -5px;}
+				 	100%{top:0px}
+				 }
+				 @-webkit-keyframes show{
+				 	0%{
+				 		opacity: 0.95;
+				 		transform: scaleX(1) scaleY(1);
+				 	}
+				 	50%{
+				 		opacity: 0.1;
+				 		transform: scaleX(0.6) scaleY(0.6);
+				 	}
+				 	75%{
+				 		opacity: 0.9;
+				 		
+				 		transform: scaleX(1.1) scaleY(1.1);
+				 	}
+				 	
+				 }
+			</style>
+		<script type="text/javascript">
+			
+		</script>
+		</head>
+		<body id="body">
+			<div class="head">
+				<img src="img/logo.png"/>
+				<img src="img/welcome.png"/>
+			</div>
+			<div id="wrap" class="container" >
+				
+				<div class="row" style="">
+					<div class="col-xs-7" style=""id="left">
+						<div class="row" >
+							<div class="col-xs-8 a c" style="height: 136px;padding-right: 2%;">
+								<img src="img/admin.png"/>
+							</div>
+							<div class="col-xs-4 a c" style="height: 136px;padding-right: 0px;padding-left: 0px;">
+								<img src="img/contract.png"/>
+							</div>
+						</div>
+						<div class="row" >
+							<div class="col-xs-8 a c" style="height: 136px;padding-right: 2%;">
+								<img src="img/admin.png"/>
+							</div>
+							<div class="col-xs-4 a c" style="height: 136px;padding-right: 0px;padding-left: 0px;">
+								<img src="img/contract.png"/>
+							</div>
+						</div>
+						<div class="row" >
+							<div class="col-xs-8 a c" style="height: 136px;padding-right: 2%;">
+								<img src="img/admin.png"/>
+							</div>
+							<div class="col-xs-4 a c" style="height: 136px;padding-right: 0px;padding-left: 0px;">
+								<img src="img/contract.png"/>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-xs-5" id="right">
+						<div class="row">
+							<div class="col-xs-5 a c" style="height: 136px;padding-left: 4px;padding-right: 4px;">
+								<img src="img/sjzx.png"/>
+							</div>
+							<div class="col-xs-7 a c"style="height: 136px;padding: 0px;">
+								<img src="img/weico.png"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-5 a c" style="height: 136px;padding-left: 4px;padding-right: 4px;">
+								<img src="img/sjzx.png"/>
+							</div>
+							<div class="col-xs-7 a c"style="height: 136px;padding: 0px;">
+								<img src="img/weico.png"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-5 a b" style="height: 136px;padding-left: 4px;padding-right: 4px;">
+								<img src="img/sjzx.png"/>
+							</div>
+							<div class="col-xs-7 a b"style="height: 136px;padding: 0px;">
+								<img src="img/weico.png"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>
