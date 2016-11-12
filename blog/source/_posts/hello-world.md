@@ -78,22 +78,41 @@ categories: #文章分类目录，可以为空，注意:后面有个空格
 tags: #文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格
 ---
 这里开始使用markdown格式输入你的正文。
+以上是摘要
+<!--more-->
+以下是余下全文
 ```
+more以上内容即是文章摘要，在主页显示，more以下内容点击『> Read More』链接打开全文才显示。
 
-More info: [Server](https://hexo.io/docs/server.html)
 
-### Generate static files
+### 主题安装
+
+hexo的主题安装非常简便，首先，你可以看看这个网址里的style，对新手足够挑选的了[hexo主流主题](https://hexo.io/themes/)
+我用的主题[github下载地址](https://github.com/winnerweb/hexo-theme-smackdown)
+最好用Desktop下载项目，下到本地后把下下来的文件夹放到/blog/themes/文件夹下修改“/blog/_config.yml”里的theme为你下的主题那个文件夹的名字。就这么简单就换好主题了，各个主题细节不同，可一一百度解决
+
+
+### 评论
+静态博客要使用第三方评论系统，hexo默认集成的是Disqus，因为你懂的，所以国内的话还是建议用多说。
+直接用你的微博/豆瓣/人人/百度/开心网帐号登录多说，做一下基本设置。如果使用modernist主题，在modernist_config.yml中配置duoshuo_shortname为多说的基本设置->域名中的shortname即可。你也可以在多说后台自定义一下多说评论框的格式，比如评论框的位置，对于css设置，可以参考这里，我是在HeroicYang的基础上修改的。
+
+如果你是有的其他第三方评论系统，将通用代码粘贴到hexo\themes\modernist\layout_partial\comment.ejs里面，如下：
 
 ``` bash
-$ hexo generate
+<% if (config.disqus_shortname && page.comments){ %>
+<section id="comment">
+  #你的通用代码
+<% } %>
 ```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
+### 命令
+常用命令：
 ``` bash
-$ hexo deploy
+hexo new "postName" #新建文章
+hexo new page "pageName" #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，'ctrl + c'关闭server）
+hexo deploy #将.deploy目录部署到GitHub
 ```
+###至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复
 
-More info: [Deployment](https://hexo.io/docs/deployment.html)
+
