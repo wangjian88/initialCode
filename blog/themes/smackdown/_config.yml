@@ -50,6 +50,7 @@ share: true
 
 #是否开启云标签
 tagcloud: true
+duoshuo: wj200819
 
 #是否开启文章阅读量
 leancloud_visitors:
