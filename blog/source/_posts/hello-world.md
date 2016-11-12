@@ -2,6 +2,8 @@
 ---
 date: 2016-3-02 15:30:16 
 tags: [js,markdown,hexo]
+photos:
+- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg
 title: 如何搭建github下得二级hexo博客
 ---
 学前端这么久了，以前一直没有好的想法，现在学习了hexo和markdown后，终于决定开始搭建个人博客。既然开始，就一定要坚持下去！！第一篇就写环境搭建吧。

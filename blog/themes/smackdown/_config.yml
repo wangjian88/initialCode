@@ -1,22 +1,21 @@
 # Header
 menu:
-  主页: /blog
+  主页: /aboutme.html
   所有文章: /archives
   # 随笔: /tags/随笔
 
 # SubNav
 subnav:
-  github: "https://wangjian88.github.io"
+  # github: "https://wangjian88.github.io"
   # zhihu: "#"
   # mail: "#"
-  qq: "2929674714"
   # weibo: "#"
   # rss: "#"
   #douban: "#"
   #facebook: "#"
   #google: "#"
   #twitter: "#"
-  #linkedin: "#"
+  linkedin: "https://wangjian88.github.io"
 
 rss: /atom.xml
 
