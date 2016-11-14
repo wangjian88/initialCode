@@ -3,18 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>精选面试题 | Hexo</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1.写出3个使用this的典型应用123事件： 如onclick  this-&amp;gt;发生事件的对象;构造函数          this-&amp;gt;new 出来的object;call/apply        改变this;
+
+2.javascript面向对象中继承实现12345678910111213141516function Person(name)&amp;#123;        this.n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精选面试题">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/面试题/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.写出3个使用this的典型应用123事件： 如onclick  this-&amp;gt;发生事件的对象;构造函数          this-&amp;gt;new 出来的object;call/apply        改变this;
+
+2.javascript面向对象中继承实现12345678910111213141516function Person(name)&amp;#123;        this.n">
+<meta property="og:updated_time" content="2016-11-12T15:15:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="精选面试题">
+<meta name="twitter:description" content="1.写出3个使用this的典型应用123事件： 如onclick  this-&amp;gt;发生事件的对象;构造函数          this-&amp;gt;new 出来的object;call/apply        改变this;
+
+2.javascript面向对象中继承实现12345678910111213141516function Person(name)&amp;#123;        this.n">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -164,9 +174,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/blog/2016/07/12/面试题/" class="article-date">
@@ -182,15 +190,25 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/07/12/面试题/">
-        精选面试题
-        
-      </a>
+    <h1 class="article-title" itemprop="name">
+      精选面试题
+      
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/面试题/">面试题</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -229,104 +247,62 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/面试题/">面试题</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/03/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何搭建github下得二级hexo博客</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/03/02/hello-world/" class="article-date">
-  	<time datetime="2016-03-02T07:30:16.000Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/03/02/hello-world/">
-        如何搭建github下得二级hexo博客
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学前端这么久了，以前一直没有好的想法，现在学习了hexo和markdown后，终于决定开始搭建个人博客。既然开始，就一定要坚持下去！！第一篇就写环境搭建吧。</p>
-<h3 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h3><p>hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。先看看tommy是如何吐槽Octopress的 →＿→ Hexo颯爽登場。</p>
-<blockquote>
-<ul>
-<li>如果你对默认配置满意，只需几个命令便可秒搭一个hexo。</li>
-<li>如果你跟我一样喜欢折腾下，30分钟也足够个性化。</li>
-<li>如果你过于喜欢折腾，可以折腾个把星期，尽情的玩。</li>
-</ul>
-</blockquote>
-<p>搭建过程你或许觉得有那么点小繁琐，但一旦搭建完成，写文章是极简单，极舒服的。<br>只需要几个简单命令，你就可以完成一切。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="comment">#写文章</span></div><div class="line">hexo g <span class="comment">#生成</span></div><div class="line">hexo d <span class="comment">#部署 # 可与hexo g合并为 hexo d -g</span></div></pre></td></tr></table></figure></p>
-<p>下面逐步介绍，进入正题。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/markdown/">markdown</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/blog/2016/03/02/hello-world/#more">view more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="面试题" data-title="精选面试题" data-url="http://yoursite.com/blog/2016/07/12/面试题/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wj200819"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -350,8 +326,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
