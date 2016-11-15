@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>天猫双11前端分享系列 ：大规模 Node.js 应用 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="看的真是激动，最近也在学习node.js，nodejs做底层，express搭建，mongodb做数据库，等积累一定的写点东西。
+在刚刚过去的 15 年天猫双十一中，Node.js（后文简称 node） 大放异彩，不仅帮助前端团队快速、高效的解决双十一各个业务上的页面渲染问题，同时在性能和稳定性上也表现非常出色，大大降低了双十一硬件成本的同时，在整个双十一期间未出现任何一起由 node 引发的线上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="天猫双11前端分享系列 ：大规模 Node.js 应用">
+<meta property="og:url" content="http://yoursite.com/2016/11/14/node/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="看的真是激动，最近也在学习node.js，nodejs做底层，express搭建，mongodb做数据库，等积累一定的写点东西。
+在刚刚过去的 15 年天猫双十一中，Node.js（后文简称 node） 大放异彩，不仅帮助前端团队快速、高效的解决双十一各个业务上的页面渲染问题，同时在性能和稳定性上也表现非常出色，大大降低了双十一硬件成本的同时，在整个双十一期间未出现任何一起由 node 引发的线上">
+<meta property="og:image" content="https://camo.githubusercontent.com/6e5db98fb574ed5d96251bd5d1618f2b3dc0f0eb/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f544231457637664b4658585858634d5856585858585858585858582d313135302d3836382e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/10c378ed3dd35514e0dfbf702d9c915604b5c680/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f54423154486b724b4658585858614a5846585858585858585858582d3634392d3130302e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/55d49a7fa91d76dce33e037eec49e70007dc8dad/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f544231636a45434b465858585863385858585858585858585858582d3931342d313132332e706e67">
+<meta property="og:updated_time" content="2016-11-14T12:38:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="天猫双11前端分享系列 ：大规模 Node.js 应用">
+<meta name="twitter:description" content="看的真是激动，最近也在学习node.js，nodejs做底层，express搭建，mongodb做数据库，等积累一定的写点东西。
+在刚刚过去的 15 年天猫双十一中，Node.js（后文简称 node） 大放异彩，不仅帮助前端团队快速、高效的解决双十一各个业务上的页面渲染问题，同时在性能和稳定性上也表现非常出色，大大降低了双十一硬件成本的同时，在整个双十一期间未出现任何一起由 node 引发的线上">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/6e5db98fb574ed5d96251bd5d1618f2b3dc0f0eb/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f544231457637664b4658585858634d5856585858585858585858582d313135302d3836382e706e67">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">King Jian</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/blog/">主页</a></li>
+				        
+							<li><a href="/blog/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/js/" style="font-size: 20px;">js</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/node/" style="font-size: 10px;">node</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/面试题/" style="font-size: 10px;">面试题</a> <a href="/blog/tags/高级程序设计/" style="font-size: 10px;">高级程序设计</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangjian88.github.io">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">King Jian</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">King Jian</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/blog/">主页</a></li>
+		        
+					<li><a href="/blog/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/node/" class="article-date">
+  	<time datetime="2016-11-14T11:44:14.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      天猫双11前端分享系列 ：大规模 Node.js 应用
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/转载/">转载</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看的真是激动，最近也在学习node.js，nodejs做底层，express搭建，mongodb做数据库，等积累一定的写点东西。</p>
+<p>在刚刚过去的 15 年天猫双十一中，Node.js（后文简称 node） 大放异彩，不仅帮助前端团队快速、高效的解决双十一各个业务上的页面渲染问题，同时在性能和稳定性上也表现非常出色，大大降低了双十一硬件成本的同时，在整个双十一期间未出现任何一起由 node 引发的线上故障。</p>
+<a id="more"></a>
+<h2 id="覆盖业务"><a href="#覆盖业务" class="headerlink" title="覆盖业务"></a>覆盖业务</h2><p>经过一年时间的改造和推进，到 15 年双十一的时候，已经有大量的业务都有了 node 的身影，基本上天猫大部分的 web 页面都是通过 node 渲染出来：</p>
+<ul>
+<li>天猫首页、大部分天猫频道页、双十一会场以及所有天猫的活动页面都全部基于 node 应用提供服务。</li>
+<li>商品详情、店铺和搜索页等主流程链路上，以及天猫超市和天猫会员等业务线上的页面渲染。</li>
+<li>提供给内部运营小二的天猫页面搭建平台 web 层基于 node 进行开发，双十一期间在此平台上搭建了超过 1000+ 个双十一相关活动页面。</li>
+</ul>
+<h1 id="工作职责"><a href="#工作职责" class="headerlink" title="工作职责"></a>工作职责</h1><p>在上述覆盖了 node 的业务中，node 在其中扮演了多种角色：</p>
+<h4 id="完整的-web-应用"><a href="#完整的-web-应用" class="headerlink" title="完整的 web 应用"></a>完整的 web 应用</h4><p>天猫页面搭建平台即是一个由 node 负责整个 web 端包括业务逻辑和模板渲染等工作的应用。基于支付宝的 node web 框架 chair，通过 hsf 调用和淘宝共建的页面数据存储的接口，用 node 完成业务逻辑处理、页面渲染和前端接口。</p>
+<h4 id="轻量级的模板渲染容器"><a href="#轻量级的模板渲染容器" class="headerlink" title="轻量级的模板渲染容器"></a>轻量级的模板渲染容器</h4><p>通过 node 整合前端的天猫组件规范 MUI，开发了一套专注于模板渲染的 node 容器（wormhole），通过这个 node 容器，前端可以专注于展现层的开发，统一前端的本地和线上的代码运行环境，也让后端摆脱了繁琐的套模板工作，专注于提供数据接口。同时这套容器基于天猫的模块化规范，横向打通了各个业务和应用之间的模块共享。</p>
+<div align="center"><br><img src="https://camo.githubusercontent.com/6e5db98fb574ed5d96251bd5d1618f2b3dc0f0eb/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f544231457637664b4658585858634d5856585858585858585858582d313135302d3836382e706e67" alt="img"></div>
+
+<p>基于这个模板容器，我们完成了商品详情、店铺、搜索页以及超市等业务线上的前后端分离工作，大大提升了前端的开发效率，并有效降低了前后端沟通成本。</p>
+<h4 id="页面渲染服务"><a href="#页面渲染服务" class="headerlink" title="页面渲染服务"></a>页面渲染服务</h4><p>同样基于天猫前端的组件规范 MUI 和模板渲染的 node 容器，我们完成了一套模块化搭建页面的系统，同时开发并运维了一个用来渲染基于模块搭建的页面的服务，同时这个服务和阿里的 cache CDN 打通，在保证满足业务需求的前提下，降低消耗的计算资源。</p>
+<p>基于这个服务，在双十一中提供了 900+ 活动页面的渲染，以及天猫首页和各个频道页的渲染工作，天猫的所有营销引流页面基本都由这个服务提供页面。</p>
+<h4 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h4><p>上面讲了许多我们用 node 做了什么，以及覆盖了那些业务，现在我们来看看，到底我们是怎样用 node 解决实际的业务需求的。</p>
+<p>拿这次双十一的会场页举例：</p>
+<p>1.用户在不同的终端环境下访问 <a href="https://1111.tmall.com" target="_blank" rel="external">https://1111.tmall.com</a> 这个网址，请求会直接来到 CDN 上。<br>2.CDN 对用户的终端环境进行判断，并在内存中找到对应终端的缓存文件返回，若未命中缓存，则继续往下执行。<br>3.CDN 将请求转发到 node 渲染服务，根据终端类型选择不同的页面响应（pc 页面，h5 页面， react-native 页面）。CDN 响应用户请求，并缓存页面。<br>在上述流程中，我们看到同一个 url 对应到后端其实是完全不同的页面输出内容，为了达到这个目的，我们和 CDN 团队一起做了许多工作：</p>
+<p>1.开发了一个 tengine-detector 组件，通过请求的 user-agent 以及约定的一些 cookie 信息，判断用户的终端类型。并部署到 CDN 上，让 CDN 拥有了终端判断的能力。<br>2.用户请求到 CDN 上之后，CDN 会根据用户的终端类型分类，设置一个请求头，例如: detector: pc 表明这个请求的终端设备是 PC 上的浏览器。<br>3.渲染服务获取到这个头之后，根据 url 和设备类型选择不同的页面返回。返回时设置 vary 为 detector，保证 CDN 根据不同的设备类型缓存不同页面。</p>
+<p>上面提到会根据终端类型对于同一个 url 返回不同的页面，而这些页面其实都是通过一个基于 node 开发的天猫页面搭建平台用模块搭建的。在这个平台上，超过 95% 的模块都拥有 pc 和无线两个版本，本次双十一所有用到的模块都有 react native 的版本。运营只需搭建 PC 上的页面，就会自动生成无线以及 react native 的页面。基于这套方案，我们通过 70+ 高质量的模块，让运营同学完成了超过 900+ 活动页面的搭建。</p>
+<p>再深入一点，我们如何来完成这些页面或者是模块的呢？首先，我们希望让前端开发做什么？</p>
+<ul>
+<li>编写模板</li>
+<li>拿到数据(并处理)，和模板进行结合</li>
+<li>拿到请求上下文，时间、环境等系统变量来确定不同的展现</li>
+<li>管理前端资源和依赖</li>
+</ul>
+<p>我们在 xtemplate 模板引擎的基础上进行扩展，让前端通过编写 xtemplate 模板，在 context 中注入一些必需的页面上下文，扩展 xtemplate 的语法，支持引入前端资源。基于这套模板，我们可以在拿到数据后渲染得到完整的页面，基本满足了开发页面在功能上的所有需求。</p>
+<p>但是页面中其实有非常多重复性的内容，我们完全可以把他们抽象成一个个的模块，让页面通过模块化的方式来基于模块搭建，在这个过程中我们需要解决几个问题。</p>
+<p>1.模块版本和静态资源版本的管理：页面可能引用几十个模块，而这些模块依赖的静态资源有重复、有冲突，因此我们会通过一份统一的 seed 来进行依赖版本的管理，每一个模块在发布的时候都会打包好自身的依赖关系，而在将所有的模块组合成页面的时候，将所有模块的依赖表重新进行合并和去重，最终保证页面引用的模块和静态资源唯一。同时我们在模板中通过扩展引入了 FELoader（天猫的静态资源加载器），收集页面的所有静态资源，combo 后插入到页头（css）或者页尾（js）。<br>2.模块如何拿到相应的数据：对于模块而言，他并不需要知道被哪个页面引用了，所有的页面在引用模块的时候需要将模块所需的数据传递进去。而所有的模块开发者需要编写一份模块需要数据的 JSON Schema 描述，通过这份描述文件，搭建平台、投放系统以及其他使用这个模块的人都能够知道要为这个模块产生什么格式的数据。<br>3.配套的搭建平台和数据投放平台来让运营自由组合所有的模块生成页面，并为页面上的每一个模块进行数据投放。</p>
+<p>解决完上述问题之后，我们将每一个页面都变成了以下几个部分：</p>
+<p>1.一份页面的描述文件，声明了这个页面依赖的所有模块，以及渲染这些模块所需的数据的地址。<br>2.一系列相互独立的模块。<br>3.一份包含页面上所有模块需要的数据的数据文件。<br>最终，我们的渲染服务会根据 URL 和请求的终端环境，找到对应的页面描述文件，请求相应的数据，合并所有的模板渲染成为 HTML 页面。</p>
+<p>当我们完成了 web 页面的模块化搭建之后回头再看，是不是 react native（RN） 的页面也能够搭建呢？我们只需要所有的模块都有对应的 react native 版本，就可以像搭建 web 的 html 一样搭建渲染出 RN 需要的 js 了！所以本次双十一使用的所有模块都有 RN 版本，并有多个会场采用了 RN 进行搭建，取得了非常不错的效果，在接下来的双十二中，我们所有的会场都会支持 RN，而这一切对于搭建会场的运营来说都是完全透明的。</p>
+<h3 id="稳定性保障"><a href="#稳定性保障" class="headerlink" title="稳定性保障"></a>稳定性保障</h3><p>在阿里，所有的双十一相关应用都需要面临的一个大问题就是稳定性，为了保证能够在几亿用户买买买的时候不掉链子，任何一个应用都需要花很大的精力来保障它的稳定性，node 的应用也一样。</p>
+<p>对于 node 应用自身而言，我们首先要保证它有充足的测试，通过 mocha + istanbul ，尽可能让测试覆盖每一个功能点和边缘情况。</p>
+<p><img src="https://camo.githubusercontent.com/10c378ed3dd35514e0dfbf702d9c915604b5c680/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f54423154486b724b4658585858614a5846585858585858585858582d3634392d3130302e706e67" alt="123"><br>需要有完善的监控和报警。在阿里内部，我们已经有了内部的监控系统，对于 node 应用而言，只需要按照要求的格式打印的日志，或者通过自己编写日志采集脚本，就可以轻松的搞定监控和报警。</p>
+<ul>
+<li>错误日志监控：通过采集脚本采集上来并分类，并设置单机报警和阈值和集群报警的阈值，在异常出现时能够及时发现。</li>
+<li>系统状态监控：内存、CPU、load 等的监控，并设置报警阈值，当系统状态异常时能够及时发现。</li>
+<li>应用状态监控：QPS、响应时间以及所有的远程调用记录，时刻了解系统的负载和各个依赖节点的服务状态。</li>
+</ul>
+<p>同时，对于 node 应用，我们可以使用阿里云团队提供的 alinode ，他们可以提供更多 node 的日志和监控，并提供了在线的 profiler 和快照功能，方便排查线上异常和性能优化。</p>
+<p><img src="https://camo.githubusercontent.com/55d49a7fa91d76dce33e037eec49e70007dc8dad/68747470733a2f2f696d672e616c6963646e2e636f6d2f7470732f544231636a45434b465858585863385858585858585858585858582d3931342d313132332e706e67" alt=""></p>
+<p>尽管我们可以对自身的代码做各种测试、各种监控，但是在一个复杂的系统中，各种上下游依赖非常复杂，网络情况也很复杂，这个时候为了保证稳定性，我们还有许多的工作要做。</p>
+<h4 id="1-没有单点"><a href="#1-没有单点" class="headerlink" title="1.没有单点"></a>1.没有单点</h4><p>假设一个机房的光缆被挖断了，或者机房所在的城市大规模断电了，然后整个天猫的大部分页面都不能访问了，这明显不能接受，所以我们需要在多个城市的多个机房部署我们的服务。如果存放模板文件或者数据文件的服务挂了怎么办？多个节点，主备读取，同时对所有的文件都加上磁盘文件容灾。对外提供服务的整条链路上的每一个依赖都不能够出现单点问题。</p>
+<h4 id="2-弱化依赖"><a href="#2-弱化依赖" class="headerlink" title="2.弱化依赖"></a>2.弱化依赖</h4><p>在排除完单点问题之后，我们再来审视我们的服务，是不是所有的依赖在挂掉后就无法正常服务了？是否我们对于每个依赖异常都有容灾的方案，弱化掉整条链路上的依赖。</p>
+<h4 id="3-预案自动化"><a href="#3-预案自动化" class="headerlink" title="3.预案自动化"></a>3.预案自动化</h4><p>对于每一个可能出现问题的环节，我们都需要有针对性的预案，如果这个预案需要人工去执行，就需要思考能否做到自动化。在 node 渲染服务中，可能有各个缓解出问题，链路上的所有预案都要能够自动切换：</p>
+<ul>
+<li>CDN 回源到多个机房，当某个机房异常时能够通过健康检查自动剔除。</li>
+<li>当源站 load 过高时，服务自动切换到静态版本不做渲染。</li>
+<li>当模板或者数据的存储节点挂了，通过健康检查自动剔除。</li>
+<li>…</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>再回过头来看看在天猫我们使用 node 做的事情，不一定很牛逼，但是确实是在天猫现在的业务场景下，一个相对较优的使用方案，不论是在解决前端开发效率、还是提升服务质量方面，都发挥了很重要的作用。而经过了这次双十一的考验，我们也认为它<strong>已经是一个很成熟的工具</strong>，可以帮助我们更好的完成我们的工作。</p>
+<p>node 只是工具，在每一个具体的业务场景下都有最合适的使用方法，而随着业务的发展，node 能做的事情也在变化，我们期望它能在之后能在更多的场景下落地。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/11/14/node1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          天猫双11前端分享系列 ：大规模 Node.js 应用(续)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/11/14/高级程序设计4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高级程序设计4</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="node" data-title="天猫双11前端分享系列 ：大规模 Node.js 应用" data-url="http://yoursite.com/blog/2016/11/14/node/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wj200819"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 King Jian
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/blog/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

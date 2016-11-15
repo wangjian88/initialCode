@@ -108,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/js/" style="font-size: 20px;">js</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/面试题/" style="font-size: 10px;">面试题</a>
+						<a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/js/" style="font-size: 20px;">js</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/node/" style="font-size: 10px;">node</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/面试题/" style="font-size: 10px;">面试题</a> <a href="/blog/tags/高级程序设计/" style="font-size: 10px;">高级程序设计</a>
 					</div>
 				</section>
 				
@@ -166,6 +166,313 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-node1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/node1/" class="article-date">
+  	<time datetime="2016-11-14T12:38:54.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/14/node1/">
+        天猫双11前端分享系列 ：大规模 Node.js 应用(续)
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前一篇文章讲述了我们是怎样应用 Node.js 解决模板渲染的实际问题的，而这一篇我们来看看天猫是如何一步步将 node 推广到各个业务线上的。</p>
+<p>前面讲述了我们通过 node 在今年双十一中承担了大量的页面渲染工作，包括：</p>
+<p>天猫首页、大部分天猫频道页、双十一会场以及所有天猫的活动页面都全部基于 node 应用提供服务。<br>商品详情、店铺和搜索页等主流程链路上，以及天猫超市和天猫会员等业务线上的页面渲染。<br>提供给内部运营小二的天猫页面搭建平台 web 层基于 node 进行开发，双十一期间在此平台上搭建了超过 1000+ 个双十一相关活动页面。<br>单单看上面列出来的内容可能无法很直观的感受到到底 node 在天猫覆盖了多少业务。大家拿出手机，用浏览器打开天猫首页：</p>
+<p><img src="https://camo.githubusercontent.com/3027c1a4fe7857b6b10d220d0b039b882c999532/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f5058574c6a6c74517a5545596f67542e706e67" alt=""></p>
+<p>_从天猫无线首页上点进的任何一个天猫的链接，包括搜索后的列表页、每一个店铺或者商品详情页，都经由 node 渲染产生。</p>
+<p>罗马不是一天建成的，天猫将 node 覆盖到如此广的业务范围也是通过一年多的时间慢慢的渗透改造完成。这篇文章想和大家分享一下天猫是如何一步步将页面渲染部分通过 node 替换掉 php 和 java 的。</p>
+<p>契机</p>
+<p>在一年半之前，天猫的所有的活动页面、首页和频道页都是基于 TMS 搭建，由 php 在一个独特的 CDN 集群上进行渲染，然而由于之前 php 系统已经没有人维护了，且各种业务共享同一个环境导致 php 版本一直停留在很老的版本无法升级，性能和安全性上有各种问题。</p>
+<p>此时亟需一个新的系统来取代旧的 php 体系，而 node 当时已经在业界和公司内慢慢的被应用起来了，特别是在阿里内部，已经有较为成熟的开发环境（包括私有 npm 服务、与内部其他系统的打通、与发布和监控体系的打通），而在做模板渲染层而言，node 可以很容易的做到前后端共享模板语言，加上性能也不差，前端又比较熟悉，所以最终我们选择了基于 node 进行改造。</p>
+<p>于是我们基于 node 快速的开发了第一个版本的 wormhole（node 渲染容器），并将天猫的首页迁移到了这套系统上。迁移完成之后，我们对新（node）老（php）首页做了一个性能对比：</p>
+<p><img src="https://camo.githubusercontent.com/3818b167d5869acbb28619e801a81c3d51f43187/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f57614f654f58574e714b7743764d792e706e67" alt=""><br><img src="https://camo.githubusercontent.com/f792baaa535c376e0ad6ca38a49b48f0fd825fa0/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f5673514f70574a644c46526655744a2e706e67" alt=""></p>
+<p>尽管这个结果有一部分因素是因为老系统功能上比新系统要复杂，但是也在很大一定程度上说明了采用 node 的新架构来做这件事情是没有问题的。</p>
+<p>小考</p>
+<p>每年的双十一都是对天猫整个技术架构的一次考验，而 2014 年的双十一对于天猫的 node 来说也是一次非常重要的小考：我们在双十一前把天猫首页改成了 node 版本并全量发布了。当时我们在 CDN 的一个独立集群上同时部署了 php 和 node 两套系统，将天猫首页的业务迁移上了 node，而其他的页面仍然采用 php 进行渲染。</p>
+<p><img src="https://camo.githubusercontent.com/e9cd3fe07f973736aa2a619b79c2ba156e34e16d/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f75584a777352777844734b56416b732e706e67" alt=""></p>
+<p>在双十一当天零点的流量高峰中，node 的表现非常稳定，在同样的环境下，可以说是完胜之前的 php 系统。在此之后，我们终于有足够的底气对老板说：我们要把天猫的 view 这一层全部交给 node。</p>
+<p>规模化之路</p>
+<p>在天猫首页上经过了 14 年双十一的考验之后，我们对 node 是否能够支撑天猫的业务场景已经没有疑虑了，剩下的问题就是如何大规模的将 node 应用到天猫的各个业务上去。</p>
+<p>首先我们解决的第一件事情是将天猫前端的模块化开发体系和资源加载方案融入到 node 中，然后推广到各个业务线上，然后又基于 node 构建了一个模块化页面搭建平台，打通前端、运营和后端数据产出系统，承接了天猫所有活动页和频道页等强运营需求的页面。具体的技术方案大家可以查看前一篇文章：天猫双11前端分享系列（四）：大规模 Node.js 应用。</p>
+<p>通过这一系列的技术改造之后，我们<strong>把所有新的业务需求全部使用 node 进行渲染</strong>，然后将之前所有用 php 渲染的页面迁移到 node 之上，仅仅用了几个月时间，基本将天猫移动端的 web 页面和所有的活动页、频道页都迁移完成。</p>
+<p>双十一大考</p>
+<p>经过大半年时间的重构和迁移，到今年年中的时候，天猫的大部分消费者端的页面都已经跑在了 node 之上，这时又要开始准备新一年的双十一了，比起去年只有一个天猫首页而言，对 node 的压力大了不止一个数量级。</p>
+<p>我们评估基于今年的访问量，如果我们再把天猫首页、活动页直接放在 CDN 上进行渲染，对于 CDN 的机器成本来说是不可接受的，而且随着机器数量的增加，对于文件同步系统的压力也越来越大，效率越来越低。因此我们和 CDN 团队合作，将所有的活动页面从直接渲染模式迁移到缓存化 CDN + 源站的模式，并在这个模式下对 node 应用的监控和稳定性上做了非常多的工作。<br>而对于那些应用集群上的业务，我们也统一做了版本更新、监控完善和性能压测容量评估，保证各个业务方使用的 node 容器的稳定性。</p>
+<p>最终，在今年的双十一中，node 支撑了天猫消费者端在无线设备上绝大多数的 web 页面渲染，PC 上除了核心链路外的绝大部分页面渲染工作，并且表现非常稳定，未出现任何一起由 node 引发的线上故障，而基于缓存化 CDN 的活动页面渲染服务，支撑双十一零点高峰的访问量也毫无压力，用少量的机器完成了去年双十一巨量投入才解决的问题。</p>
+<p>End</p>
+<p>记得在去年刚开始在天猫推动 node 的时候做了一个 slide 和大老板汇报，中间有一页是介绍业界是如何使用 node 的：</p>
+<p><img src="https://camo.githubusercontent.com/9e6ffbc75525b21bde822d98cfbb5784a95b53c0/68747470733a2f2f6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f6f566671524e4279735159777044522e706e67" alt=""></p>
+<p>在一年多之后的今天，天猫的 node 应用经过这次双十一的考验之后，相信也完全有资格出现在这页 slide 之上了！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/node/" class="article-date">
+  	<time datetime="2016-11-14T11:44:14.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/14/node/">
+        天猫双11前端分享系列 ：大规模 Node.js 应用
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看的真是激动，最近也在学习node.js，nodejs做底层，express搭建，mongodb做数据库，等积累一定的写点东西。</p>
+<p>在刚刚过去的 15 年天猫双十一中，Node.js（后文简称 node） 大放异彩，不仅帮助前端团队快速、高效的解决双十一各个业务上的页面渲染问题，同时在性能和稳定性上也表现非常出色，大大降低了双十一硬件成本的同时，在整个双十一期间未出现任何一起由 node 引发的线上故障。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/转载/">转载</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/blog/2016/11/14/node/#more">view more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-高级程序设计4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/高级程序设计4/" class="article-date">
+  	<time datetime="2016-11-14T09:55:24.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/14/高级程序设计4/">
+        高级程序设计4
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-高级程序设计3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/高级程序设计3/" class="article-date">
+  	<time datetime="2016-11-14T09:55:17.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/14/高级程序设计3/">
+        高级程序设计3
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-高级程序设计2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/14/高级程序设计2/" class="article-date">
+  	<time datetime="2016-11-14T09:55:12.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/14/高级程序设计2/">
+        高级程序设计2
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -198,34 +505,6 @@
         <h3 id="1-写出3个使用this的典型应用"><a href="#1-写出3个使用this的典型应用" class="headerlink" title="1.写出3个使用this的典型应用"></a>1.写出3个使用this的典型应用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">事件： 如onclick  this-&gt;发生事件的对象;</div><div class="line">构造函数          this-&gt;new 出来的object;</div><div class="line">call/apply        改变this;</div></pre></td></tr></table></figure>
 <hr>
 <h3 id="2-javascript面向对象中继承实现"><a href="#2-javascript面向对象中继承实现" class="headerlink" title="2.javascript面向对象中继承实现"></a>2.javascript面向对象中继承实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Person(name)&#123;</div><div class="line">        this.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.showName = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        alert(this.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Worker(name, job)&#123;</div><div class="line">        Person.apply(this,arguments)</div><div class="line">        this.job = job;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(var i <span class="keyword">in</span> Person.prototype)&#123;</div><div class="line">        Worker.prototype = Person.prototype;</div><div class="line">&#125;</div><div class="line">new Worker(<span class="string">'sl'</span>, <span class="string">'coders'</span>).showName()</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="3-如何深度克隆"><a href="#3-如何深度克隆" class="headerlink" title="3.如何深度克隆"></a>3.如何深度克隆</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> deepClone (obj) &#123;</div><div class="line">		<span class="keyword">if</span> (typeof obj != <span class="string">'object'</span>) &#123;</div><div class="line">			<span class="built_in">return</span> obj;</div><div class="line">		&#125;</div><div class="line">			var newObj=&#123;&#125;;</div><div class="line">		<span class="keyword">for</span> (var attr <span class="keyword">in</span> obj) &#123;</div><div class="line">			newObj[attr]=deepClone(obj[attr])</div><div class="line">		&#125;</div><div class="line">			<span class="built_in">return</span> newObj;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="4-你能描述一下渐进增强和优雅降级之间的不同吗"><a href="#4-你能描述一下渐进增强和优雅降级之间的不同吗" class="headerlink" title="4.你能描述一下渐进增强和优雅降级之间的不同吗?"></a>4.你能描述一下渐进增强和优雅降级之间的不同吗?</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">常用两种策略：要么优雅降级（graceful degradation，一开始就构建站点的完整功能，然后针对浏览器测试和修复），要么渐进增强（progressive enhancement，一开始只构建站点的最少特性，然后不断针对各浏览器追加功能。</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="5-请尽可能详尽的解释AJAX的工作原理。"><a href="#5-请尽可能详尽的解释AJAX的工作原理。" class="headerlink" title="5.请尽可能详尽的解释AJAX的工作原理。"></a>5.请尽可能详尽的解释AJAX的工作原理。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">创建ajax对象（XMLHttpRequest/ActiveXObject(Microsoft.XMLHttp)）</div><div class="line">判断数据传输方式(GET/POST)</div><div class="line">打开链接 open()</div><div class="line">发送 send()</div><div class="line">当ajax对象完成第四步（onreadystatechange）数据接收完成，判断http响应状态（status）200-300之间或者304（缓存）执行回调函数</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="6-网页中实现一个计算当年还剩多少时间的倒数计时程序"><a href="#6-网页中实现一个计算当年还剩多少时间的倒数计时程序" class="headerlink" title="6.网页中实现一个计算当年还剩多少时间的倒数计时程序"></a>6.网页中实现一个计算当年还剩多少时间的倒数计时程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var oDate = new Date();</div><div class="line">var oYear = oDate.getFullYear();</div><div class="line"></div><div class="line">var oNewDate = new Date();</div><div class="line">oNewDate.setFullYear(oYear, 11, 31, 23, 59, 59);</div><div class="line">var iTime = oNewDate.getTime()-oDate.getTime();</div><div class="line"></div><div class="line">var iS = iTime/1000;</div><div class="line">var iM = oNewDate.getMonth()-oDate.getMonth();</div><div class="line">var iDate =iS</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="7-求y和z的值是多少？"><a href="#7-求y和z的值是多少？" class="headerlink" title="7.求y和z的值是多少？"></a>7.求y和z的值是多少？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">var x = 1;</div><div class="line">var y = 0;</div><div class="line">var z = 0;</div><div class="line"><span class="keyword">function</span> add(n)&#123;n=n+1;&#125;</div><div class="line">y = add(x);</div><div class="line"><span class="keyword">function</span> add(n)&#123;n=n+3;&#125;</div><div class="line">z = add(x);</div><div class="line">&lt;/script&gt;</div><div class="line">都为undefined，因为没有返回值。</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="8-form中的input可以设置为readonly和disable，请问2者有什么区别？"><a href="#8-form中的input可以设置为readonly和disable，请问2者有什么区别？" class="headerlink" title="8.form中的input可以设置为readonly和disable，请问2者有什么区别？"></a>8.form中的input可以设置为readonly和disable，请问2者有什么区别？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">readonly</span>不可编辑，但可以选择和复制；值可以传递到后台</div><div class="line">disabled不能编辑，不能复制，不能选择；值不可以传递到后台</div></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">Foo</span></span>() &#123;</div><div class="line">    getName = <span class="function"><span class="title">function</span></span> () &#123; alert (1); &#125;;</div><div class="line">    <span class="built_in">return</span> this;</div><div class="line">&#125;</div><div class="line">Foo.getName = <span class="function"><span class="title">function</span></span> () &#123; alert (2);&#125;;</div><div class="line">Foo.prototype.getName = <span class="function"><span class="title">function</span></span> () &#123; alert (3);&#125;;</div><div class="line">var getName = <span class="function"><span class="title">function</span></span> () &#123; alert (4);&#125;;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">getName</span></span>() &#123; alert (5);&#125;</div><div class="line"></div><div class="line">//请写出以下输出结果：</div><div class="line">Foo.getName();  2;</div><div class="line">getName();	4;</div><div class="line">Foo().getName();1</div><div class="line">getName();1</div><div class="line">new Foo.getName();2</div><div class="line">new Foo().getName();3</div><div class="line">new new Foo().getName();3</div></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var foo = &#123;</div><div class="line">    bar: <span class="function"><span class="title">function</span></span>() &#123; <span class="built_in">return</span> this.baz; &#125;,</div><div class="line">    baz: 1</div><div class="line">&#125;;</div><div class="line"></div><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> typeof arguments[0]();//<span class="string">"undefined"</span></div><div class="line">&#125;)(foo.bar);</div><div class="line">这里你可能会误以为最终结果是number。向函数中传递参数可以看作是一种赋值，所以arguments[0]得到是是真正的bar函数的值，而不是foo.bar这个引用，那么自然this也就不会指向foo，而是window了。</div></pre></td></tr></table></figure>
-<hr>
-<p>var foo = {<br>    bar: function(){ return this.baz; },<br>    baz: 1<br>}<br>typeof (f = foo.bar)();//“undefined”</p>
-<h2 id="这和上一题是一样的问题，-f-foo-bar-返回的就是bar的值，而不是其引用，那么this也就指的不是foo了。"><a href="#这和上一题是一样的问题，-f-foo-bar-返回的就是bar的值，而不是其引用，那么this也就指的不是foo了。" class="headerlink" title="这和上一题是一样的问题，(f = foo.bar)返回的就是bar的值，而不是其引用，那么this也就指的不是foo了。"></a>这和上一题是一样的问题，(f = foo.bar)返回的就是bar的值，而不是其引用，那么this也就指的不是foo了。</h2><p>var x = 1;<br>if (function f(){}) {<br>    x += typeof f;<br>}<br>x;//“1undefined”</p>
-<h2 id="这个问题的关键点，我们在问题二中谈到过，function-expression中的函数名f是不能在函数体外部访问的"><a href="#这个问题的关键点，我们在问题二中谈到过，function-expression中的函数名f是不能在函数体外部访问的" class="headerlink" title="这个问题的关键点，我们在问题二中谈到过，function expression中的函数名f是不能在函数体外部访问的"></a>这个问题的关键点，我们在问题二中谈到过，function expression中的函数名f是不能在函数体外部访问的</h2><p>说说你对语义化的理解？<br>1，去掉或者丢失样式的时候能够让页面呈现出清晰的结构</p>
-<p>2，有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；</p>
-<p>3，方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；</p>
-<h2 id="4，便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。"><a href="#4，便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。" class="headerlink" title="4，便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。"></a>4，便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</h2><p>说说你对闭包的理解<br>使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。在js中，函数即闭包，只有函数才会产生作用域的概念<br>闭包有三个特性：<br>1.函数嵌套函数<br>2.函数内部可以引用外部的参数和变量</p>
-<h2 id="3-参数和变量不会被垃圾回收机制回收"><a href="#3-参数和变量不会被垃圾回收机制回收" class="headerlink" title="3.参数和变量不会被垃圾回收机制回收"></a>3.参数和变量不会被垃圾回收机制回收</h2><p>jquery检查元素存在性<br>javascript检查元素存在性：<br>即使这个元素被删除了，也不担心javascript代码报错；<br>jquery检查元素存在性：<br>代码如下：<br>if(!document.getElementById(“preview”)) return false;</p>
-<p>jquery $（“#preview”）获取的永远是对象，即使网页上没有此元素。<br>不能使用以下代码：<br>if($(“#preview”){<br>//do something<br>}<br>因此要用jquery检查某个元素在网页上是否存在时，应该根据获取到元素的长度来判断。<br>代码如下：<br>if($(“#preview”).length&gt;0){<br>//do something</p>
-<h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><p>在js中，经常会遇到在函数里调用其它函数的情况，这时候会有 fn() 这种调用方式，还有一种是 return fn() 这种调用方式，一些初学者经常会一脸萌逼地被这两种方式给绕晕了。这里用一个优雅的面试题来分析一下两种方式的不同之处。<br>var i = 0;<br>function fn(){<br>    i++;<br>    if(i &lt; 10){<br>        fn();<br>    }else{<br>        return i;<br>    }<br>}<br>var result = fn();<br>console.log(result);<br>这是一道隐藏了坑的面试题，看似很简单，大部分人可能想都不想就答出了10。而实际上运行可知打印出来的是 undefined。这道陷阱题很直观的体现出了前面所说的问题，当我们将执行fn的那一行修改为：<br>var i = 0;<br>function fn(){<br>    i++;<br>    if(i &lt; 10){<br>        return fn();<br>    }else{<br>        return i;<br>    }<br>}<br>var result = fn();<br>console.log(result);<br>这时，会发现打印出来的结果终于不负众望的是 10 了。<br>为什么这里加不加return区别会这么大？<br>这里的主要原因很简单，JavaScript的函数都是有默认返回值的，如果函数结尾不写return，会默认返回undefined，这就是为什么在chrome的console控制台里，写代码经常下面会出现一行undefined的原因。</p>
-<h2 id="再仔细看看这个例子，当i自增到9的时候，也就是倒数第二次递归调用fn的那一次，如果没有return，这一次执行完fn，会默认return-undefined，而不会继续下一次递归了。当加上了-return，在这里则会继续最后一次递归，即i-10的时候，跳入else里面返回得到正确的10。"><a href="#再仔细看看这个例子，当i自增到9的时候，也就是倒数第二次递归调用fn的那一次，如果没有return，这一次执行完fn，会默认return-undefined，而不会继续下一次递归了。当加上了-return，在这里则会继续最后一次递归，即i-10的时候，跳入else里面返回得到正确的10。" class="headerlink" title="再仔细看看这个例子，当i自增到9的时候，也就是倒数第二次递归调用fn的那一次，如果没有return，这一次执行完fn，会默认return undefined，而不会继续下一次递归了。当加上了 return，在这里则会继续最后一次递归，即i=10的时候，跳入else里面返回得到正确的10。"></a>再仔细看看这个例子，当i自增到9的时候，也就是倒数第二次递归调用fn的那一次，如果没有return，这一次执行完fn，会默认return undefined，而不会继续下一次递归了。当加上了 return，在这里则会继续最后一次递归，即i=10的时候，跳入else里面返回得到正确的10。</h2><p>Java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。<br> 用法：<br>result = object instanceof class<br>参数：<br>Result：布尔类型。<br>Object：必选项。任意对象表达式。<br>Class：必选项。任意已定义的对象类。<br>说明：</p>
-<h2 id="如果-object-是-class-的一个实例，则-instanceof-运算符返回-true。如果-object-不是指定类的一个实例，或者-object-是-null，则返回-false。"><a href="#如果-object-是-class-的一个实例，则-instanceof-运算符返回-true。如果-object-不是指定类的一个实例，或者-object-是-null，则返回-false。" class="headerlink" title="如果 object 是 class 的一个实例，则 instanceof 运算符返回 true。如果 object 不是指定类的一个实例，或者 object 是 null，则返回 false。"></a>如果 object 是 class 的一个实例，则 instanceof 运算符返回 true。如果 object 不是指定类的一个实例，或者 object 是 null，则返回 false。</h2>
       
     </div>
     
@@ -241,6 +520,73 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/blog/2016/07/12/面试题/#more">view more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-高级程序设计1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/06/15/高级程序设计1/" class="article-date">
+  	<time datetime="2016-06-15T09:55:04.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/06/15/高级程序设计1/">
+        高级程序设计——js简介
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个完整的 JavaScript 实现应该由下列三 个不同的部分组成</p>
+<h3 id="核心-ECMAScript"><a href="#核心-ECMAScript" class="headerlink" title="核心(ECMAScript)"></a>核心(ECMAScript)</h3><p>规定了这 门语言的下列组成部分:<br>语法、类型、语句、关键字、保留字、操作符、对象 </p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/高级程序设计/">高级程序设计</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/blog/2016/06/15/高级程序设计1/#more">view more >></a>
+        </p>
       
     
   </div>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>高级程序设计——js简介 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一个完整的 JavaScript 实现应该由下列三 个不同的部分组成
+核心(ECMAScript)规定了这 门语言的下列组成部分:语法、类型、语句、关键字、保留字、操作符、对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级程序设计——js简介">
+<meta property="og:url" content="http://yoursite.com/2016/06/15/高级程序设计1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个完整的 JavaScript 实现应该由下列三 个不同的部分组成
+核心(ECMAScript)规定了这 门语言的下列组成部分:语法、类型、语句、关键字、保留字、操作符、对象">
+<meta property="og:updated_time" content="2016-11-14T11:25:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级程序设计——js简介">
+<meta name="twitter:description" content="一个完整的 JavaScript 实现应该由下列三 个不同的部分组成
+核心(ECMAScript)规定了这 门语言的下列组成部分:语法、类型、语句、关键字、保留字、操作符、对象">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">King Jian</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/blog/">主页</a></li>
+				        
+							<li><a href="/blog/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/js/" style="font-size: 20px;">js</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/node/" style="font-size: 10px;">node</a> <a href="/blog/tags/转载/" style="font-size: 10px;">转载</a> <a href="/blog/tags/面试题/" style="font-size: 10px;">面试题</a> <a href="/blog/tags/高级程序设计/" style="font-size: 10px;">高级程序设计</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangjian88.github.io">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">King Jian</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">King Jian</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/blog/">主页</a></li>
+		        
+					<li><a href="/blog/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-高级程序设计1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/06/15/高级程序设计1/" class="article-date">
+  	<time datetime="2016-06-15T09:55:04.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高级程序设计——js简介
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/高级程序设计/">高级程序设计</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个完整的 JavaScript 实现应该由下列三 个不同的部分组成</p>
+<h3 id="核心-ECMAScript"><a href="#核心-ECMAScript" class="headerlink" title="核心(ECMAScript)"></a>核心(ECMAScript)</h3><p>规定了这 门语言的下列组成部分:<br>语法、类型、语句、关键字、保留字、操作符、对象 </p>
+<a id="more"></a>
+<h3 id="文档对象模型-DOM"><a href="#文档对象模型-DOM" class="headerlink" title="文档对象模型(DOM)"></a>文档对象模型(DOM)</h3><p>文档对象模型(DOM,Document Object Model)是针对 XML 但经过扩展用于 HTML 的应用程序编 程接口(API,Application Programming Interface)。DOM 把整个页面映射为一个多层节点结构。HTML 7 或 XML 页面中的每个组成部分都是某种类型的节点,这些节点又包含着不同类型的数据。</p>
+<h3 id="浏览器对象模型-BOM"><a href="#浏览器对象模型-BOM" class="headerlink" title="浏览器对象模型(BOM)"></a>浏览器对象模型(BOM)</h3><p>从根本上讲,BOM 只处理浏览器窗口和框架;但人们习惯上也把所有针对浏览器的 JavaScript 扩展 算作 BOM 的一部分。下面就是一些这样的扩展:</p>
+<p> 弹出新浏览器窗口的功能;<br> 移动、缩放和关闭浏览器窗口的功能;<br> 提供浏览器详细信息的 navigator 对象;<br> 提供浏览器所加载页面的详细信息的 location 对象;<br> 提供用户显示器分辨率详细信息的 screen 对象;<br> 对 cookies 的支持;<br> 像 XMLHttpRequest 和 IE 的 ActiveXObject 这样的自定义对象。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>JavaScript 是一种专为与网页交互而设计的脚本语言,由下列三个不同的部分组成:</p>
+<p> ECMAScript,由 ECMA-262 定义,提供核心语言功能;<br> 文档对象模型(DOM),提供访问和操作网页内容的方法和接口;<br> 浏览器对象模型(BOM),提供与浏览器交互的方法和接口。<br>JavaScript 的这三个组成部分,在当前五个主要浏览器(IE、Firefox、Chrome、Safari 和 Opera)中 都得到了不同程度的支持。其中,所有浏览器对 ECMAScript 第 3 版的支持大体上都还不错,而对 ECMAScript 5 的支持程度越来越高,但对 DOM 的支持则彼此相差比较多。对已经正式纳入 HTML5 标 准的 BOM 来说,尽管各浏览器都实现了某些众所周知的共同特性,但其他特性还是会因浏览器而异   -<br>document.querySelector(“div”)默认第一个<br>document.querySelectorAll(“div”)主要语法和jq差不多；</p>
+<h2 id="1-向网页中插入javascript的主要方法是使用script元素，定义了6个属性"><a href="#1-向网页中插入javascript的主要方法是使用script元素，定义了6个属性" class="headerlink" title="1.向网页中插入javascript的主要方法是使用script元素，定义了6个属性"></a>1.向网页中插入javascript的主要方法是使用script元素，定义了6个属性</h2><p>  ●   async:可选。表示应该立即下载脚本,但不应妨碍页面中的其他操作,比如下载其他资源或 等待加载其他脚本。只对外部脚本文件有效。<br>  ●   charset:可选。表示通过 src 属性指定的代码的字符集。由于大多数浏览器会忽略它的值, 因此这个属性很少有人用。<br>  ●   defer:可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有 效。IE7 及更早版本对嵌入脚本也支持这个属性。<br>  ●   language:已废弃。原来用于表示编写代码使用的脚本语言(如 JavaScript、JavaScript1.2 或 VBScript)。大多数浏览器会忽略这个属性,因此也没有必要再用了。<br>  ●      src:可选。表示包含要执行代码的外部文件。<br>  ●      type:可选。可以看成是 language 的替代属性;表示编写代码使用的脚本语言的内容类型(也称为 MIME 类型)。虽然 text/javascript 和 text/ecmascript 都已经不被推荐使用,但人 们一直以来使用的都还是 text/javascript。实际上,服务器在传送 JavaScript 文件时使用的 MIME 类型通常是 application/x–javascript,但在 type 中设置这个值却可能导致脚本被 忽略。按照惯例,外部 JavaScript 文件带有.js 扩展名。但这个扩展名不是必需的,因为 浏览器不会检查包含 JavaScript 的文件的扩展名。这样一来,使用 JSP、PHP 或其他 服务器端语言动态生成 JavaScript 代码也就成为了可能。但是,服务器通常还是需要 看扩展名决定为响应应用哪种 MIME 类型。如果不使用.js 扩展名,请确保服务器能 返回正确的 MIME 类型。 需要注意的是,带有 src 属性的script元素不应该在其script和/script标签之间再包含额外的 JavaScript 代码。如果包含了嵌入的代码,则只会下载并执行外部脚本文件,嵌入的代码 会被忽略。</p>
+<h2 id="2-嵌入代码与外部文件"><a href="#2-嵌入代码与外部文件" class="headerlink" title="2.嵌入代码与外部文件"></a>2.嵌入代码与外部文件</h2><p>在 HTML 中嵌入 JavaScript 代码虽然没有问题,但一般认为最好的做法还是尽可能使用外部文件来 包含 JavaScript 代码。不过,并不存在必须使用外部文件的硬性规定,但支持使用外部文件的人多会强 调如下优点。</p>
+<p> 可维护性:遍及不同 HTML 页面的 JavaScript 会造成维护问题。但把所有 JavaScript 文件都放在 一个文件夹中,维护起来就轻松多了。而且开发人员因此也能够在不触及 HTML 标记的情况下, 集中精力编辑 JavaScript 代码。<br> 可缓存:浏览器能够根据具体的设置缓存链接的所有外部 JavaScript 文件。也就是说,如果有两个页面都使用同一个文件,那么这个文件只需下载一次。因此,最终结果就是能够加快页面加载的 速度。<br> 适应未来:通过外部文件来包含 JavaScript 无须使用前面提到 XHTML 或注释 hack。HTML 和 XHTML 包含外部文件的语法是相同的。</p>
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><p>把JavaScript 插入到 HTML 页面中要使用script元素。使用这个元素可以把 JavaScript 嵌入到 HTML 页面中,让脚本与标记混合在一起;也可以包含外部的 JavaScript 文件。而我们需要注意的地方有:</p>
+<p>  ○   在包含外部 JavaScript 文件时,必须将 src 属性设置为指向相应文件的 URL。而这个文件既可 以是与包含它的页面位于同一个服务器上的文件,也可以是其他任何域中的文件。<br>  ○   所有script元素都会按照它们在页面中出现的先后顺序依次被解析。在不使用 defer 和 async 属性的情况下,只有在解析完前面script元素中的代码之后,才会开始解析后面 script元素中的代码。<br>  ○   由于浏览器会先解析完不使用 defer 属性的script元素中的代码,然后再解析后面的内容, 所以一般应该把script元素放在页面最后,即主要内容后面,/body标签前面。<br>  ○   使用 defer 属性可以让脚本在文档完全呈现之后再执行。延迟脚本总是按照指定它们的顺序执行。<br>  ○   使用 async 属性可以表示当前脚本不必等待其他脚本,也不必阻塞文档呈现。不能保证异步脚本按照它们在页面中出现的顺序执行。另外,使用noscript元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下,浏览器不会显示noscript元素中的任何内容。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/07/12/面试题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          精选面试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/03/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何搭建github下得二级hexo博客</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="高级程序设计1" data-title="高级程序设计——js简介" data-url="http://yoursite.com/blog/2016/06/15/高级程序设计1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wj200819"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 King Jian
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/blog/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
