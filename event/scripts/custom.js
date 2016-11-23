@@ -263,5 +263,5 @@ if($('.video-bg')[0]) {
     }
     $(".giant-title span").text((odate.getMonth()+1)+"-"+odate.getDate()+"   星期"+oday)
     $(".giant-title b").text("来到上海的第"+otime+"天")
-
+	
 });
