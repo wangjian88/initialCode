@@ -3,27 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何搭建github下得二级hexo博客 | Hexo</title>
+  <title>Hexo</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学前端这么久了，以前一直没有好的想法，现在学习了hexo和markdown后，终于决定开始搭建个人博客。既然开始，就一定要坚持下去！！第一篇就写环境搭建吧。
-作者hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。先看看tommy是如何吐槽Octopres">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何搭建github下得二级hexo博客">
-<meta property="og:url" content="http://yoursite.com/2016/03/02/hello-world/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="学前端这么久了，以前一直没有好的想法，现在学习了hexo和markdown后，终于决定开始搭建个人博客。既然开始，就一定要坚持下去！！第一篇就写环境搭建吧。
-作者hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。先看看tommy是如何吐槽Octopres">
-<meta property="og:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg">
-<meta property="og:updated_time" content="2016-11-12T14:55:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何搭建github下得二级hexo博客">
-<meta name="twitter:description" content="学前端这么久了，以前一直没有好的想法，现在学习了hexo和markdown后，终于决定开始搭建个人博客。既然开始，就一定要坚持下去！！第一篇就写环境搭建吧。
-作者hexo出自台湾大学生tommy351之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。先看看tommy是如何吐槽Octopres">
-<meta name="twitter:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -173,7 +164,9 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/blog/2016/03/02/hello-world/" class="article-date">
@@ -189,25 +182,15 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      如何搭建github下得二级hexo博客
-      
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/03/02/hello-world/">
+        如何搭建github下得二级hexo博客
+        
+      </a>
     </h1>
   
 
       </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/markdown/">markdown</a></li></ul>
-	</div>
-
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -223,85 +206,32 @@
 </blockquote>
 <p>搭建过程你或许觉得有那么点小繁琐，但一旦搭建完成，写文章是极简单，极舒服的。<br>只需要几个简单命令，你就可以完成一切。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="comment">#写文章</span></div><div class="line">hexo g <span class="comment">#生成</span></div><div class="line">hexo d <span class="comment">#部署 # 可与hexo g合并为 hexo d -g</span></div></pre></td></tr></table></figure></p>
 <p>下面逐步介绍，进入正题。</p>
-<a id="more"></a>
-<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>1.node.js下载安装，百度即可。<br>2.github账号一枚，并安装好github的Desktop这个软件。<br>3.创建一个项目，为你的github用户名+“.github.io”，这是每个github账户有的个人静态网站，然后用Desktop克隆下这个项目，下载到本地。<br>环境这样就搭建好了。</p>
-<h3 id="初始化本地hexo"><a href="#初始化本地hexo" class="headerlink" title="初始化本地hexo"></a>初始化本地hexo</h3><p>1.安装：在终端输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure></p>
-<p>2.初始化<br>终端里找到desktop下载的项目，在里面新建一个blog文件夹，这样做是为了把博客建在二级目录。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure></p>
-<p>3.修改blog/_config.yml文件里的root这一项，改为“/blog”。注意，以后换主题时要注意也要修改“/blog/themes/你的主题名/_config.yml”<br>同时修改public_dir为你的blog文件夹的绝对路径，我的是这样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public_dir: /Users/lanou/Desktop/wangjian88.github.io/blog</div></pre></td></tr></table></figure></p>
-<p>4.生成静态页面<br>还是终端在在项目那一级执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo s</div></pre></td></tr></table></figure></p>
-<p>浏览器输入<a href="http://localhost:4000/blog" target="_blank" rel="external">http://localhost:4000/blog</a>就可以本地看到效果。</p>
-<p>5.新建博客文章<br>终端还要在你项目的那一级，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"文章名"</span></div></pre></td></tr></table></figure></p>
-<p>会新建一个“文章名.md”的文件，在了解markdown语法的基础上直接书写即可，写完执行4那步，md会自动生成对应的html文件。</p>
-<h3 id="上传线上"><a href="#上传线上" class="headerlink" title="上传线上"></a>上传线上</h3><p>既然是博客，那就要放在网上供人传阅评论。上传也非常简单，只要打开desktop，把你的项目更新一下，会自动把本地的个人博客同步到网上。<br>这时候“你的用户名.github.io/blog”这个网址就是你的在线博客地址。</p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="文章详情"><a href="#文章详情" class="headerlink" title="文章详情"></a>文章详情</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">title: postName <span class="comment">#文章页面上的显示名称，可以任意修改，不会出现在URL中</span></div><div class="line">date: 2013-12-02 15:30:16 <span class="comment">#文章生成时间，一般不改，当然也可以任意修改</span></div><div class="line">categories: <span class="comment">#文章分类目录，可以为空，注意:后面有个空格</span></div><div class="line">tags: <span class="comment">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格</span></div><div class="line">---</div><div class="line">这里开始使用markdown格式输入你的正文。</div><div class="line">以上是摘要</div><div class="line">&lt;!--more--&gt;</div><div class="line">以下是余下全文</div></pre></td></tr></table></figure>
-<p>more以上内容即是文章摘要，在主页显示，more以下内容点击『&gt; Read More』链接打开全文才显示。</p>
-<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>hexo的主题安装非常简便，首先，你可以看看这个网址里的style，对新手足够挑选的了<a href="https://hexo.io/themes/" target="_blank" rel="external">hexo主流主题</a><br>我用的主题<a href="https://github.com/winnerweb/hexo-theme-smackdown" target="_blank" rel="external">github下载地址</a><br>最好用Desktop下载项目，下到本地后把下下来的文件夹放到/blog/themes/文件夹下修改“/blog/_config.yml”里的theme为你下的主题那个文件夹的名字。就这么简单就换好主题了，各个主题细节不同，可一一百度解决</p>
-<h3 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h3><p>静态博客要使用第三方评论系统，hexo默认集成的是Disqus，因为你懂的，所以国内的话还是建议用多说。<br>直接用你的微博/豆瓣/人人/百度/开心网帐号登录多说，做一下基本设置。如果使用modernist主题，在modernist_config.yml中配置duoshuo_shortname为多说的基本设置-&gt;域名中的shortname即可。你也可以在多说后台自定义一下多说评论框的格式，比如评论框的位置，对于css设置，可以参考这里，我是在HeroicYang的基础上修改的。</p>
-<p>如果你是有的其他第三方评论系统，将通用代码粘贴到hexo\themes\modernist\layout_partial\comment.ejs里面，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (config.disqus_shortname &amp;&amp; page.comments)&#123; %&gt;</div><div class="line">&lt;section id=<span class="string">"comment"</span>&gt;</div><div class="line">  <span class="comment">#你的通用代码</span></div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>常用命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></div><div class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></div><div class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></div></pre></td></tr></table></figure></p>
-<p>###至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</p>
-
       
     </div>
     
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/blog/2016/06/15/高级程序设计1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          高级程序设计——js简介
-        
-      </div>
-    </a>
-  
-  
-</nav>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/markdown/">markdown</a></li></ul>
+	</div>
 
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/blog/2016/03/02/hello-world/#more">view more >></a>
+        </p>
+      
+    
+  </div>
   
 </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="如何搭建github下得二级hexo博客" data-url="http://yoursite.com/blog/2016/03/02/hello-world/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"wj200819"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
 
 
 
@@ -329,7 +259,14 @@
         $('#dagang a').smoothScroll({speed: 1200}); 
       }
   })
-</script></div>
+</script>
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -352,8 +289,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

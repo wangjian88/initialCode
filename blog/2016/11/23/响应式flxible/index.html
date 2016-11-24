@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用Flexible实现手淘H5页面的终端适配 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="移动端开发的重要性毋庸置疑，本文是淘宝的移动解决方案，经历了亿万用户的考验，实用性和稳定性值得依靠，也是我非常喜爱的移动开发模式，希望大家了解。
+
+曾几何时为了兼容IE低版本浏览器而头痛，以为到Mobile时代可以跟这些麻烦说拜拜。可没想到到了移动时代，为了处理各终端的适配而乱了手脚。对于混迹各社区的偶，时常发现大家拿手机淘宝的H5页面做讨论——手淘的H5页面是如何实现多终端的适配？
+那么趁此A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Flexible实现手淘H5页面的终端适配">
+<meta property="og:url" content="http://yoursite.com/2016/11/23/响应式flxible/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="移动端开发的重要性毋庸置疑，本文是淘宝的移动解决方案，经历了亿万用户的考验，实用性和稳定性值得依靠，也是我非常喜爱的移动开发模式，希望大家了解。
+
+曾几何时为了兼容IE低版本浏览器而头痛，以为到Mobile时代可以跟这些麻烦说拜拜。可没想到到了移动时代，为了处理各终端的适配而乱了手脚。对于混迹各社区的偶，时常发现大家拿手机淘宝的H5页面做讨论——手淘的H5页面是如何实现多终端的适配？
+那么趁此A">
+<meta property="og:image" content="http://cdn1.w3cplus.com/cdn/farfuture/HNLqSu8yuVeiaSsWQan4hEQMizO0S6Pii5NqPp2rBBY/mtime:1447769998/sites/default/files/blogs/2015/1511/rem-1.jpg">
+<meta property="og:image" content="http://cdn2.w3cplus.com/cdn/farfuture/RqdfEdIqyYInpUeFzDLoWrYJIaGIHzqPMrRWT9merUc/mtime:1448593751/sites/default/files/blogs/2015/1511/yiboqr.png">
+<meta property="og:image" content="http://cdn1.w3cplus.com/cdn/farfuture/dAIFVQ4Hwx0DpAzSegmu2m3rYce0Z_u5XbZ2H49L94A/mtime:1447771098/sites/default/files/blogs/2015/1511/rem-4.png">
+<meta property="og:image" content="http://cdn.w3cplus.com/cdn/farfuture/Ie9-HRL4sYocKldzQvdwaoMVpbaS29xW13xcQMi9Q3k/mtime:1447770328/sites/default/files/blogs/2015/1511/rem-3.jpg">
+<meta property="og:image" content="http://cdn1.w3cplus.com/cdn/farfuture/Mn934L-OJUnahLoJ7qLdEDvmYFbD_O8SVgH7SovnaWg/mtime:1447830963/sites/default/files/blogs/2015/1511/cssrem.gif">
+<meta property="og:image" content="http://cdn.w3cplus.com/cdn/farfuture/YhlgyAvcvtOe54709eeCV9lrooOFzNJIhMEEj921fzs/mtime:1447841119/sites/default/files/blogs/2015/1511/rem-9.jpg">
+<meta property="og:image" content="http://cdn2.w3cplus.com/cdn/farfuture/gL7chP84773JBDGVVNjVp2m7yl2s9ecFv54nyQcaikk/mtime:1447841119/sites/default/files/blogs/2015/1511/rem-10.png">
+<meta property="og:updated_time" content="2016-11-23T12:32:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Flexible实现手淘H5页面的终端适配">
+<meta name="twitter:description" content="移动端开发的重要性毋庸置疑，本文是淘宝的移动解决方案，经历了亿万用户的考验，实用性和稳定性值得依靠，也是我非常喜爱的移动开发模式，希望大家了解。
+
+曾几何时为了兼容IE低版本浏览器而头痛，以为到Mobile时代可以跟这些麻烦说拜拜。可没想到到了移动时代，为了处理各终端的适配而乱了手脚。对于混迹各社区的偶，时常发现大家拿手机淘宝的H5页面做讨论——手淘的H5页面是如何实现多终端的适配？
+那么趁此A">
+<meta name="twitter:image" content="http://cdn1.w3cplus.com/cdn/farfuture/HNLqSu8yuVeiaSsWQan4hEQMizO0S6Pii5NqPp2rBBY/mtime:1447769998/sites/default/files/blogs/2015/1511/rem-1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">King Jian</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/blog/">主页</a></li>
+				        
+							<li><a href="/blog/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/js/" style="font-size: 20px;">js</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/node/" style="font-size: 16.67px;">node</a> <a href="/blog/tags/移动开发/" style="font-size: 13.33px;">移动开发</a> <a href="/blog/tags/转载/" style="font-size: 16.67px;">转载</a> <a href="/blog/tags/面试题/" style="font-size: 10px;">面试题</a> <a href="/blog/tags/高级程序设计/" style="font-size: 16.67px;">高级程序设计</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangjian88.github.io">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">King Jian</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://mypics.zhaopin.com//pic/2016/9/29/547D2CA8D4794667B7C86D6568F42953.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">King Jian</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/blog/">主页</a></li>
+		        
+					<li><a href="/blog/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="linkedin" target="_blank" href="https://wangjian88.github.io" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-响应式flxible" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/11/23/响应式flxible/" class="article-date">
+  	<time datetime="2016-11-23T11:44:45.000Z" itemprop="datePublished">2016-11-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Flexible实现手淘H5页面的终端适配
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/移动开发/">移动开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/转载/">转载</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>移动端开发的重要性毋庸置疑，本文是淘宝的移动解决方案，经历了亿万用户的考验，实用性和稳定性值得依靠，也是我非常喜爱的移动开发模式，希望大家了解。</p>
+</blockquote>
+<p>曾几何时为了兼容IE低版本浏览器而头痛，以为到Mobile时代可以跟这些麻烦说拜拜。可没想到到了移动时代，为了处理各终端的适配而乱了手脚。对于混迹各社区的偶，时常发现大家拿手机淘宝的H5页面做讨论——手淘的H5页面是如何实现多终端的适配？</p>
+<p>那么趁此Amfe阿里无线前端团队双11技术连载之际，用一个实战案例来告诉大家，手淘的H5页面是如何实现多终端适配的，希望这篇文章对大家在Mobile的世界中能过得更轻松。</p>
+<a id="more"></a>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>拿一个双11的Mobile页面来做案例，比如你实现一个类似下图的一个H5页面：</p>
+<div align="center"><br>    <img src="http://cdn1.w3cplus.com/cdn/farfuture/HNLqSu8yuVeiaSsWQan4hEQMizO0S6Pii5NqPp2rBBY/mtime:1447769998/sites/default/files/blogs/2015/1511/rem-1.jpg" alt=""><br></div>
+
+<p>目标很清晰，就是做一个这样的H5页面。</p>
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><p>请用手机扫下面的二维码</p>
+<div align="center"><br>    <img src="http://cdn2.w3cplus.com/cdn/farfuture/RqdfEdIqyYInpUeFzDLoWrYJIaGIHzqPMrRWT9merUc/mtime:1448593751/sites/default/files/blogs/2015/1511/yiboqr.png" alt=""><br></div>
+
+<h3 id="痛点"><a href="#痛点" class="headerlink" title="痛点"></a>痛点</h3><p>虽然H5的页面与PC的Web页面相比简单了不少，但让我们头痛的事情是要想尽办法让页面能适配众多不同的终端设备。看看下图你就会知道，这是多么痛苦的一件事情：</p>
+<div align="center"><br>    <img src="http://cdn1.w3cplus.com/cdn/farfuture/dAIFVQ4Hwx0DpAzSegmu2m3rYce0Z_u5XbZ2H49L94A/mtime:1447771098/sites/default/files/blogs/2015/1511/rem-4.png" alt=""><br></div><br>为了应对这多么的终端设备，设计师和前端开发之间又应该采用什么协作模式？或许大家对此也非常感兴趣。而整个手淘设计师和前端开发的适配协作基本思路是：<br><br>&gt; 选择一种尺寸作为设计和开发基准。<br>&gt; 定义一套适配规则，自动适配剩下的两种尺寸(其实不仅这两种，你懂的)<br>&gt; 特殊适配效果给出设计效果<br><br>在此也不做更多的阐述。在手淘的设计师和前端开发协作过程中：手淘设计师常选择iPhone6作为基准设计尺寸，交付给前端的设计尺寸是按750px <em> 1334px为准(高度会随着内容多少而改变)。前端开发人员通过一套适配规则自动适配到其他的尺寸。<br><br>根据上面所说的，设计师给我们的设计图是一个750px </em> 1600px的页面：<br><div align="center"><br>    <img src="http://cdn.w3cplus.com/cdn/farfuture/Ie9-HRL4sYocKldzQvdwaoMVpbaS29xW13xcQMi9Q3k/mtime:1447770328/sites/default/files/blogs/2015/1511/rem-3.jpg" alt=""><br></div>
+
+<h3 id="前端开发完成终端适配方案"><a href="#前端开发完成终端适配方案" class="headerlink" title="前端开发完成终端适配方案"></a>前端开发完成终端适配方案</h3><p>拿到设计师给的设计图之后，剩下的事情是前端开发人员的事了。而手淘经过多年的摸索和实战，总结了一套移动端适配的方案——flexible方案。</p>
+<p>这种方案具体在实际开发中如何使用，暂时先卖个关子，在继续详细的开发实施之前，我们要先了解一些基本概念。</p>
+<h5 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h5><p>在进行具体实战之前，首先得了解下面这些基本概念(术语)：</p>
+<h4 id="视窗-viewport"><a href="#视窗-viewport" class="headerlink" title="视窗 viewport"></a>视窗 viewport</h4><p>简单的理解，viewport是严格等于浏览器的窗口。在桌面浏览器中，viewport就是浏览器窗口的宽度高度。但在移动端设备上就有点复杂。</p>
+<p>移动端的viewport太窄，为了能更好为CSS布局服务，所以提供了两个viewport:虚拟的viewportvisualviewport和布局的viewportlayoutviewport。</p>
+<p>George Cummins在Stack Overflow上对这两个基本概念做了详细的解释。</p>
+<p>而事实上viewport是一个很复杂的知识点，上面的简单描述可能无法帮助你更好的理解viewport，而你又想对此做更深的了解，可以阅读PPK写的相关教程。</p>
+<h4 id="物理像素-physical-pixel"><a href="#物理像素-physical-pixel" class="headerlink" title="物理像素(physical pixel)"></a>物理像素(physical pixel)</h4><p>物理像素又被称为设备像素，他是显示设备中一个最微小的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度。正是这些设备像素的微小距离欺骗了我们肉眼看到的图像效果。</p>
+<h4 id="设备独立像素-density-independent-pixel"><a href="#设备独立像素-density-independent-pixel" class="headerlink" title="设备独立像素(density-independent pixel)"></a>设备独立像素(density-independent pixel)</h4><p>设备独立像素也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，然后由相关系统转换为物理像素。</p>
+<h4 id="CSS像素"><a href="#CSS像素" class="headerlink" title="CSS像素"></a>CSS像素</h4><p>CSS像素是一个抽像的单位，主要使用在浏览器上，用来精确度量Web页面上的内容。一般情况之下，CSS像素称为与设备无关的像素(device-independent pixel)，简称DIPs。</p>
+<h4 id="屏幕密度"><a href="#屏幕密度" class="headerlink" title="屏幕密度"></a>屏幕密度</h4><p>屏幕密度是指一个设备表面上存在的像素数量，它通常以每英寸有多少像素来计算(PPI)。</p>
+<h4 id="设备像素比-device-pixel-ratio"><a href="#设备像素比-device-pixel-ratio" class="headerlink" title="设备像素比(device pixel ratio)"></a>设备像素比(device pixel ratio)</h4><p>设备像素比简称为dpr，其定义了物理像素和设备独立像素的对应关系。它的值可以按下面的公式计算得到：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">设备像素比 ＝ 物理像素 / 设备独立像素</div></pre></td></tr></table></figure></p>
+<p>在JavaScript中，可以通过window.devicePixelRatio获取到当前设备的dpr。而在CSS中，可以通过-webkit-device-pixel-ratio，-webkit-min-device-pixel-ratio和 -webkit-max-device-pixel-ratio进行媒体查询，对不同dpr的设备，做一些样式适配(这里只针对webkit内核的浏览器和webview)。</p>
+<p>dip或dp,（device independent pixels，设备独立像素）与屏幕密度有关。dip可以用来辅助区分视网膜设备还是非视网膜设备。</p>
+<h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><p><meta>标签有很多种，而这里要着重说的是viewport的meta标签，其主要用来告诉浏览器如何规范的渲染Web页面，而你则需要告诉它视窗有多大。在开发移动端页面，我们需要设置meta标签如下：</p>
+<p><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><br>代码以显示网页的屏幕宽度定义了视窗宽度。网页的比例和最大比例被设置为100%。</p>
+<p>留个悬念，因为后面的解决方案中需要重度依赖meta标签。</p>
+<h4 id="CSS单位rem"><a href="#CSS单位rem" class="headerlink" title="CSS单位rem"></a>CSS单位rem</h4><p>在W3C规范中是这样描述rem的:</p>
+<blockquote>
+<p>font size of the root element.</p>
+</blockquote>
+<p>简单的理解，rem就是相对于根元素<html>的font-size来做计算。而我们的方案中使用rem单位，是能轻易的根据<html>的font-size计算出元素的盒模型大小。而这个特色对我们来说是特别的有益处。</html></html></p>
+<h3 id="前端实现方案"><a href="#前端实现方案" class="headerlink" title="前端实现方案"></a>前端实现方案</h3><p>了解了前面一些相关概念之后，接下来我们来看实际解决方案。在整个手淘团队，我们有一个名叫lib-flexible的库，而这个库就是用来解决H5页面终端适配的。</p>
+<p>lib-flexible是什么？</p>
+<p>lib-flexible是一个制作H5适配的开源库，可以点击这里下载相关文件，获取需要的JavaScript和CSS文件。</p>
+<p>当然你可以直接使用阿里CDN：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/&#123;&#123;version&#125;&#125;/??flexible_css.js,flexible.js"</span>&gt;&lt;/script&gt;</div><div class="line">将代码中的&#123;&#123;version&#125;&#125;换成对应的版本号0.3.4。</div></pre></td></tr></table></figure></p>
+<p>使用方法</p>
+<p>lib-flexible库的使用方法非常的简单，只需要在Web页面的<head></head>中添加对应的flexible_css.js,flexible.js文件：</p>
+<p>第一种方法是将文件下载到你的项目中，然后通过相对路径添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"build/flexible_css.debug.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"build/flexible.debug.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>或者直接加载阿里CDN的文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>另外强烈建议对JS做内联处理，在所有资源加载之前执行这个JS。执行这个JS后，会在<html>元素上增加一个data-dpr属性，以及一个font-size样式。JS会根据不同的设备添加不同的data-dpr值，比如说2或者3，同时会给html加上对应的font-size的值，比如说75px。</html></p>
+<p>如此一来，页面中的元素，都可以通过rem单位来设置。他们会根据html元素的font-size值做相应的计算，从而实现屏幕的适配效果。</p>
+<p>除此之外，在引入lib-flexible需要执行的JS之前，可以手动设置meta来控制dpr值，如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"flexible"</span> content=<span class="string">"initial-dpr=2"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>其中initial-dpr会把dpr强制设置为给定的值。如果手动设置了dpr之后，不管设备是多少的dpr，都会强制认为其dpr是你设置的值。在此不建议手动强制设置dpr，因为在Flexible中，只对iOS设备进行dpr的判断，对于Android系列，始终认为其dpr为1。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</div><div class="line">    var isAndroid = win.navigator.appVersion.match(/android/gi);</div><div class="line">    var isIPhone = win.navigator.appVersion.match(/iphone/gi);</div><div class="line">    var devicePixelRatio = win.devicePixelRatio;</div><div class="line">    <span class="keyword">if</span> (isIPhone) &#123;</div><div class="line">        // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</div><div class="line">        <span class="keyword">if</span> (devicePixelRatio &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) &#123;                </div><div class="line">            dpr = 3;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2))&#123;</div><div class="line">            dpr = 2;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            dpr = 1;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        // 其他设备下，仍旧使用1倍的方案</div><div class="line">        dpr = 1;</div><div class="line">    &#125;</div><div class="line">    scale = 1 / dpr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>####flexible的实质</p>
+<p>flexible实际上就是能过JS来动态改写meta标签，代码类似这样：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var metaEl = doc.createElement(<span class="string">'meta'</span>);</div><div class="line">var scale = isRetina ? 0.5:1;</div><div class="line">metaEl.setAttribute(<span class="string">'name'</span>, <span class="string">'viewport'</span>);</div><div class="line">metaEl.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + scale + <span class="string">', maximum-scale='</span> + scale + <span class="string">', minimum-scale='</span> + scale + <span class="string">', user-scalable=no'</span>);</div><div class="line"><span class="keyword">if</span> (docEl.firstElementChild) &#123;</div><div class="line">    document.documentElement.firstElementChild.appendChild(metaEl);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    var wrap = doc.createElement(<span class="string">'div'</span>);</div><div class="line">    wrap.appendChild(metaEl);</div><div class="line">    documen.write(wrap.innerHTML);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>事实上他做了这几样事情：</p>
+<blockquote>
+<p>动态改写<meta>标签<br>给<html>元素添加data-dpr属性，并且动态改写data-dpr的值<br>给<html>元素添加font-size属性，并且动态改写font-size的值<br>案例实战</html></html></p>
+</blockquote>
+<p>了解Flexible相关的知识之后，咱们回到文章开头。我们的目标是制作一个适配各终端的H5页面。别的不多说，动手才能丰衣足食。</p>
+<p>创建HTML模板<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">        &lt;meta content=<span class="string">"yes"</span> name=<span class="string">"apple-mobile-web-app-capable"</span>&gt;</div><div class="line">        &lt;meta content=<span class="string">"yes"</span> name=<span class="string">"apple-touch-fullscreen"</span>&gt;</div><div class="line">        &lt;meta content=<span class="string">"telephone=no,email=no"</span> name=<span class="string">"format-detection"</span>&gt;</div><div class="line">        &lt;script src=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"</span>&gt;&lt;/script&gt;</div><div class="line">        &lt;link rel=<span class="string">"apple-touch-icon"</span> href=<span class="string">"favicon.png"</span>&gt;</div><div class="line">        &lt;link rel=<span class="string">"Shortcut Icon"</span> href=<span class="string">"favicon.png"</span> <span class="built_in">type</span>=<span class="string">"image/x-icon"</span>&gt;</div><div class="line">        &lt;title&gt;再来一波&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;!-- 页面结构写在这里 --&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>正如前面所介绍的一样，首先加载了Flexible所需的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这个时候可以根据设计的图需求，在HTML文档的<body></body>中添加对应的HTML结构，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"item-section"</span> data-repeat=<span class="string">"sections"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"item-section_header"</span>&gt;</div><div class="line">        &lt;h2&gt;&lt;img src=<span class="string">"&#123;brannerImag&#125;"</span> alt=<span class="string">""</span>&gt;&lt;/h2&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li data-repeat=<span class="string">"items"</span> class=<span class="string">"flag"</span> role=<span class="string">"link"</span> href=<span class="string">"&#123;itemLink&#125;"</span>&gt;</div><div class="line">            &lt;a class=<span class="string">"figure flag-item"</span> href=<span class="string">"&#123;itemLink&#125;"</span>&gt;</div><div class="line">                &lt;img src=<span class="string">"&#123;imgSrc&#125;"</span> alt=<span class="string">""</span>&gt;</div><div class="line">            &lt;/a&gt;</div><div class="line">            &lt;div class=<span class="string">"figcaption flag-item"</span>&gt;</div><div class="line">                &lt;div class=<span class="string">"flag-title"</span>&gt;&lt;a href=<span class="string">"&#123;itemLink&#125;"</span> title=<span class="string">""</span>&gt;&#123;poductName&#125;&lt;/a&gt;&lt;/div&gt;</div><div class="line">                &lt;div class=<span class="string">"flag-price"</span>&gt;&lt;span&gt;双11价&lt;/span&gt;&lt;strong&gt;¥&#123;price&#125;&lt;/strong&gt;&lt;small&gt;(&#123;preferential&#125;)&lt;/small&gt;&lt;/div&gt;</div><div class="line">                &lt;div class=<span class="string">"flag-type"</span>&gt;&#123;activityType&#125;&lt;/div&gt;</div><div class="line">                &lt;a class=<span class="string">"flag-btn"</span> href=<span class="string">"&#123;shopLink&#125;"</span>&gt;&#123;activeName&#125;&lt;/a&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>这仅是一个示例文档，大家可以根据自己风格写模板。</p>
+<p>为了能更好的测试页面，给其配置一点假数据：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//define data</div><div class="line">var pageData = &#123;</div><div class="line">    sections:[&#123;</div><div class="line">        <span class="string">"brannerImag"</span>:<span class="string">"http://xxx.cdn.com/B1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg"</span>,</div><div class="line">        items:[&#123;</div><div class="line">            <span class="string">"itemLink"</span>: <span class="string">"##"</span>,</div><div class="line">            <span class="string">"imgSrc"</span>: <span class="string">"https://placeimg.com/350/350/people/grayscale"</span>,</div><div class="line">            <span class="string">"poductName"</span>:<span class="string">"Carter's1年式灰色长袖连体衣包脚爬服全棉鲸鱼男婴儿童装115G093"</span>,</div><div class="line">            <span class="string">"price"</span>: <span class="string">"299.06"</span>,</div><div class="line">            <span class="string">"preferential"</span>: <span class="string">"满400减100"</span>,</div><div class="line">            <span class="string">"activityType"</span>: <span class="string">"1小时内热卖5885件"</span>,</div><div class="line">            <span class="string">"shopLink"</span>:<span class="string">"##"</span>,</div><div class="line">            <span class="string">"activeName"</span>: <span class="string">"马上抢！"</span></div><div class="line">        &#125;</div><div class="line">            ....</div><div class="line">        &#125;]</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来的工作就是美化工作了。在写具体样式之前，有几个点需要先了解一下。</p>
+<p>把视觉稿中的px转换成rem</p>
+<p>读到这里，大家应该都知道，我们接下来要做的事情，就是如何把视觉稿中的px转换成rem。在此花点时间解释一下。</p>
+<p>首先，目前日常工作当中，视觉设计师给到前端开发人员手中的视觉稿尺寸一般是基于640px、750px以及1125px宽度为准。甚至为什么？大家应该懂的（考虑Retina屏）。</p>
+<p>正如文章开头显示的示例设计稿，他就是一张以750px为基础设计的。那么问题来了，我们如何将设计稿中的各元素的px转换成rem。</p>
+<p>目前Flexible会将视觉稿分成100份（主要为了以后能更好的兼容vh和vw），而每一份被称为一个单位a。同时1rem单位被认定为10a。针对我们这份视觉稿可以计算出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1a   = 7.5px</div><div class="line">1rem = 75px</div></pre></td></tr></table></figure></p>
+<p>那么我们这个示例的稿子就分成了10a，也就是整个宽度为10rem，<html>对应的font-size为75px：<br>这样一来，对于视觉稿上的元素尺寸换算，只需要原始的px值除以rem基准值即可。例如此例视觉稿中的图片，其尺寸是176px <em> 176px,转换成为2.346667rem </em> 2.346667rem。</html></p>
+<p>如何快速计算</p>
+<p>在实际生产当中，如果每一次计算px转换rem，或许会觉得非常麻烦，或许直接影响大家平时的开发效率。为了能让大家更快进行转换，我们团队内的同学各施所长，为px转换rem写了各式各样的小工具。</p>
+<p>CSSREM</p>
+<p>CSSREM是一个CSS的px值转rem值的Sublime Text3自动完成插件。这个插件是由@正霖编写。先来看看插件的效果：</p>
+<p>Flexible实现手淘H5页面的终端适配</p>
+<div align="center"><br><img src="http://cdn1.w3cplus.com/cdn/farfuture/Mn934L-OJUnahLoJ7qLdEDvmYFbD_O8SVgH7SovnaWg/mtime:1447830963/sites/default/files/blogs/2015/1511/cssrem.gif" alt=""><br></div><br>有关于CSSREM如何安装、配置教程可以点击这里查阅。<br>SS处理器<br><br>除了使用编辑器的插件之外，还可以使用CSS的处理器来帮助大家处理。比如说Sass、LESS以及PostCSS这样的处理器。我们简单来看两个示例。<br><br>Sass<br><br>使用Sass的同学，可以使用Sass的函数、混合宏这些功能来实现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">function</span> px2em(<span class="variable">$px</span>, <span class="variable">$base</span>-font-size: 16px) &#123;</div><div class="line">    @<span class="keyword">if</span> (unitless(<span class="variable">$px</span>)) &#123;</div><div class="line">        @warn <span class="string">"Assuming #&#123;<span class="variable">$px</span>&#125; to be in pixels, attempting to convert it into pixels for you"</span>;</div><div class="line">        @<span class="built_in">return</span> px2em(<span class="variable">$px</span> + 0px); // That may fail.</div><div class="line">    &#125; @<span class="keyword">else</span> <span class="keyword">if</span> (unit(<span class="variable">$px</span>) == em) &#123;</div><div class="line">        @<span class="built_in">return</span> <span class="variable">$px</span>;</div><div class="line">    &#125;</div><div class="line">    @<span class="built_in">return</span> (<span class="variable">$px</span> / <span class="variable">$base</span>-font-size) * 1em;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>除了使用Sass函数外，还可以使用Sass的混合宏：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">@mixin px2rem(<span class="variable">$property</span>,<span class="variable">$px</span>-values,<span class="variable">$baseline</span>-px:16px,<span class="variable">$support</span>-for-ie:<span class="literal">false</span>)&#123;</div><div class="line">    //Conver the baseline into rems</div><div class="line">    <span class="variable">$baseline</span>-rem: <span class="variable">$baseline</span>-px / 1rem * 1;</div><div class="line">    //Print the first line <span class="keyword">in</span> pixel values</div><div class="line">    @<span class="keyword">if</span> <span class="variable">$support</span>-for-ie &#123;</div><div class="line">        <span class="comment">#&#123;$property&#125;: $px-values;</span></div><div class="line">    &#125;</div><div class="line">    //<span class="keyword">if</span> there is only one (numeric) value, <span class="built_in">return</span> the property/value line <span class="keyword">for</span> it.</div><div class="line">    @<span class="keyword">if</span> <span class="built_in">type</span>-of(<span class="variable">$px</span>-values) == <span class="string">"number"</span>&#123;</div><div class="line">        <span class="comment">#&#123;$property&#125;: $px-values / $baseline-rem;</span></div><div class="line">    &#125;</div><div class="line">    @<span class="keyword">else</span> &#123;</div><div class="line">        //Create an empty list that we can dump values into</div><div class="line">        <span class="variable">$rem</span>-values:();</div><div class="line">        @each <span class="variable">$value</span> <span class="keyword">in</span> <span class="variable">$px</span>-values&#123;</div><div class="line">            // If the value is zero or not a number, <span class="built_in">return</span> it</div><div class="line">            @<span class="keyword">if</span> <span class="variable">$value</span> == 0 or <span class="built_in">type</span>-of(<span class="variable">$value</span>) != <span class="string">"number"</span>&#123;</div><div class="line">                <span class="variable">$rem</span>-values: append(<span class="variable">$rem</span>-values, <span class="variable">$value</span> / <span class="variable">$baseline</span>-rem);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        // Return the property and its list of converted values</div><div class="line">        <span class="comment">#&#123;$property&#125;: $rem-values;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>有关于更多的介绍，可以点击这里进行了解。<br><br>####PostCSS(px2rem)<br><br>除了Sass这样的CSS处理器这外，我们团队的@颂奇同学还开发了一款npm的工具px2rem。安装好px2rem之后，可以在项目中直接使用。也可以使用PostCSS。使用PostCSS插件postcss-px2rem<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var gulp = require(<span class="string">'gulp'</span>);</div><div class="line">var postcss = require(<span class="string">'gulp-postcss'</span>);</div><div class="line">var px2rem = require(<span class="string">'postcss-px2rem'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var processors = [px2rem(&#123;remUnit: 75&#125;)];</div><div class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'./src/*.css'</span>)</div><div class="line">        .pipe(postcss(processors))</div><div class="line">        .pipe(gulp.dest(<span class="string">'./dest'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure><br><br>除了在Gulp中配置外，还可以使用其他的配置方式，详细的介绍可以点击这里进行了解。<br><br>配置完成之后，在实际使用时，你只要像下面这样使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.selector &#123;</div><div class="line">    width: 150px;</div><div class="line">    height: 64px; /*px*/</div><div class="line">    font-size: 28px; /*px*/</div><div class="line">    border: 1px solid <span class="comment">#ddd; /*no*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>px2rem处理之后将会变成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.selector &#123;</div><div class="line">    width: 2rem;</div><div class="line">    border: 1px solid <span class="comment">#ddd;</span></div><div class="line">&#125;</div><div class="line">[data-dpr=<span class="string">"1"</span>] .selector &#123;</div><div class="line">    height: 32px;</div><div class="line">    font-size: 14px;</div><div class="line">&#125;</div><div class="line">[data-dpr=<span class="string">"2"</span>] .selector &#123;</div><div class="line">    height: 64px;</div><div class="line">    font-size: 28px;</div><div class="line">&#125;</div><div class="line">[data-dpr=<span class="string">"3"</span>] .selector &#123;</div><div class="line">    height: 96px;</div><div class="line">    font-size: 42px;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>在整个开发中有了这些工具之后，完全不用担心px值转rem值影响开发效率。<br><br>字号不使用rem<br><br>前面大家都见证了如何使用rem来完成H5适配。那么文本又将如何处理适配。是不是也通过rem来做自动适配。<br><br>显然，我们在iPhone3G和iPhone4的Retina屏下面，希望看到的文本字号是相同的。也就是说，我们不希望文本在Retina屏幕下变小，另外，我们希望在大屏手机上看到更多文本，以及，现在绝大多数的字体文件都自带一些点阵尺寸，通常是16px和24px，所以我们不希望出现13px和15px这样的奇葩尺寸。<br><br>如此一来，就决定了在制作H5的页面中，rem并不适合用到段落文本上。所以在Flexible整个适配方案中，考虑文本还是使用px作为单位。只不过使用[data-dpr]属性来区分不同dpr下的文本字号大小。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">div &#123;</div><div class="line">    width: 1rem; </div><div class="line">    height: 0.4rem;</div><div class="line">    font-size: 12px; // 默认写上dpr为1的fontSize</div><div class="line">&#125;</div><div class="line">[data-dpr=<span class="string">"2"</span>] div &#123;</div><div class="line">    font-size: 24px;</div><div class="line">&#125;</div><div class="line">[data-dpr=<span class="string">"3"</span>] div &#123;</div><div class="line">    font-size: 36px;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>为了能更好的利于开发，在实际开发中，我们可以定制一个font-dpr()这样的Sass混合宏：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@mixin font-dpr(<span class="variable">$font</span>-size)&#123;</div><div class="line">    font-size: <span class="variable">$font</span>-size;</div><div class="line"></div><div class="line">    [data-dpr=<span class="string">"2"</span>] &amp; &#123;</div><div class="line">        font-size: <span class="variable">$font</span>-size * 2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [data-dpr=<span class="string">"3"</span>] &amp; &#123;</div><div class="line">        font-size: <span class="variable">$font</span>-size * 3;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>有了这样的混合宏之后，在开发中可以直接这样使用：<br><br>@include font-dpr(16px);<br>当然这只是针对于描述性的文本，比如说段落文本。但有的时候文本的字号也需要分场景的，比如在项目中有一个slogan,业务方希望这个slogan能根据不同的终端适配。针对这样的场景，完全可以使用rem给slogan做计量单位。<br><br>CSS<br><br>本来想把这个页面的用到的CSS(或SCSS)贴出来，但考虑篇幅过长，而且这么简单的页面，我想大家也能轻而易举搞定。所以就省略了。权当是给大家留的一个作业吧，感兴趣的可以试试Flexible能否帮你快速完成H5页面终端适配。<br><br>### 效果<br>iphone4<br><div align="center"><br><img src="http://cdn.w3cplus.com/cdn/farfuture/YhlgyAvcvtOe54709eeCV9lrooOFzNJIhMEEj921fzs/mtime:1447841119/sites/default/files/blogs/2015/1511/rem-9.jpg" alt=""><br></div>
+
+<div align="center"><br><img src="http://cdn2.w3cplus.com/cdn/farfuture/gL7chP84773JBDGVVNjVp2m7yl2s9ecFv54nyQcaikk/mtime:1447841119/sites/default/files/blogs/2015/1511/rem-10.png" alt=""><br></div>
+
+<h4 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h4><p><a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external"> flexible布局</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/11/23/响应式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端开发</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="响应式flxible" data-title="使用Flexible实现手淘H5页面的终端适配" data-url="http://yoursite.com/blog/2016/11/23/响应式flxible/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wj200819"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+  (function(t){function e(t){return t.replace(/(:|\.)/g,"\\$1")}var l="1.4.13",o={},s={exclude:[],excludeWithin:[],offset:0,direction:"top",scrollElement:null,scrollTarget:null,beforeScroll:function(){},afterScroll:function(){},easing:"swing",speed:400,autoCoefficent:2,preventDefault:!0},n=function(e){var l=[],o=!1,s=e.dir&&"left"==e.dir?"scrollLeft":"scrollTop";return this.each(function(){if(this!=document&&this!=window){var e=t(this);e[s]()>0?l.push(this):(e[s](1),o=e[s]()>0,o&&l.push(this),e[s](0))}}),l.length||this.each(function(){"BODY"===this.nodeName&&(l=[this])}),"first"===e.el&&l.length>1&&(l=[l[0]]),l};t.fn.extend({scrollable:function(t){var e=n.call(this,{dir:t});return this.pushStack(e)},firstScrollable:function(t){var e=n.call(this,{el:"first",dir:t});return this.pushStack(e)},smoothScroll:function(l,o){if(l=l||{},"options"===l)return o?this.each(function(){var e=t(this),l=t.extend(e.data("ssOpts")||{},o);t(this).data("ssOpts",l)}):this.first().data("ssOpts");var s=t.extend({},t.fn.smoothScroll.defaults,l),n=t.smoothScroll.filterPath(location.pathname);return this.unbind("click.smoothscroll").bind("click.smoothscroll",function(l){var o=this,r=t(this),i=t.extend({},s,r.data("ssOpts")||{}),c=s.exclude,a=i.excludeWithin,f=0,h=0,u=!0,d={},p=location.hostname===o.hostname||!o.hostname,m=i.scrollTarget||(t.smoothScroll.filterPath(o.pathname)||n)===n,S=e(o.hash);if(i.scrollTarget||p&&m&&S){for(;u&&c.length>f;)r.is(e(c[f++]))&&(u=!1);for(;u&&a.length>h;)r.closest(a[h++]).length&&(u=!1)}else u=!1;u&&(i.preventDefault&&l.preventDefault(),t.extend(d,i,{scrollTarget:i.scrollTarget||S,link:o}),t.smoothScroll(d))}),this}}),t.smoothScroll=function(e,l){if("options"===e&&"object"==typeof l)return t.extend(o,l);var s,n,r,i,c=0,a="offset",f="scrollTop",h={},u={};"number"==typeof e?(s=t.extend({link:null},t.fn.smoothScroll.defaults,o),r=e):(s=t.extend({link:null},t.fn.smoothScroll.defaults,e||{},o),s.scrollElement&&(a="position","static"==s.scrollElement.css("position")&&s.scrollElement.css("position","relative"))),f="left"==s.direction?"scrollLeft":f,s.scrollElement?(n=s.scrollElement,/^(?:HTML|BODY)$/.test(n[0].nodeName)||(c=n[f]())):n=t("html, body").firstScrollable(s.direction),s.beforeScroll.call(n,s),r="number"==typeof e?e:l||t(s.scrollTarget)[a]()&&t(s.scrollTarget)[a]()[s.direction]||0,h[f]=r+c+s.offset,i=s.speed,"auto"===i&&(i=h[f]||n.scrollTop(),i/=s.autoCoefficent),u={duration:i,easing:s.easing,complete:function(){s.afterScroll.call(s.link,s)}},s.step&&(u.step=s.step),n.length?n.stop().animate(h,u):s.afterScroll.call(s.link,s)},t.smoothScroll.version=l,t.smoothScroll.filterPath=function(t){return t.replace(/^\//,"").replace(/(?:index|default).[a-zA-Z]{3,4}$/,"").replace(/\/$/,"")},t.fn.smoothScroll.defaults=s})(jQuery);
+
+  (function(){var t=[].indexOf||function(t){for(var e=0,n=this.length;e<n;e++){if(e in this&&this[e]===t)return e}return-1},e=[].slice;(function(t,e){if(typeof define==="function"&&define.amd){return define("waypoints",["jquery"],function(n){return e(n,t)})}else{return e(t.jQuery,t)}})(window,function(n,r){var i,o,l,s,f,u,c,a,h,d,p,y,v,w,g,m;i=n(r);a=t.call(r,"ontouchstart")>=0;s={horizontal:{},vertical:{}};f=1;c={};u="waypoints-context-id";p="resize.waypoints";y="scroll.waypoints";v=1;w="waypoints-waypoint-ids";g="waypoint";m="waypoints";o=function(){function t(t){var e=this;this.$element=t;this.element=t[0];this.didResize=false;this.didScroll=false;this.id="context"+f++;this.oldScroll={x:t.scrollLeft(),y:t.scrollTop()};this.waypoints={horizontal:{},vertical:{}};this.element[u]=this.id;c[this.id]=this;t.bind(y,function(){var t;if(!(e.didScroll||a)){e.didScroll=true;t=function(){e.doScroll();return e.didScroll=false};return r.setTimeout(t,n[m].settings.scrollThrottle)}});t.bind(p,function(){var t;if(!e.didResize){e.didResize=true;t=function(){n[m]("refresh");return e.didResize=false};return r.setTimeout(t,n[m].settings.resizeThrottle)}})}t.prototype.doScroll=function(){var t,e=this;t={horizontal:{newScroll:this.$element.scrollLeft(),oldScroll:this.oldScroll.x,forward:"right",backward:"left"},vertical:{newScroll:this.$element.scrollTop(),oldScroll:this.oldScroll.y,forward:"down",backward:"up"}};if(a&&(!t.vertical.oldScroll||!t.vertical.newScroll)){n[m]("refresh")}n.each(t,function(t,r){var i,o,l;l=[];o=r.newScroll>r.oldScroll;i=o?r.forward:r.backward;n.each(e.waypoints[t],function(t,e){var n,i;if(r.oldScroll<(n=e.offset)&&n<=r.newScroll){return l.push(e)}else if(r.newScroll<(i=e.offset)&&i<=r.oldScroll){return l.push(e)}});l.sort(function(t,e){return t.offset-e.offset});if(!o){l.reverse()}return n.each(l,function(t,e){if(e.options.continuous||t===l.length-1){return e.trigger([i])}})});return this.oldScroll={x:t.horizontal.newScroll,y:t.vertical.newScroll}};t.prototype.refresh=function(){var t,e,r,i=this;r=n.isWindow(this.element);e=this.$element.offset();this.doScroll();t={horizontal:{contextOffset:r?0:e.left,contextScroll:r?0:this.oldScroll.x,contextDimension:this.$element.width(),oldScroll:this.oldScroll.x,forward:"right",backward:"left",offsetProp:"left"},vertical:{contextOffset:r?0:e.top,contextScroll:r?0:this.oldScroll.y,contextDimension:r?n[m]("viewportHeight"):this.$element.height(),oldScroll:this.oldScroll.y,forward:"down",backward:"up",offsetProp:"top"}};return n.each(t,function(t,e){return n.each(i.waypoints[t],function(t,r){var i,o,l,s,f;i=r.options.offset;l=r.offset;o=n.isWindow(r.element)?0:r.$element.offset()[e.offsetProp];if(n.isFunction(i)){i=i.apply(r.element)}else if(typeof i==="string"){i=parseFloat(i);if(r.options.offset.indexOf("%")>-1){i=Math.ceil(e.contextDimension*i/100)}}r.offset=o-e.contextOffset+e.contextScroll-i;if(r.options.onlyOnScroll&&l!=null||!r.enabled){return}if(l!==null&&l<(s=e.oldScroll)&&s<=r.offset){return r.trigger([e.backward])}else if(l!==null&&l>(f=e.oldScroll)&&f>=r.offset){return r.trigger([e.forward])}else if(l===null&&e.oldScroll>=r.offset){return r.trigger([e.forward])}})})};t.prototype.checkEmpty=function(){if(n.isEmptyObject(this.waypoints.horizontal)&&n.isEmptyObject(this.waypoints.vertical)){this.$element.unbind([p,y].join(" "));return delete c[this.id]}};return t}();l=function(){function t(t,e,r){var i,o;if(r.offset==="bottom-in-view"){r.offset=function(){var t;t=n[m]("viewportHeight");if(!n.isWindow(e.element)){t=e.$element.height()}return t-n(this).outerHeight()}}this.$element=t;this.element=t[0];this.axis=r.horizontal?"horizontal":"vertical";this.callback=r.handler;this.context=e;this.enabled=r.enabled;this.id="waypoints"+v++;this.offset=null;this.options=r;e.waypoints[this.axis][this.id]=this;s[this.axis][this.id]=this;i=(o=this.element[w])!=null?o:[];i.push(this.id);this.element[w]=i}t.prototype.trigger=function(t){if(!this.enabled){return}if(this.callback!=null){this.callback.apply(this.element,t)}if(this.options.triggerOnce){return this.destroy()}};t.prototype.disable=function(){return this.enabled=false};t.prototype.enable=function(){this.context.refresh();return this.enabled=true};t.prototype.destroy=function(){delete s[this.axis][this.id];delete this.context.waypoints[this.axis][this.id];return this.context.checkEmpty()};t.getWaypointsByElement=function(t){var e,r;r=t[w];if(!r){return[]}e=n.extend({},s.horizontal,s.vertical);return n.map(r,function(t){return e[t]})};return t}();d={init:function(t,e){var r;e=n.extend({},n.fn[g].defaults,e);if((r=e.handler)==null){e.handler=t}this.each(function(){var t,r,i,s;t=n(this);i=(s=e.context)!=null?s:n.fn[g].defaults.context;if(!n.isWindow(i)){i=t.closest(i)}i=n(i);r=c[i[0][u]];if(!r){r=new o(i)}return new l(t,r,e)});n[m]("refresh");return this},disable:function(){return d._invoke.call(this,"disable")},enable:function(){return d._invoke.call(this,"enable")},destroy:function(){return d._invoke.call(this,"destroy")},prev:function(t,e){return d._traverse.call(this,t,e,function(t,e,n){if(e>0){return t.push(n[e-1])}})},next:function(t,e){return d._traverse.call(this,t,e,function(t,e,n){if(e<n.length-1){return t.push(n[e+1])}})},_traverse:function(t,e,i){var o,l;if(t==null){t="vertical"}if(e==null){e=r}l=h.aggregate(e);o=[];this.each(function(){var e;e=n.inArray(this,l[t]);return i(o,e,l[t])});return this.pushStack(o)},_invoke:function(t){this.each(function(){var e;e=l.getWaypointsByElement(this);return n.each(e,function(e,n){n[t]();return true})});return this}};n.fn[g]=function(){var t,r;r=arguments[0],t=2<=arguments.length?e.call(arguments,1):[];if(d[r]){return d[r].apply(this,t)}else if(n.isFunction(r)){return d.init.apply(this,arguments)}else if(n.isPlainObject(r)){return d.init.apply(this,[null,r])}else if(!r){return n.error("jQuery Waypoints needs a callback function or handler option.")}else{return n.error("The "+r+" method does not exist in jQuery Waypoints.")}};n.fn[g].defaults={context:r,continuous:true,enabled:true,horizontal:false,offset:0,triggerOnce:false};h={refresh:function(){return n.each(c,function(t,e){return e.refresh()})},viewportHeight:function(){var t;return(t=r.innerHeight)!=null?t:i.height()},aggregate:function(t){var e,r,i;e=s;if(t){e=(i=c[n(t)[0][u]])!=null?i.waypoints:void 0}if(!e){return[]}r={horizontal:[],vertical:[]};n.each(r,function(t,i){n.each(e[t],function(t,e){return i.push(e)});i.sort(function(t,e){return t.offset-e.offset});r[t]=n.map(i,function(t){return t.element});return r[t]=n.unique(r[t])});return r},above:function(t){if(t==null){t=r}return h._filter(t,"vertical",function(t,e){return e.offset<=t.oldScroll.y})},below:function(t){if(t==null){t=r}return h._filter(t,"vertical",function(t,e){return e.offset>t.oldScroll.y})},left:function(t){if(t==null){t=r}return h._filter(t,"horizontal",function(t,e){return e.offset<=t.oldScroll.x})},right:function(t){if(t==null){t=r}return h._filter(t,"horizontal",function(t,e){return e.offset>t.oldScroll.x})},enable:function(){return h._invoke("enable")},disable:function(){return h._invoke("disable")},destroy:function(){return h._invoke("destroy")},extendFn:function(t,e){return d[t]=e},_invoke:function(t){var e;e=n.extend({},s.vertical,s.horizontal);return n.each(e,function(e,n){n[t]();return true})},_filter:function(t,e,r){var i,o;i=c[n(t)[0][u]];if(!i){return[]}o=[];n.each(i.waypoints[e],function(t,e){if(r(i,e)){return o.push(e)}});o.sort(function(t,e){return t.offset-e.offset});return n.map(o,function(t){return t.element})}};n[m]=function(){var t,n;n=arguments[0],t=2<=arguments.length?e.call(arguments,1):[];if(h[n]){return h[n].apply(null,t)}else{return h.aggregate.call(null,n)}};n[m].settings={resizeThrottle:100,scrollThrottle:30};return i.on("load.waypoints",function(){return n[m]("refresh")})})}).call(this);
+  
+    
+
+ $(function(){
+      if(window.location.href.length >= 36){
+        var str = '<p style="font-size:20px;color:red;margin-bottom:10px">文章大纲</p><ul id= "dagang" class="nav" style="line-height:30px;color:white">'
+        $('.social').css('display','none');
+        for(var i=0;i < $('h3').length;i++){
+            str += '<li><a style="color:white;"  href=#' + $('h3').eq(i).text() + '>'+ $('h3').eq(i).text() +'</a></li>'
+        }
+        str += '</ul>'
+        $('.switch-part').append(str)
+        $('#dagang a').smoothScroll({speed: 1200}); 
+      }
+  })
+</script></div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 King Jian
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/blog/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
