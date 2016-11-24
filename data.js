@@ -64,37 +64,37 @@ var artical=[
 	{
 		id:0,
 		img:'img-0.jpg',
-		href:'http://note.youdao.com/noteshare?id=3decb3211e142d8259af5251afeb1307',
-		title:'正则表达式初解',
-		key:'正则'
+		href:'https://wangjian88.github.io/blog/tags/%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/',
+		title:'javaScript高级程序设计笔记',
+		key:'js,红皮书，经典'
 	},
 	{
 		id:1,
 		img:'img-1.jpg',
-		href:'http://note.youdao.com/noteshare?id=33eeee98979bcfbb9571dd9aac0d30aa',
-		title:'javaScript高级程序设计笔记之js简述',
-		key:'高级程序设计、笔记、js简述'
+		href:'https://wangjian88.github.io/blog/tags/node/',
+		title:'全栈开发-node.js',
+		key:'node.js'
 	},
 	{
 		id:2,
 		img:'img-2.jpg',
-		href:'http://note.youdao.com/noteshare?id=f92eb39e12cfb1c7668b8812c0cf8029',
-		title:'javaScript高级程序设计笔记之js基础',
-		key:'语法、关键字、变量类型、操作符、语句、函数'
+		href:'https://wangjian88.github.io/blog/2016/07/12/%E9%9D%A2%E8%AF%95%E9%A2%98/',
+		title:'移动端开发',
+		key:'静态，响应式，rem'
 	},
 	{
 		id:3,
 		img:'img-3.jpg',
-		href:'http://note.youdao.com/noteshare?id=f23b20672dd79b5274a0dcbeb98a6448',
-		title:'javaScript高级程序设计笔记之变量、作用域、内存',
-		key:'变量、作用域、内存'
+		href:'https://wangjian88.github.io/blog/2016/03/02/hello-world/',
+		title:'hexo搭建博客',
+		key:'hexo,blog,github'
 	},
 	{
 		id:4,
 		img:'img-4.jpg',
-		href:'http://note.youdao.com/noteshare?id=f089ae82cd85187d8a0665cbb83fba2b',
-		title:'javaScript高级程序设计笔记之引用类型（内置对象）',
-		key:'object、array、regexp'
+		href:'https://wangjian88.github.io/blog/2016/07/12/%E9%9D%A2%E8%AF%95%E9%A2%98/',
+		title:'精选面试题',
+		key:'面试题，面向对象'
 	}
 ]
 			
