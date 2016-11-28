@@ -11,6 +11,12 @@ var data={
 	
 	site:[
 		{
+			img:'img/aboume_bg.jpg',
+			h2:'node+mysql项目',
+			href:'http://jingyingba.applinzi.com',
+			title:'通过express实现功能：1.node响应请求，jade模板渲染页面。2.登陆注册。3.数据分页效果。4.简单的后台添加课程页面',
+		},
+		{
 			img:'./react/img/tu.png',
 			h2:'RN--仿韩寒的个人APP',
 			href:'https://pan.baidu.com/s/1nv4i7sX',
