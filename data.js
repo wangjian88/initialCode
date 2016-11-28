@@ -12,9 +12,9 @@ var data={
 	site:[
 		{
 			img:'img/aboume_bg.jpg',
-			h2:'node+mysql项目',
+			h2:'node+mysql项目-线上预览',
 			href:'http://jingyingba.applinzi.com',
-			title:'通过express实现功能：1.node响应请求，jade模板渲染页面。2.登陆注册。3.数据分页效果。4.简单的后台添加课程页面',
+			title:'通过express实现功能：1.node响应请求，jade模板渲染页面。2.登陆注册。3.数据分页效果。4.简单的后台添加课程页面。<br/>心得静下来了。太浮躁只会原地踏步。',
 		},
 		{
 			img:'./react/img/tu.png',
@@ -72,35 +72,40 @@ var artical=[
 		img:'img-0.jpg',
 		href:'https://wangjian88.github.io/blog/tags/%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/',
 		title:'javaScript高级程序设计笔记',
-		key:'js,红皮书，经典'
+		key:'js,红皮书，经典',
+		detail: '学习js不得不看的一本好书，知识点由浅入深，语言精髓。忍不了想写一份长篇笔记，加深对js的理解'
 	},
 	{
 		id:1,
 		img:'img-1.jpg',
 		href:'https://wangjian88.github.io/blog/tags/node/',
 		title:'全栈开发-node.js',
-		key:'node.js'
+		key:'node.js',
+		detail: "node.js-前端工程师的必备技能！！在今年的双11中更是大放异彩，出色的表现征服了所有互联网开发者，已然成为一种趋势。让前端开发者更加强大！"
 	},
 	{
 		id:2,
 		img:'img-2.jpg',
 		href:'https://wangjian88.github.io/blog/2016/07/12/%E9%9D%A2%E8%AF%95%E9%A2%98/',
 		title:'移动端开发',
-		key:'静态，响应式，rem'
+		key:'静态，响应式，rem',
+		detail: "后互联网时代也可以叫移动互联时代，无论是线上商城，还是视屏，阅读娱乐，移动端占比可以说已经碾压pc端。面对不计其数的大小，分辨率各不相同移动端设备，一次开发，适配所有已经成为检验一个前端开发者是否优秀的必须技能！"
 	},
 	{
 		id:3,
 		img:'img-3.jpg',
 		href:'https://wangjian88.github.io/blog/2016/03/02/hello-world/',
 		title:'hexo搭建博客',
-		key:'hexo,blog,github'
+		key:'hexo,blog,github',
+		detail: "托管在github上的hexo博客系统，markdown作为书写模板，内容完全静态化，并且完全免费，实在是没有能力拥有自己服务器开发者的福音。"
 	},
 	{
 		id:4,
 		img:'img-4.jpg',
 		href:'https://wangjian88.github.io/blog/2016/07/12/%E9%9D%A2%E8%AF%95%E9%A2%98/',
 		title:'精选面试题',
-		key:'面试题，面向对象'
+		key:'面试题，面向对象',
+		detail: "温故知新，优秀的题目真的会对自己对js的理解更上一层路，是一种快速深入学习的捷径。"
 	}
 ]
 			
