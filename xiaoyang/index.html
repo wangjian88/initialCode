@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dest/style.css"/>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas id="canvas" width="640" height="640"></canvas>
+			<div class="btn">
+			</div>
+			<div class="man">
+				<div class="zhua">
+					<div class="bot">
+						
+					</div>
+				</div>
+			</div>
+			<div class="score">
+				<span>0</span>
+			</div>
+		</div>
+	</body>
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+	<script type="text/javascript">
+		function random (x,y) {
+			var random = Math.round((y-x)*Math.random())+x;
+			return random;
+		}
+		var c=document.getElementById("canvas");
+		var ctx=c.getContext("2d");
+		
+		
+		var arr_yun = [
+			{src:'./img/云1.png',width:147,height:42,py:585},
+			{src:'./img/云2.png',width:189,height:50,py:520},
+			{src:'./img/云3.png',width:184,height:40,py:459},
+			{src:'./img/云4.png',width:127,height:40,py:410},
+			{src:'./img/云5.png',width:179,height:40,py:360},
+			{src:'./img/云6.png',width:151,height:50,py:300},
+			{src:'./img/云7.png',width:197,height:50,py:240}
+		];
+		var arr_img = [
+			{src:'./img/蛋糕1.png',width:60,height:40},
+			{src:'./img/蛋糕2.png',width:60,height:40},
+			{src:'./img/蛋糕3.png',width:60,height:40},
+			{src:'./img/鸡蛋糕.png',width:100,height:42},
+			{src:'./img/真心蛋糕.png',width:100,height:42},
+			{src:'./img/乳酸3.png',width:60,height:50},
+			{src:'./img/小样酸Q糖3.png',width:100,height:50},
+			{src:'./img/小样酸Q糖2.png',width:100,height:50},
+			{src:'./img/小样酸Q糖1.png',width:110,height:50},
+			{src:'./img/慕思方蛋糕.png',width:120,height:42},
+		]
+		function Yun (obj,obj1,speed) {
+			this.baike = new Image();
+			this.baike.src = './img/人物.png';
+			this.btn= new Image();
+			this.btn.src = './img/按钮－松开.png';
+			this.img = new Image();
+			this.img.src = obj.src;
+			this.img1 = new Image();
+			this.img1.src = obj1.src;
+			this.x = random(0,640-obj.width);
+			this.y = obj.py;
+			this.width = obj.width;
+			this.height = obj.height;
+			this.width1 = obj1.width;
+			this.height1 = obj1.height;
+			this.speed = speed;
+		}
+		Yun.prototype.draw=function  () {
+			if (this.x >= (640-this.width)) {
+				this.speed = -random(1,5);
+			}
+			if (this.x <= 0) {
+				this.speed = random(1,5);
+			}
+			this.x+=this.speed;
+			ctx.drawImage(this.img,this.x,this.y,this.width,this.height);
+			ctx.drawImage(this.img1,this.x+(this.width-this.width1)/2,this.y-10,this.width1,this.height1);
+		}
+		var arr = [];
+		for (var i=0;i<7;i++) {
+			var obj = new Yun(arr_yun[i],arr_img[random(0,9)],random(1,5))
+			arr.push(obj);
+		}
+		function move () {
+			ctx.clearRect(0, 0, 640, 640);
+			for (var i=0;i<arr.length;i++) {
+				arr[i].draw();
+			}
+			requestAnimationFrame(move);	
+		}
+		move();
+		
+		
+		
+		var oBtn = document.querySelector('.btn');
+		var ozhua = document.querySelector('.zhua');
+		var owrap = document.querySelector('#wrap');
+		var num=0;
+		var speed_zua = 0.4;
+		var speed_zhang = 5;
+		var height_zhang = 200;
+		var time1 = null;
+		var time2 = null;
+		var screen_width = owrap.clientWidth;
+		var screen_height = owrap.clientHeight;
+		var btn = true;
+		var ospan = document.querySelector('.score span')
+		function zua () {
+			if (num>=30||num<=-30) {
+				speed_zua = -speed_zua;
+			}
+			num+=speed_zua;
+			ozhua.style.transform = 'rotate('+num+'deg)'
+			time1 = requestAnimationFrame(zua);	
+		}
+		zua();
+		function zhang () {
+			btn = false;
+			var chang = (height_zhang-40)*Math.abs(Math.sin(num* 0.017453293))+Math.abs(30*Math.cos(num* 0.017453293))
+			var gao = (height_zhang-40)*Math.abs(Math.cos(num* 0.017453293)) + Math.abs(30*Math.sin(num* 0.017453293))+200
+			if (chang/screen_width >= (24/54) && num>0) {
+				speed_zhang = -speed_zhang;
+			}else if (chang/screen_width >= (30/54) && num<0) {
+				speed_zhang = -speed_zhang;
+			}
+			for (var i=7;i>0;i--) {
+				var ran = random(0,9);
+				if ((gao/screen_height) >= ((arr[i-1].y+10)/640) && (gao/screen_height) < (((arr[i-1].y+10)+arr[i-1].height1)/640)) {
+					if (speed_zhang > 0 && num > 0) {
+						if ((280-chang)/screen_width>(arr[i-1].x+(arr[i-1].width-arr[i-1].width1+100)/2+arr[i-1].width1)/640 || (280 - chang + Math.abs(60*Math.cos(num* 0.017453293)))/screen_width < (arr[i-1].x+(arr[i-1].width-arr[i-1].width1+140)/2)/640) {
+						}else{
+							ospan.innerHTML = parseInt(ospan.innerHTML) + 1;
+							speed_zhang = -speed_zhang;
+							arr[i-1].img1 = new Image();
+							if (arr[i-1].img1.src == arr_img[ran].src) {
+								arr[i-1].img1.src = arr_img[ran+1].src;
+							}else{
+								arr[i-1].img1.src = arr_img[ran].src;
+							}
+							arr[i-1].width1 = arr_img[ran].width;
+							arr[i-1].height1 = arr_img[ran].height;
+							break;
+						}
+					}else if(speed_zhang > 0 && num < 0){
+						if ((280+chang)/screen_width < (arr[i-1].x+(arr[i-1].width-arr[i-1].width1+140)/2)/640 || (280 + chang - Math.abs(60*Math.cos(num* 0.017453293)))/screen_width > (arr[i-1].x+(arr[i-1].width-arr[i-1].width1+100)/2+arr[i-1].width1)/640 ) {
+						}else{
+							ospan.innerHTML = parseInt(ospan.innerHTML) + 1;
+							speed_zhang = -speed_zhang;
+							arr[i-1].img1 = new Image();
+							if (arr[i-1].img1.src == arr_img[ran].src) {
+								arr[i-1].img1.src = arr_img[ran+1].src;
+							}else{
+								arr[i-1].img1.src = arr_img[ran].src;
+							}
+							
+							arr[i-1].width1 = arr_img[ran].width;
+							arr[i-1].height1 = arr_img[ran].height;
+							break;
+						}
+					}
+				}
+			}
+			if (gao > screen_height) {
+				speed_zhang = -speed_zhang;
+			}
+			
+			height_zhang += speed_zhang;
+			ozhua.style.height = height_zhang + 'px'
+			time2 = requestAnimationFrame(zhang);
+			if (height_zhang < 150 && speed_zhang<0) {
+				cancelAnimationFrame(time2);
+				speed_zhang = Math.abs(speed_zhang);
+				btn = true;
+				zua();
+			}
+		}
+		oBtn.onclick = function  () {
+			if (btn) {
+				cancelAnimationFrame(time1);
+				zhang()
+			}
+		}
+	</script>
+</html>

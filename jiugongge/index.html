@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格拼图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 300px;
+            height:300px;
+            border: 1px solid lightblue;
+            position: relative;
+        }
+        .box div{
+            width: 100px;
+            height:100px;
+            background: lightblue;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            top: 0;
+            left: 0;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .box span{
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+        .btnAgain{
+            width: 80px;
+            height:30px;
+            background: lightblue;
+            color:white;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+        }
+        .bushu{
+            height: 30px;
+            position: absolute;
+            left: 85px;
+            top: 310px;
+            margin-top: 5px;
+            color: lightblue;
+            font-size: 20px;
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .bushu span{
+            display: inline-block;
+            color: red;
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+</div>
+<button class="btnAgain">重新开始</button>
+<div class="bushu">一共用了<span>0</span>步</div>
+</body>
+<script src="http://cdn.staticfile.org/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	$(function  () {
+		function random (x,y) {
+			return Math.round((y-x)*Math.random())+x;
+		}
+		function start () {
+			var arr = [];
+			var arr1 = [[0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200]];
+			for (var i=7;i>=0;i--) {
+				var r = random(0,i)
+				arr.push(arr1[r])
+				arr1.splice(r,1)
+			}
+			console.log(arr)
+			for (var i=0;i<arr.length;i++) {
+		  		odiv[i].style.top = arr[i][0] + 'px'
+		  		odiv[i].style.left = arr[i][1] + 'px'
+			}
+		}
+		var owrap = document.querySelector('.box');
+		var odiv = owrap.querySelectorAll('div');
+		var num = 8;
+		var step = 0;
+		var arr2 = [[0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200],[200,200]];
+	  	start();
+	  	$(".btnAgain").click(function  () {
+	  		location.reload()
+	  	})
+	  	$('.box div').click(function  () {
+	  		var index = $(this).index()
+			var posi = parseInt($(this).offset().top/100)*3 + parseInt($(this).offset().left/100)
+			if (posi == (num+1) || posi == (num-1) ||posi == (num+3) ||posi == (num-3)) {
+				if (posi == 2||posi == 5) {
+					if (posi == num-1) {
+						return;
+					}
+				}
+				if (posi == 3||posi == 6) {
+					if (posi == num+1) {
+						return;
+					}
+				}
+				step++;
+	  			$('.bushu span').text(step)
+				$(this).animate({top:arr2[num][1]+'px',left:arr2[num][0]+'px'},100,'linear')
+				num = posi;
+				if ( num==8 ) {
+					for (var i=0;i<8;i++) {
+						var posi = parseInt($('.box div').eq(i).offset().top/100)*3 + parseInt($('.box div').eq(i).offset().left/100)
+						if (posi !== $('.box div').eq(i).index()) {
+							return;
+						}
+					}
+					alert('通关');
+				}
+			}
+	  	})
+  	})
+</script>
+</html>
