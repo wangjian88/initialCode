@@ -1,0 +1,99 @@
+.wrap {
+  width: 10rem;
+  height: 100%;
+  margin: 0 auto;
+  background: url(../img/P3.png);
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.wrap .agin {
+  width: 2.78125rem;
+  height: 3.0625rem;
+  background: url(../img/agin.png);
+  background-size: cover;
+  position: absolute;
+  top: 57%;
+  left: 1.59375rem;
+}
+
+.wrap .share {
+  width: 2.859375rem;
+  height: 4.078125rem;
+  background: url(../img/share.png);
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 5.90625rem;
+}
+
+.wrap .score {
+  position: absolute;
+  width: 100%;
+  height: 1.984375rem;
+  top: 23%;
+}
+
+.wrap .score p {
+  line-height: 0.78125rem;
+  color: white;
+  text-align: center;
+}
+
+[data-dpr="1"] .wrap .score p {
+  font-size: 25px;
+}
+
+[data-dpr="2"] .wrap .score p {
+  font-size: 50px;
+}
+
+[data-dpr="3"] .wrap .score p {
+  font-size: 75px;
+}
+
+[data-dpr="1"] .wrap .score p.hua {
+  font-size: 15px;
+}
+
+[data-dpr="2"] .wrap .score p.hua {
+  font-size: 30px;
+}
+
+[data-dpr="3"] .wrap .score p.hua {
+  font-size: 45px;
+}
+
+.wrap .list {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  margin-left: -3.53125rem;
+  width: 7.0625rem;
+  height: 0.96875rem;
+  border-radius: 0.125rem;
+  background: white;
+  color: red;
+  text-align: center;
+  line-height: 0.96875rem;
+}
+
+.wrap .share_cover {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+}
+
+.wrap .share_cover .share_btn {
+  width: 4.859375rem;
+  height: 3.8125rem;
+  background: url(../img/share_btn.png) no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 1.15625rem;
+  right: 0.3125rem;
+}

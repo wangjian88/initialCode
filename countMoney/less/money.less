@@ -1,0 +1,106 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.wrap{
+    width: 640px;
+    height: 100%;
+    background: red;
+    margin: 0px auto;
+    background: url(../img/money_bg.png);
+    background-size: cover;
+    position: relative;
+    .lunbo{
+        width: 530px;
+        height: 177px;
+        background: url(../img/paopao.png) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 145px;
+        left: 50%;
+        margin-left: -265px;
+        .over{
+            position: absolute;
+            top: 3px;
+            height: 136px;
+            width: 100%;
+            overflow: hidden;
+             ul{
+                 top: 0px;
+                 width: 100%;
+                position: absolute;
+                li{
+                    text-align: center;
+                    margin-top: 15px;
+                    border: 1px solid black;
+                    img{
+                        width: 460px;
+                        height: 110px;
+                    }
+                }    
+             }
+        }
+    }
+    .score{
+       text-align: center;
+       padding-top: 320px;
+    }
+    .score span{
+        display: inline-block;
+        width: 70px;
+        height: 98px;
+        background: url(../img/fen.png);
+        background-size: cover;
+        text-align: center;
+        line-height: 108px;
+        font-size: 40px;
+        color: white;
+        margin: 0px 5px;
+    }
+    .score span.time{
+         width: 90px;
+         height: 98px;
+         background: url(../img/click.png) no-repeat center;
+         background-size: 80% 80%;
+         background-size: cover;
+         vertical-align: middle;
+         color: rgb(166,123,81);
+    }
+    .money{
+        width: 382px;
+        height: 450px;
+        position: absolute;
+        bottom: 0px;
+        left:50%;
+        background: url(../img/mao_bg.png) no-repeat;
+        background-size: cover;
+        margin-left: -191px;
+        .mao{
+           width: 382px;
+           height: 460px;
+           position: absolute;
+           background: url(../img/mao.png) no-repeat;
+           background-size: cover;
+           top: 0px;
+        }
+        .hand{
+            width: 120px;
+            height: 70px;
+            position: absolute;
+            top: 190px;
+            right: -60px;
+            background: url(../img/hand.png) no-repeat;
+            background-size: cover;
+        }
+    }
+    .zhuan{
+        position: absolute;
+        height: 147px;
+        width: 100%;
+        background: url(../img/zhuan.png) no-repeat;
+        background-size: cover;
+        bottom: 0px;
+    }
+}
+

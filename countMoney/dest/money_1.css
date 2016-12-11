@@ -1,0 +1,107 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  z-index: 5;
+}
+
+.wrap {
+  width: 10rem;
+  height: 100%;
+  background: red;
+  margin: 0 auto;
+  background: url(../img/money_bg.png);
+  background-size: cover;
+  position: relative;
+}
+
+.wrap .lunbo {
+  width: 8.28125rem;
+  height: 2.765625rem;
+  background: url(../img/paopao.png) no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 2.265625rem;
+  left: 50%;
+  margin-left: -4.140625rem;
+}
+
+.wrap .lunbo .over {
+  position: absolute;
+  top: 0.046875rem;
+  height: 2.125rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrap .lunbo .over ul {
+  top: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.wrap .lunbo .over ul li {
+  text-align: center;
+  margin-top: 0.234375rem;
+  margin-bottom: 0.3125rem;
+  border: 0.015625rem solid black;
+}
+
+.wrap .lunbo .over ul li img {
+  width: 7.1875rem;
+  height: 1.71875rem;
+}
+
+.wrap .score {
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.wrap .score span {
+  display: inline-block;
+  width: 1.09375rem;
+  height: 1.53125rem;
+  background: url(../img/fen.png);
+  background-size: cover;
+  text-align: center;
+  line-height: 1.6875rem;
+  font-size: 0.625rem;
+  color: white;
+  margin: 0 0.078125rem;
+}
+
+.wrap .score span.time {
+  width: 1.40625rem;
+  height: 1.53125rem;
+  background: url(../img/click.png) no-repeat center;
+  background-size: 80% 80%;
+  background-size: cover;
+  vertical-align: middle;
+  color: #a67b51;
+}
+
+.wrap .money {
+  width: 5.96875rem;
+  height: 7.03125rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-size: cover;
+  margin-left: -2.984375rem;
+  z-index: 6;
+}
+
+.wrap .zhuan {
+  position: absolute;
+  height: 2.296875rem;
+  width: 100%;
+  background: url(../img/zhuan.png) no-repeat;
+  background-size: cover;
+  bottom: 0;
+  z-index: 7;
+}
