@@ -1,0 +1,617 @@
+#pop {
+  width: 899px;
+  border-radius: 4px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0px;
+  border: 1px solid #ccc;
+  z-index: 3;
+  left: 50%;
+  margin-left: -450px;
+  background: white;
+  display: none;
+}
+#pop .top {
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+#pop .top a {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  color: #ccc;
+  font-size: 18px;
+}
+#pop .top a:hover {
+  color: #000000;
+}
+#pop .mid {
+  padding: 20px 0px;
+  text-align: center;
+}
+#pop .bot {
+  border-top: 1px solid #ccc;
+  height: 50px;
+  position: relative;
+}
+#pop .bot a {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+#pop .bot a:hover {
+  background: #ccc;
+}
+#fir_header {
+  height: 50px;
+  background: #313232;
+  position: relative;
+  z-index: 2;
+}
+#fir_header a.logo {
+  position: absolute;
+}
+#fir_header a.logo img {
+  width: 284px;
+  height: 100px;
+}
+#fir_header .lan a {
+  display: inline-block;
+  height: 50px;
+  color: gray;
+  font-size: 12px;
+  line-height: 50px;
+  margin-left: 24px;
+}
+#fir_header .lan a:hover {
+  color: white;
+}
+#fir_header ul.fr li {
+  float: left;
+  position: relative;
+  background: rgba(255, 0, 0, 0);
+}
+#fir_header ul.fr li .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: red;
+  display: none;
+}
+#fir_header ul.fr li a {
+  color: white;
+  display: inline-block;
+  height: 50px;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 14px;
+  position: relative;
+}
+#fir_header ul.fr li .header_box {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+#fir_header ul.fr li .header_box li {
+  width: 100%;
+}
+#fir_header ul.fr li .header_box a {
+  display: block;
+  width: 100%;
+  padding: 0px;
+  height: auto;
+  line-height: 45px;
+  text-align: center;
+  font-size: 12px;
+}
+#fir_header ul.fr li.active {
+  background: red;
+}
+#fir_header ul.fr li.active span {
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ed1c24;
+  top: 50px;
+  left: 50%;
+  margin-left: -10px;
+}
+#forYou .top {
+  height: 604px;
+  background: url("../img/shouye/if_i_were_you.jpg");
+  background-size: cover;
+  position: relative;
+}
+#forYou .top .video_btn {
+  position: absolute;
+  left: 50%;
+  margin-left: -47px;
+  bottom: 116px;
+  width: 142px;
+  height: 54px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  line-height: 54px;
+  font-size: 24px;
+}
+#forYou .top .video_btn span.sanjiao {
+  font-size: 25px;
+  color: red;
+  margin-left: 5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+#forYou .bot p {
+  margin: 0 auto;
+  width: 652px;
+  font-size: 17px;
+  line-height: 30px;
+  letter-spacing: 0;
+  margin-top: 80px;
+}
+#forYou .bot p img {
+  width: 535px;
+  margin-left: 42px;
+}
+#ourEnsure {
+  margin-top: 73px;
+}
+#ourEnsure .system {
+  background: url("../img/shouye/greyBackground.jpg");
+}
+#ourEnsure .system ul {
+  padding-top: 80px;
+}
+#ourEnsure .system ul li.server .top {
+  text-align: center;
+}
+#ourEnsure .system ul li.server .top img {
+  width: 150px;
+}
+#ourEnsure .system ul li.server .mid {
+  height: auto;
+}
+#ourEnsure .system ul li.server .mid p.line {
+  width: 127px;
+  border-top: 1px solid black;
+  margin: 25px auto;
+}
+#ourEnsure .system ul li.server .mid p {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: normal;
+}
+#ourEnsure .system ul li.server .bot div {
+  margin-top: 15px;
+}
+#ourEnsure .system ul li.server .bot div em {
+  font-size: 14px;
+  color: brown;
+  margin-top: 6px;
+}
+#ourEnsure .system ul li.server .bot div p {
+  line-height: 18px;
+  font-size: 14px;
+  width: 155px;
+  font-weight: bold;
+}
+#ourEnsure .system ul li {
+  float: left;
+  width: 250px;
+  margin-left: 105px;
+}
+#ourEnsure .system ul li .top {
+  text-align: center;
+}
+#ourEnsure .system ul li .top img {
+  width: 120px;
+  height: 162px;
+}
+#ourEnsure .system ul li .mid {
+  height: 152px;
+}
+#ourEnsure .system ul li .mid p.line {
+  width: 127px;
+  border-top: 1px solid black;
+  margin: 25px auto;
+}
+#ourEnsure .system ul li .mid p {
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+}
+#ourEnsure .system ul li .bot {
+  text-align: center;
+}
+#ourEnsure .system ul li .bot a {
+  display: inline-block;
+  padding: 0px 10px;
+  height: 40px;
+  border: 2px solid brown;
+  color: #C30D22;
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 14px;
+  margin-top: 66px;
+  margin-bottom: 44px;
+}
+#ourEnsure .system ul li .bot a:hover {
+  color: white;
+  background: brown;
+}
+#ourEnsure .team {
+  height: 910px;
+  background: url("../img/shouye/teamBackground.jpg");
+  padding-top: 66px;
+}
+#ourEnsure .team .content {
+  margin: 0 auto;
+  width: 945px;
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 36px;
+  height: 787px;
+}
+#ourEnsure .team .content .top {
+  color: white;
+  text-align: center;
+}
+#ourEnsure .team .content .top h1 {
+  font-size: 36px;
+  margin-bottom: 17px;
+}
+#ourEnsure .team .content .top p {
+  font-size: 14px;
+}
+#ourEnsure .team .content .mid {
+  width: 635px;
+  margin: 40px auto 0;
+}
+#ourEnsure .team .content .mid h4 {
+  color: white;
+  font-size: 18px;
+  line-height: 26px;
+}
+#ourEnsure .team .content .bot {
+  height: 450px;
+  position: relative;
+  margin-top: 42px;
+  padding-bottom: 80px;
+}
+#ourEnsure .team .content .bot .pre,
+#ourEnsure .team .content .bot .next {
+  position: absolute;
+  top: 39%;
+  left: 2%;
+}
+#ourEnsure .team .content .bot .pre a,
+#ourEnsure .team .content .bot .next a {
+  font-size: 40px;
+  color: white;
+  font-family: "agency fb";
+}
+#ourEnsure .team .content .bot .next {
+  left: 95%;
+}
+#ourEnsure .team .content .bot .pics {
+  width: 782px;
+  margin-right: 75px;
+  height: 450px;
+}
+#ourEnsure .team .content .bot .pics li {
+  width: 20%;
+  height: 46%;
+  float: left;
+  margin-right: 6.3%;
+  margin-bottom: 4%;
+  position: relative;
+  cursor: pointer;
+}
+#ourEnsure .team .content .bot .pics li img {
+  width: 96%;
+  height: 100%;
+  margin-left: 3%;
+}
+#ourEnsure .team .content .bot .pics li .cover {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+}
+#ourEnsure .team .content .bot .pics li.last {
+  margin-right: 0;
+}
+#Listen {
+  text-align: center;
+  background: url("../img/shouye/greyBackground.jpg");
+}
+#Listen h1 {
+  font-size: 36px;
+  line-height: 154px;
+}
+#Listen h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+#Listen p.title {
+  font-size: 20px;
+  margin-top: 36px;
+}
+#Listen dl {
+  width: 755px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+#Listen dl img {
+  width: 100%;
+  height: 100%;
+}
+#Listen dl dt {
+  cursor: pointer;
+  height: 423px;
+  margin-top: 37px;
+  margin-bottom: 23px;
+  position: relative;
+}
+#Listen dl dt .cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+#Listen dl dt .content {
+  position: absolute;
+  top: 173px;
+  width: 100%;
+  text-align: center;
+}
+#Listen dl dt .content img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 46px;
+}
+#Listen dl dt .content p {
+  font-size: 24px;
+  color: white;
+}
+#Listen dl dt.active .cover {
+  display: none;
+}
+#Listen dl dt.active .content img {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 5px;
+  border-radius: 50%;
+}
+#Listen dl dt.active .content p {
+  text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 5px;
+}
+#Listen dl dd {
+  cursor: pointer;
+  float: left;
+  width: 172px;
+  height: 172px;
+  margin-right: 19px;
+  position: relative;
+}
+#Listen dl dd .cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+#Listen dl dd .content {
+  position: absolute;
+  top: 13px;
+  width: 100%;
+  text-align: center;
+  top: -70px;
+}
+#Listen dl dd .content img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 26px;
+}
+#Listen dl dd p {
+  position: absolute;
+  font-size: 14px;
+  color: white;
+  top: 112px;
+  width: 80%;
+  left: 10%;
+  text-align: center;
+}
+#Listen dl dd p.stu {
+  font-size: 18px;
+}
+#Listen dl dd.active .cover {
+  display: none;
+}
+#Listen dl dd.last {
+  margin: 0;
+}
+#ourStu {
+  padding-top: 94px;
+}
+#ourStu .top h1,
+#ourStu .top h2 {
+  font-size: 36px;
+  color: #C30D22;
+  text-align: center;
+  font-weight: bolder;
+}
+#ourStu .top h2 {
+  font-size: 18px;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+#ourStu .top p {
+  width: 750px;
+  font-size: 21px;
+  line-height: 30px;
+  margin: 0px auto;
+}
+#ourStu .mid {
+  padding-left: 128px;
+  margin-top: 70px;
+}
+#ourStu .mid li {
+  width: 203px;
+  height: 253px;
+  border: 2px solid #ccc;
+  float: left;
+  margin-right: 129px;
+  margin-bottom: 57px;
+  cursor: pointer;
+  text-align: center;
+}
+#ourStu .mid li .bg {
+  height: 116px;
+  margin-top: 30px;
+  background-size: 112px auto;
+  margin-bottom: 23px;
+}
+#ourStu .mid li p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #666;
+}
+#ourStu .mid li em {
+  font-size: 18px;
+  font-weight: 500;
+  color: gray;
+}
+#ourStu .mid li.active {
+  border: 2px solid brown;
+}
+#ourStu .mid li.active p {
+  color: #C30D22;
+}
+#ourStu .mid li.active em {
+  color: #5290B0;
+}
+#ourStu .mid li.one .bg {
+  background: url(../img/shouye/bg_1.png) no-repeat center 0px;
+}
+#ourStu .mid li.one.active .bg {
+  background-image: url(../img/shouye/penn.png);
+  background-size: 113px 101px;
+}
+#ourStu .mid li.two .bg {
+  background: url(../img/shouye/bg_2.png) no-repeat center 0px;
+}
+#ourStu .mid li.two.active .bg {
+  background-image: url(../img/shouye/duke.jpg);
+  background-position-y: -2px;
+  background-size: 83px 107px;
+}
+#ourStu .mid li.three .bg {
+  background: url(../img/shouye/bg_3.png) no-repeat center 0px;
+}
+#ourStu .mid li.three.active .bg {
+  background-image: url(../img/shouye/nyuad.jpg);
+  background-size: 87px 87px;
+}
+#ourStu .mid li.four .bg {
+  background: url(../img/shouye/bg_4.png) no-repeat center 0px;
+}
+#ourStu .mid li.four.active .bg {
+  background-image: url(../img/shouye/brown.png);
+  background-size: 75px 106px;
+}
+#ourStu .mid li.five .bg {
+  background: url(../img/shouye/bg_5.png) no-repeat center 0px;
+  background-size: 112px auto;
+}
+#ourStu .mid li.six .bg {
+  background: url(../img/shouye/bg_6.png) no-repeat center 0px;
+}
+#ourStu .mid li.six.active .bg {
+  background-image: url(../img/shouye/cornell.png);
+  background-size: 99px 97px;
+}
+#ourStu .bot {
+  text-align: center;
+}
+#ourStu .bot a {
+  display: inline-block;
+  width: 194px;
+  height: 45px;
+  border-radius: 10px;
+  border: 1px solid #C30D22;
+  color: brown;
+  text-align: center;
+  line-height: 45px;
+  font-size: 20px;
+  margin: 0px 50px;
+}
+#ourStu .bot a:hover {
+  color: white;
+  background: #C30D22;
+}
+#join_us {
+  height: 626px;
+  background: url(../img/shouye/bottomFigure.jpg);
+  background-size: cover;
+  margin-top: 70px;
+}
+#fir_footer {
+  background: #313232;
+}
+#fir_footer p {
+  color: white;
+  text-align: center;
+}
+#fir_footer .top {
+  padding-left: 194px;
+}
+#fir_footer .top dl {
+  float: left;
+  width: 100px;
+}
+#fir_footer .top dl a:hover {
+  color: #337AB7;
+  text-decoration: underline;
+}
+#fir_footer .top dl dt {
+  line-height: 68px;
+}
+#fir_footer .top dl dt a {
+  color: brown;
+  font-size: 16px;
+}
+#fir_footer .top dl dd a {
+  color: white;
+  font-size: 14px;
+  line-height: 30px;
+}
+#fir_footer .mid {
+  margin-top: 18px;
+  position: relative;
+}
+#fir_footer .mid p {
+  font-size: 14px;
+  line-height: 28px;
+}
+#fir_footer .mid .left {
+  position: absolute;
+  top: 5px;
+  right: 60px;
+}
+#fir_footer .mid .left a {
+  margin-right: 64px;
+}
+#fir_footer .mid .left a img {
+  width: 38px;
+  height: 28px;
+}
+#fir_footer .bot p {
+  margin-top: 32px;
+  padding-bottom: 13px;
+}
